@@ -1,8 +1,9 @@
 ---
 const API_BASE_URL = import.meta.env.API_BASE_URL;
-
 const response = await fetch(`${API_BASE_URL}/projects/1`);
 const allOrganizations = await response.json();
+
+import Cardsdetail from "./my.astro";
 
 ---
 
@@ -31,7 +32,8 @@ const allOrganizations = await response.json();
         <div class="yr4">2020</div>
         <div class="yr5">2019</div>
     </div>
-    <div class="lowersection">CARDS</div>
+
+    <div class="lowersection"> <Cardsdetail/ > </div>
 </div>
 
 <style>
