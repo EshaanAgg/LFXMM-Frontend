@@ -1,19 +1,30 @@
+---
+interface Props {
 
+id:number;
+name: string;
+description: string;
+projectUrl: string;
+programYear:number;
+
+}
+const { id, name, programYear,projectUrl,description } = Astro.props;
+---
 
         <div class="card">
             <div class="cardtitle">
-              <h1>Project title</h1>
+              <h1>{name}</h1>
             </div>
           
             <div class="cardcontainer">
             <div class="cardcontent">
-              Fall 2023
+              Fall {programYear}
              </div>
             </div>
 
              <div class="description">
-              CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....
-             </div>
+            {description.substring(0,150)+'...'}
+            </div>
 
              <div class="subheading">
               Required Skills
@@ -22,38 +33,33 @@
              <div class="allskills">
 
              <div class="skills">
-              <p>Go</p>
+              Go
              </div>
              <div class="skills">
-              <p>Docker</p>
+              Docker
              </div>
              <div class="skills">
-              <p>Volcano</p>
+              Volcano
              </div>
-             </div>
-
-             <div class="allskills">
-
-              <div class="skills">
-               <p>Kubernetes</p>
+             <div class="skills">
+               Kubernetes
               </div>
              </div>
+
+
+
+
 
              <div class="links">
-              <div class="buttons">
-                Visit Site
-              </div>
-
-              <div class="buttons">
-                Repo Link
-              </div>
+              <a href={projectUrl} class="buttons"><button>Project Link</button></a>
+    
              </div>
         </div>
       
       
 
         <style>
-          @import "../styles/card.css";
+          @import "../css/card.css";
         </style>
         
       
