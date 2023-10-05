@@ -1,0 +1,65 @@
+body{
+    background: #00101B;
+
+}
+.mainpage{
+    color: white;
+    height: fit-content;
+    padding: 0vh 8vw;
+
+}
+.uppersection{
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+}
+.orginfo{
+    width:60%;
+}
+.orglogo{
+   height: 15vh;
+    margin: 0vh 0vw 10vh 0vw;
+}
+.orgabout{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    font-family: Lato;
+font-size: 18px;
+font-weight: 400;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: justified;
+
+}
+.graph{
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+.pastyears{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: Lato;
+font-size: 60px;
+font-weight: 700;
+line-height: 72px;
+letter-spacing: 0em;
+margin-bottom: 6vh;
+
+}
+
+.navyear{
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    gap: 5em;
+}
+.lowersection{
+    height: 60vh;
+    width: 100%;
+    background-color: grey;
+}
