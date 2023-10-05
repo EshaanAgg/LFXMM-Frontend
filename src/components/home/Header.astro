@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/logo.png'
+
+
+---
+
+
+<div class="h-[84px] w-screen flex justify-around items-center bg-navy_blue font-lato">
+  <Image src={logo} alt="logo" class="text-white" />
+  <ul class="text-white ">
+    <a href="/" class="relative group ml-9">
+      <span class="relative z-10">Home</span>
+      <span class="absolute bottom-[-5px] left-0 w-full h-1 bg-blue-200 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
+    </a>
+    <a href="/about" class="relative group ml-9">
+      <span class="relative z-10">About Us</span>
+      <span class="absolute bottom-[-5px] left-0 w-full h-1 bg-blue-200 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
+    </a>
+    <a href="/services" class="relative group ml-9">
+      <span class="relative z-10 ">Services</span>
+      <span class="absolute bottom-[-5px] left-0 w-full h-1 bg-blue-200 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
+    </a>
+    <a href="/contact" class="relative group ml-9">
+      <span class="relative z-10">Contact</span>
+      <span class="absolute bottom-[-5px] left-0 w-full h-1 bg-blue-200 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
+    </a>
+  </ul>
+</div>
+
+

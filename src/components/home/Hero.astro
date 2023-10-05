@@ -1,0 +1,28 @@
+---
+
+import heroImg from '../../assets/heroImg.png'
+import { Image } from 'astro:assets';
+
+---
+
+<main class="relative w-screen h-[calc(100vh-90px)] bg-navy_blue font-lato text-white flex flex-col justify-center items-center custom-radial-gradient">
+  <div class="grid grid-cols-2 gap-8 pl-[120px]">
+    <div class="font-bold pl-12">
+      <div class="text-white text-[90px] font-bold leading-normal">
+        LFX
+      </div>
+      <div class="text-white text-[90px] font-bold leading-normal">
+        Matrix
+      </div>
+      <div class="relative text-[24px] leading-normal font-normal">
+        LFX Matrix makes it easy to sponsor and help train the next generation of open source developers by serving key needs of the community. Invest in building a stronger and more diverse community of qualified developers and engineers.
+      </div>
+      <a href="/orgs">
+        <button  class="w-[240px] h-[50px] rounded-xl bg-[#0077cc] text-white text-[20px] font-bold mt-4 hover:opacity-50">Explore Orgs</button>
+      </a>
+    </div>
+    <div class="flex justify-center items-center">
+      <Image src={heroImg} alt="hero image" />
+    </div>
+  </div>
+</main>
