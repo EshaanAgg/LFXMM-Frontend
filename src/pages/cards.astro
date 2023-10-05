@@ -1,59 +1,63 @@
+---
+interface Props {
+
+id:number;
+name: string;
+description: string;
+projectUrl: string;
+programYear:number;
+
+}
+const { id, name, programYear,projectUrl,description } = Astro.props;
 
 
-<div class="card">
-  <div class="cardtitle">
-    <h1>Project title</h1>
-  </div>
+---
 
-  <div class="cardcontainer">
-  <div class="cardcontent">
-    Fall 2023
-   </div>
-  </div>
+        <div class="card">
+            <div class="cardtitle">
+              <h1>{name}</h1>
+            </div>
+          
+            <div class="cardcontainer">
+            <div class="cardcontent">
+              Fall {programYear}
+             </div>
+            </div>
 
-   <div class="description">
-    CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....
-   </div>
+             <div class="description">
+            {description.substring(0,150)+'...'}
+            </div>
 
-   <div class="subheading">
-    Required Skills
-   </div>
-  
-   <div class="allskills">
+             <div class="subheading">
+              Required Skills
+             </div>
+            
+             <div class="allskills">
 
-   <div class="skills">
-    <p>Go</p>
-   </div>
-   <div class="skills">
-    <p>Docker</p>
-   </div>
-   <div class="skills">
-    <p>Volcano</p>
-   </div>
-   </div>
+             <div class="skills">
+              Go
+             </div>
+             <div class="skills">
+              Docker
+             </div>
+             <div class="skills">
+              Volcano
+             </div>
+             <div class="skills">
+               Kubernetes
+              </div>
+             </div>
 
-   <div class="allskills">
+             <div class="links">
+              <a href={projectUrl} class="buttons"><button>Project Link</button></a>
+    
+             </div>
+        </div>
+      
+      
 
-    <div class="skills">
-     <p>Kubernetes</p>
-    </div>
-   </div>
-
-   <div class="links">
-    <div class="buttons">
-      Visit Site
-    </div>
-
-    <div class="buttons">
-      Repo Link
-    </div>
-   </div>
-</div>
-
-
-
-<style>
-@import "../css/card.css";
-</style>
-
-
+        <style>
+          @import "../css/card.css";
+        </style>
+        
+      
