@@ -1,0 +1,45 @@
+---
+interface Props {
+    projectName: string;
+    industryName: string;
+    skillsRequired: string[];
+    projectDescription: string;
+    websiteLink: string;
+    repositoryLink: string;
+}
+
+const { projectName, industryName, skillsRequired, projectDescription, websiteLink, repositoryLink } = Astro.props
+---
+
+<div class="project-card-control w-full max-w-sm bg-white border-2 border-gray-200 font-bold rounded-lg shadow p-8 dark:bg-dark-blue dark:border-highlight-blue hover:shadow-dark-blue hover:dark:shadow-highlight-blue hover:shadow-2xl duration-200">
+    <h5 class="mb-4 text-2xl font-medium text-gray-500 dark:text-white">{projectName}</h5>
+    <div class="flex items-baseline text-gray-900 dark:text-white">
+        <span class="text-base font-normal text-highlight-blue dark:text-highlight-blue border py-1 px-3 hover:bg-highlight-blue hover:text-white dark:border-highlight-blue rounded-md hover:dark:bg-highlight-blue hover:dark:text-dark-blue hover:cursor-pointer">{industryName}</span>
+    </div>
+    <div class="flex items-baseline text-gray-900 dark:text-white mt-6">
+        <span class="text-sm text-justify font-regular text-gray-400 truncate">{projectDescription}</span>
+    </div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    {skillsRequired.length!=0 ? (<div class="flex items-baseline text-gray-900 dark:text-white mt-6">
+        <span class="text-lg font-semibold text-gray-500 dark:text-white">Required Skills</span>
+    </div>): <div></div>}
+    {skillsRequired.length!=0 ? (<div class="grid grid-cols-3 gap-1 mt-3 mb-8">
+        {
+            skillsRequired.map((skill) => (
+                <div class="truncate bg-highlight-blue text-white font-light text-center rounded-full px-3 border hover:bg-dark-blue dark:border-dark-blue hover:dark:border-white cursor-pointer">
+                    {skill}
+                </div>
+            ))
+        }
+    </div>) : <div></div>}
+    <div class="flex flex-col md:flex-row gap-2 md:gap-6 md:items-center md:justify-center">
+        <a href={websiteLink} target="_blank"><button type="button" class="text-gray-700 hover:text-white dark:bg-dark-blue dark:text-white bg-white border-2 hover:bg-highlight-blue duration-200 font-medium rounded-full text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Visit Site</button></a>
+        <a href={repositoryLink} target="_blank"><button type="button" class="text-gray-700 hover:text-white dark:bg-dark-blue dark:text-white bg-white border-2 hover:bg-highlight-blue duration-200 font-medium rounded-full text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Repo Link</button></a>
+    </div>
+</div>
+
+<style>
+    .project-card-control {
+        /* scale: 0.6; */
+    }
+</style>

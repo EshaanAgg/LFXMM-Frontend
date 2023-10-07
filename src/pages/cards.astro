@@ -10,8 +10,15 @@ programYear:number;
 }
 const { id, name, programYear,projectUrl,description } = Astro.props;
 
+const maxLength = 150;
 
+let truncatedDescription = description.substring(0, maxLength);
+
+if (description.length > maxLength) {
+  truncatedDescription += '...';
+}
 ---
+
 
         <div class="card">
             <div class="cardtitle">
@@ -25,7 +32,7 @@ const { id, name, programYear,projectUrl,description } = Astro.props;
             </div>
 
              <div class="description">
-            {description.substring(0,150)+'...'}
+              {truncatedDescription}
             </div>
 
              <div class="subheading">
@@ -47,6 +54,10 @@ const { id, name, programYear,projectUrl,description } = Astro.props;
                Kubernetes
               </div>
              </div>
+
+
+
+
 
              <div class="links">
               <a href={projectUrl} class="buttons"><button>Project Link</button></a>

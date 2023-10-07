@@ -11,11 +11,12 @@ body{
 .uppersection{
     margin-top: 20vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 70vh;
 }
 .orginfo{
-    width:60%;
+    width:100%;
+    display: flex;
 }
 .orglogo{
    height: 15vh;
@@ -26,11 +27,11 @@ body{
     gap: 20px;
     flex-direction: column;
     font-family: Lato;
-font-size: 18px;
-font-weight: 400;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: justified;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: justified;
 
 }
 .graph{
@@ -44,11 +45,12 @@ text-align: justified;
     display: flex;
     justify-content: center;
     font-family: Lato;
-font-size: 60px;
-font-weight: 700;
-line-height: 72px;
-letter-spacing: 0em;
-margin-bottom: 6vh;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    margin-bottom: 6vh;
+    color: white;
 
 }
 
@@ -57,9 +59,15 @@ margin-bottom: 6vh;
     height: fit-content;
     justify-content: center;
     gap: 5em;
+    color: white;
+    margin-bottom: 2vh;
 }
 .lowersection{
-    height: 60vh;
     width: 100%;
+    padding: 0vh 1vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+    justify-content: center;
     background-color: rgb(16, 16, 16);
 }

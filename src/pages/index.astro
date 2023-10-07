@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import OrganizationCard from '../components/home/OrganizationCard.astro';
+import PastProjectsCard from '../pages/PastProjectsCard.astro';
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 
@@ -10,6 +11,14 @@ const allOrganizations = await response.json();
 ---
 
 <Layout title="LFX Mentorship Metrics">
+	<PastProjectsCard
+		projectName='Project1'
+		industryName='app'
+		skillsRequired={[]}
+		projectDescription='yada yada'
+		websiteLink='https://www.google.com/'
+		repositoryLink='https://www.google.com/'
+	/>
 	<main>
 		<ul role="list" class="grid grid-cols-4 gap-4">
 			{
