@@ -1,12 +1,12 @@
 ---
 interface Props {
-id:number;
-name: string;
-description: string;
-projectUrl: string;
-programYear:number;
-
+  id:number;
+  name: string;
+  description: string;
+  projectUrl: string;
+  programYear:number;       
 }
+
 const { id, name, programYear,projectUrl,description } = Astro.props;
 
 const maxLength = 150;
@@ -16,52 +16,51 @@ let truncatedDescription = description.substring(0, maxLength);
 if (description.length > maxLength) {
   truncatedDescription += '...';
 }
-else
-truncatedDescription
+
 ---
 
+      <div class="card">
 
-        <div class="card">
-            <div class="cardtitle">
-              <h1>{name}</h1>
+            <div class="cardTitle">
+                    <h1>{name}</h1>
             </div>
           
-            <div class="cardcontainer">
-            <div class="cardcontent">
-              Fall {programYear}
-             </div>
+            <div class="cardContainer">
+                  <div class="cardContent">
+                    Fall {programYear}
+                  </div>
             </div>
 
-             <div class="description">
-              {truncatedDescription}
+            <div class="description">
+                    {truncatedDescription}
             </div>
 
              <div class="subheading">
-              Required Skills
+                    Required Skills
              </div>
             
-             <div class="allskills">
+             <div class="allSkills">
 
              <div class="skills">
-              Go
+                    Go
              </div>
              <div class="skills">
-              Docker
+                   Docker
              </div>
              <div class="skills">
-              Volcano
+                   Volcano
              </div>
              <div class="skills">
-               Kubernetes
-              </div>
+                   Kubernetes
+             </div>
              </div>
 
              <div class="links">
-              <a href={projectUrl} class="buttons"><button>Project Link</button></a>
-            </div>
-            </div>
-      
-      
+                   <a href={projectUrl} class="buttons"><button>Project Link</button></a>
+             </div>
+
+        </div>
+    
 
         <style>
          
@@ -80,7 +79,7 @@ truncatedDescription
     background-color: #011929;
   }
 
-  .cardtitle{
+  .cardTitle{
     color: #F0F6FA;
     font-family: Lato;
     font-weight: 700;
@@ -97,13 +96,13 @@ truncatedDescription
     height: 25%;
   }
 
-.cardcontainer{
+.cardContainer{
   display: flex;
   justify-content: center;
   align-items: center; 
 }
 
-.cardcontent{
+.cardContent{
   font-family: Lato;
   font-size: 12px;
   font-weight: 500;
@@ -148,7 +147,7 @@ truncatedDescription
   margin-left: 8%;   
 }
 
-  .allskills{
+  .allSkills{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
