@@ -1,13 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro"
+import PastProjectCard from "../../components/organization/PastProjectCard.astro";
 
-const API_BASE_URL = import.meta.env.API_BASE_URL;
 
 // Get all the organization IDs and render the page for them
 export async function getStaticPaths() {
+    const API_BASE_URL = import.meta.env.API_BASE_URL;
     const response = await fetch(`${API_BASE_URL}/orgs`);
     const allOrganizations = await response.json();
-    return allOrganizations.map((org) => ({
+    
+    return allOrganizations.map((org: Organization) => ({
         params: {
             orgID: org.id
         }
@@ -17,12 +19,13 @@ export async function getStaticPaths() {
 // Render the content of the page by making the relevant requests
 const { orgID } = Astro.params;
 
+const API_BASE_URL = import.meta.env.API_BASE_URL;
 const orgResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}`);
 const orgData = await orgResponse.json()
 
 
 const projectResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}/projects/`);
-const projectData = await projectResponse.json()
+const projectData = (await projectResponse.json()).projects;
 ---
 
 <Layout title={orgData.org}>
@@ -53,14 +56,15 @@ const projectData = await projectResponse.json()
     </div>
     <div class="lowerSection">
     {
-        allOrganizations.projects.map((org: Projects) => (
-        <Cards
-            id={org.id}
-            name={org.name}
-            description={org.description}
-            projectUrl={org.projectUrl}
-            programYear={org.programYear}
-        />
+        projectData.map((project: ProjectThumbnail) => (
+            <PastProjectCard 
+                name={project.name}
+                skills={[]}
+                industry=""
+                description={project.description}
+                website={project.projectUrl}
+                repository=""
+            />
         ))
     }
     </div>

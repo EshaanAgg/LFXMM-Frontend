@@ -7,7 +7,6 @@ const response = await fetch(`${API_BASE_URL}/orgs`);
 const allOrganizations = await response.json();
 
 ---
-
 <Layout title = "LFX Mentorship">
 		<ul role="list" class="grid grid-cols-4 gap-4">
 			{
@@ -20,5 +19,4 @@ const allOrganizations = await response.json();
 				))
 			}
 		</ul>
-	</main>
 </Layout>
