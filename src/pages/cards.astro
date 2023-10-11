@@ -1,0 +1,237 @@
+---
+interface Props {
+  id:number;
+  name: string;
+  description: string;
+  projectUrl: string;
+  programYear:number;       
+}
+
+const { id, name, programYear,projectUrl,description } = Astro.props;
+
+const maxLength = 150;
+
+let truncatedDescription = description.substring(0, maxLength);
+
+if (description.length > maxLength) {
+  truncatedDescription += '...';
+}
+
+---
+
+      <div class="card">
+
+            <div class="cardTitle">
+                    <h1>{name}</h1>
+            </div>
+          
+            <div class="cardContainer">
+                  <div class="cardContent">
+                    Fall {programYear}
+                  </div>
+            </div>
+
+            <div class="description">
+                    {truncatedDescription}
+            </div>
+
+             <div class="subheading">
+                    Required Skills
+             </div>
+            
+             <div class="allSkills">
+
+             <div class="skills">
+                    Go
+             </div>
+             <div class="skills">
+                   Docker
+             </div>
+             <div class="skills">
+                   Volcano
+             </div>
+             <div class="skills">
+                   Kubernetes
+             </div>
+             </div>
+
+             <div class="links">
+                   <a href={projectUrl} class="buttons"><button>Project Link</button></a>
+             </div>
+
+        </div>
+    
+
+        <style>
+         
+  .card{
+    background-color: #00101B;
+    border: 3px solid #0077CC;
+    width: 28%;
+    transition-duration: 0.3s;
+    height: 25rem;
+    padding: 2vh 0vh;
+    border-radius: 10px;
+   
+  }
+  .card:hover{
+    transform: scale(1.03);
+    background-color: #011929;
+  }
+
+  .cardTitle{
+    color: #F0F6FA;
+    font-family: Lato;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: 0em;
+    font-size: xx-large;  
+    display: flex;           
+    flex-direction: column;  
+    align-items: center;     
+    justify-content: center; 
+    text-align: center;
+    margin-bottom: 6%;
+    font-size: 20px;
+    height: 25%;
+  }
+
+.cardContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.cardContent{
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #0077CC;
+  border: 0.5px solid #0077CC;
+  margin-bottom: 2%;
+  padding: 2%;
+  
+}
+
+  .description{
+    color:#F0F6FA;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+    padding: 0vh 1rem;
+  }
+
+.subheading{
+  color: #F0F6FA;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 20px;
+  letter-spacing: 0em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left; 
+  margin-left: 8%;   
+}
+
+  .allSkills{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0.5em 1rem;
+    gap: 0.3em;
+
+}
+
+  .skills{
+    color: #F0F6FA;
+    font-family: Lato;
+    font-size: 13px;
+    font-weight: 500;
+
+    letter-spacing: 0em;
+    text-align: center;
+    background-color: #0077CC;
+    width: fit-content;
+    padding: 0.3em 1em;
+    height: fit-content;
+    border-radius: 40px;
+  }
+
+   .links{
+    display: flex;
+    justify-content: center;
+   }
+  .buttons{
+    color: #FFFFFF;
+    border:0.5px solid #FFFFFF;
+    width: 40%;
+    height: 35px;
+    top: 1473px;
+    left: 150px;
+    border-radius: 40px;
+    text-align: center;
+    margin: 7%;
+    padding: 1%;
+    transition-duration: 0.3s;
+  }
+.buttons:hover{
+  background-color: white;
+  transform: scale(1.1);
+  color: #00101B;
+
+}
+
+ .links{
+  display: flex;
+  justify-content: center;
+ }
+.buttons{
+  color: #FFFFFF;
+  border:0.5px solid #FFFFFF;
+  width: 40%;
+  height: 35px;
+  top: 1473px;
+  left: 150px;
+  border-radius: 40px;
+  text-align: center;
+  margin: 7%;
+  padding: 1%;
+  transition-duration: 0.3s;
+}
+.buttons:hover{
+  background-color: white;
+  transform: scale(1.1);
+  color: #00101B;
+
+}
+
+.component-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.component-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; 
+  margin-bottom: 0.5%;
+}
+
+        </style>
+        
+      

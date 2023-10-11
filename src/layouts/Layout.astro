@@ -3,9 +3,10 @@ interface Props {
 	title: string;
 }
 
+
+
 const { title } = Astro.props;
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+
 ---
 
 <!DOCTYPE html>
@@ -19,9 +20,7 @@ import Header from '../components/Header.astro';
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header />
-		<slot />
-		<Footer />
+
 	</body>
 </html>
 <style is:global>
