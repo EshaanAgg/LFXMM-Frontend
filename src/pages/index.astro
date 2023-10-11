@@ -1,22 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import OrganizationCard from '../components/home/OrganizationCard.astro';
+import Layout from "../layouts/Layout.astro";
+import OrganizationCard from "../components/home/OrganizationCard.astro";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/orgs`);
 const allOrganizations = await response.json();
-
 ---
-<Layout title = "LFX Mentorship">
-		<ul role="list" class="grid grid-cols-4 gap-4">
-			{
-				allOrganizations.map((org: Organization) => (
-					<OrganizationCard
-						title={org.name}
-						logoUrl={org.logoUrl}
-						id={org.id}
-					/>
-				))
-			}
-		</ul>
+
+<Layout title="LFX Mentorship">
+  <ul role="list" class="grid grid-cols-4 gap-4">
+    {
+      allOrganizations.map((org: Organization) => (
+        <OrganizationCard title={org.name} logoUrl={org.logoUrl} id={org.id} />
+      ))
+    }
+  </ul>
 </Layout>
