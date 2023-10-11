@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PastProjectCard from "../../components/organization/PastProjectCard.astro";
+import { ProjectNavbar } from "../../components/organization/ProjectNavbar";
 
 // Get all the organization IDs and render the page for them
 export async function getStaticPaths() {
@@ -49,31 +49,11 @@ const projectData = (await projectResponse.json()).projects;
     </div>
 
     <div class="pastYears">Past Projects</div>
-    <div class="navYear">
-      <div class="yr1">2023</div>
-      <div class="yr2">2022</div>
-      <div class="yr3">2021</div>
-      <div class="yr4">2020</div>
-      <div class="yr5">2019</div>
-    </div>
-    <div class="lowerSection">
-      {
-        projectData.map((project: ProjectThumbnail) => (
-          <PastProjectCard
-            name={project.name}
-            skills={[]}
-            industry=""
-            description={project.description}
-            website={project.projectUrl}
-            repository=""
-          />
-        ))
-      }
-    </div>
+    <ProjectNavbar allProjects={projectData} client:only="react" />
   </div>
 </Layout>
 
-<style>
+<style is:global>
   body {
     background: #00101b;
   }
