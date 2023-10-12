@@ -7,6 +7,10 @@ module.exports = {
         "dark-blue": "#00101B",
         "highlight-blue": "#0077CC",
       },
+      fontFamily: {
+        rajdhani: ['"Rajdhani"', 'sans-serif'],
+        orbitron: ['"Orbitron"', 'sans-serif']
+      }
     },
   },
   plugins: [],

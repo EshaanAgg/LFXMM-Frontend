@@ -1,48 +1,159 @@
-<footer class="bg-dark-blue mt-3 hover:shadow">
+<footer class="bg-dark-blue mt-10 border-solid border-t-2 border-highlight-blue">
+
   <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
     <div class="md:flex md:justify-between">
       <div class="mb-6 md:mb-0">
-        <a
-          href="https://lfx.linuxfoundation.org/tools/mentorship/"
-          class="flex items-center"
-          target="_blank"
-        >
-          <span
-            class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-            >LFX Mentorship</span
-          >
+        <a href="https://lfx.linuxfoundation.org/tools/mentorship/" class="flex items-center" target="_blank">
+          <span class="font-orbitron self-center text-2xl font-semibold whitespace-nowrap text-white">LFX Mentorship</span>
         </a>
       </div>
     </div>
-    <hr class="my-6 sm:mx-auto border-gray-500 lg:my-8" />
-    <div
-      class="flex gap-2 items-end justify-between md:items-center md:justify-between"
-    >
-      <span class="text-sm text-gray-500 text-center dark:text-gray-400">
-        <a
-          href="https://www.copsiitbhu.co.in/"
-          class="hover:underline"
-          target="_blank">COPS @IIT(BHU)-Varanasi</a
-        >
+
+    <hr class="my-6 sm:mx-auto border-highlight-blue lg:my-8 border-t-2" />
+
+    <div class="flex gap-2 items-end justify-between md:items-center md:justify-between">
+
+      <span class="font-rajdhani text-xl text-gray-500 text-center dark:text-gray-400">
+        <!-- <a href="https://www.copsiitbhu.co.in/" class="glitch" target="_blank">COPS @IIT(BHU)</a> -->
+        <a href="https://www.copsiitbhu.co.in/" class="glitch" target="_blank">
+          <span class="main-text skew hover:underline">COPS @ IIT(BHU)
+            <span class="back-text glitch hover:underline">COPS @ IIT(BHU)</span>
+          </span>
+        </a>
       </span>
+
       <div class="flex mt-4 space-x-5 justify-center sm:mt-0">
-        <a href="#" class="text-gray-500 hover:text-blue-600 duration-200">
-          <i class="fa-brands fa-facebook fa-lg"></i>
-          <span class="sr-only">Facebook Page</span>
+        <a href="#" class="text-gray-500 hover:text-blue-600 duration-200 hover:scale-150">
+          <i class="fa-brands fa-facebook fa-xl"></i>
         </a>
-        <a href="#" class="text-gray-500 hover:text-purple-900 duration-200">
-          <i class="fa-brands fa-discord fa-lg"></i>
-          <span class="sr-only">Discord Community</span>
+        <a href="#" class="text-gray-500 hover:text-purple-900 duration-200 hover:scale-150">
+          <i class="fa-brands fa-discord fa-xl"></i>
         </a>
-        <a href="#" class="text-gray-500 hover:text-sky-500 duration-200">
-          <i class="fa-brands fa-twitter fa-lg"></i>
-          <span class="sr-only">Twitter Page</span>
+        <a href="#" class="text-gray-500 hover:text-sky-500 duration-200 hover:scale-150">
+          <i class="fa-brands fa-twitter fa-xl"></i>
         </a>
-        <a href="#" class="text-gray-500 hover:text-white duration-200">
-          <i class="fa-brands fa-github fa-lg"></i>
-          <span class="sr-only">GitHub Account</span>
+        <a href="#" class="text-gray-500 hover:text-white duration-200 hover:scale-150">
+          <i class="fa-brands fa-github fa-xl"></i>
         </a>
       </div>
+
     </div>
+
   </div>
 </footer>
+
+<style>
+
+  /* Footer blinking */
+  hr {
+    animation-name: blink;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    box-shadow: 0 0 20px 5px #0077CC;
+    animation-timing-function:cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  @keyframes blink {
+    0%{opacity: 100%;}
+    50%{opacity: 10%;}
+    100%{opacity: 100%;}
+  }
+
+  .glitch {
+    position: relative;
+    text-align: center;
+    line-height: 1.4em;
+  }
+
+  .main-text {
+    position: relative;
+    display: inline-block;
+    opacity: .7;
+  }
+
+  .back-text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: .3;
+    display: inline-block;
+  }
+
+  .skew {
+    animation: skew 0.95s infinite alternate;
+  }
+
+  .glitch {
+    animation: glitch 0.8s infinite alternate;
+  }
+
+  @keyframes skew {
+    0% {
+      transform: skew(0deg);
+    }
+    20% {
+      transform: skew(0deg);
+    }
+    24% {
+      transform: skew(-7deg);
+    }
+    28% {
+      transform: skew(0deg);
+    }
+    70% {
+      transform: skew(0deg);
+    }
+    74%{
+      transform: skew(10deg);
+    }
+    78% {
+      transform: skew(0deg);
+    }
+    100% {
+      transform: skew(0deg);
+    }
+  }
+
+  @keyframes glitch{
+    0% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+    20% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.3;
+    }
+    24% {
+      transform: translate3d(5px, 4px, 0);
+      opacity: 1;
+    }
+    28% {
+      transform: translate3d(0, 0, 0);
+    }
+    60% {
+      transform: translate3d(0, 0, 0);
+    }
+    64%{
+      transform: translate3d(-4px, -3px, 0);
+    }
+    68% {
+      transform: translate3d(0, 0, 0);
+    }
+    70% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    74%{
+      opacity: 0.3;
+      transform: translate3d(10px, -6px, 0);
+    }
+    78% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+</style>
