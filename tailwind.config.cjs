@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "dark-blue": "#00101B",
         "highlight-blue": "#0077CC",
+        "fade-grey":"#FFFFFFB2",
       },
       fontFamily: {
         rajdhani: ['"Rajdhani"', 'sans-serif'],
