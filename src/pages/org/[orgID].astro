@@ -1,0 +1,134 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { ProjectNavbar } from "../../components/organization/ProjectNavbar";
+
+// Get all the organization IDs and render the page for them
+export async function getStaticPaths() {
+  const API_BASE_URL = import.meta.env.API_BASE_URL;
+  const response = await fetch(`${API_BASE_URL}/orgs`);
+  const allOrganizations = await response.json();
+
+  return allOrganizations.map((org: Organization) => ({
+    params: {
+      orgID: org.id,
+    },
+  }));
+}
+
+// Render the content of the page by making the relevant requests
+const { orgID } = Astro.params;
+
+const API_BASE_URL = import.meta.env.API_BASE_URL;
+const orgResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}`);
+const orgData = await orgResponse.json();
+
+const projectResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}/projects/`);
+const projectData = (await projectResponse.json()).projects;
+---
+
+<Layout title={orgData.org}>
+  <div class="mainPage">
+    <div class="upperSection">
+      <div class="orgLogo">
+        <img
+          src={orgData.logo}
+          alt={`Logo for the organization ${orgData.org}`}
+          class="orgLogo"
+        />
+      </div>
+
+      <div class="orgInfo">
+        <div class="orgAbout">
+          <p>
+            Need to integrate organization descriptions into the backend and
+            then display it here.
+          </p>
+        </div>
+        <div class="graph">Display the Graph</div>
+      </div>
+    </div>
+
+    <div class="pastYears">Past Projects</div>
+    <ProjectNavbar allProjects={projectData} client:only="react" />
+  </div>
+</Layout>
+
+<style is:global>
+  body {
+    background: #00101b;
+  }
+
+  .mainPage {
+    color: white;
+    height: fit-content;
+    padding: 0vh 8vw;
+  }
+
+  .upperSection {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+  }
+
+  .orgInfo {
+    width: 100%;
+    display: flex;
+  }
+
+  .orgLogo {
+    height: 15vh;
+    margin: 0vh 0vw 10vh 0vw;
+  }
+
+  .orgAbout {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: justified;
+  }
+
+  .graph {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pastYears {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: Lato;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    margin-bottom: 6vh;
+    color: white;
+  }
+
+  .navYear {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    gap: 5em;
+    color: white;
+    margin-bottom: 2vh;
+  }
+
+  .lowerSection {
+    width: 100%;
+    padding: 0vh 1vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+    justify-content: center;
+    background-color: rgb(16, 16, 16);
+  }
+</style>
