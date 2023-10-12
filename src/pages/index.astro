@@ -7,12 +7,40 @@ const response = await fetch(`${API_BASE_URL}/orgs`);
 const allOrganizations = await response.json();
 ---
 
-<Layout title="LFX Mentorship">
-  <ul role="list" class="grid grid-cols-4 gap-4">
-    {
-      allOrganizations.map((org: Organization) => (
-        <OrganizationCard title={org.name} logoUrl={org.logoUrl} id={org.id} />
-      ))
-    }
-  </ul>
+<Layout title="LFX Mentorship" >
+  <div class="bg-dark-blue ">
+    <div class=" relative">
+      <h1 class=" text-white text-center  text-5xl font-semibold pt-[180px] pb-[180px]  ">Organisations</h1>
+      <div class="codeBlock absolute"></div>
+    </div>
+    <ul role="list" class="flex flex-wrap justify-center gap-[20px]  ml-[120px] mr-[120px]">
+      {
+        allOrganizations.map((org: Organization) => (
+          <OrganizationCard title={org.name} logoUrl={org.logoUrl} id={org.id} />
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
+
+
+<style>
+  .codeBlock {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: calc(50% - 230px / 2 - 78px);
+    top: calc(50% - 257.05px / 2 - 47.47px);
+    border-radius: 100%;
+    background: linear-gradient(
+      118.19deg,
+      #02101a -3.62%,
+      hsl(210, 94%, 21%) 55.44%,
+      #0077CC 110.51%
+    );
+    opacity: 0.2;
+    filter: blur(34px);
+    transform: matrix(1, 0, -0.03, 1, 0, 0);
+  }
+</style>
+
