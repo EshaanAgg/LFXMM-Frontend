@@ -1,160 +1,204 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+
+const navitems = [
+{
+		path: '/',
+		label: 'Home',
+	},
+  	{
+		path: '/org',
+		label: 'Organizations',
+	},
+  {
+		path: '/projects',
+		label: 'Projects',
+	},
+	{
+		path: '/team',
+		label: 'Team',
+	},
+];
+---
+
 <div
-  class="flex flex-col lg:flex-row justify-between items-center px-10 py-5 mb-10 border-solid border-b-2 border-highlight-blue hover:shadow-highlight-blue hover:shadow-lg duration-200"
+  class="grid grid-cols-1 md:grid-cols-2 justify-evenly items-center p-10 bg-dark-blue"
 >
-  <div class="px-10 py-5">
-    <div>
+  <div>
+    <div class="mb-6 md:mb-0">
       <span
         class="self-center text-5xl font-semibold whitespace-nowrap text-white"
-      >
-        <a
+        ><a
           href="https://lfx.linuxfoundation.org/tools/mentorship/"
-          class="line1 animTypewriter font-header flex items-center text-center hover:text-highlight-blue duration-200"
-          title="LFX website"
-          target="_blank"
-        >
-          LFX Mentorship
-        </a>
-      </span>
+          class="flex items-center text-center"
+          target="_blank">LFX Mentorship</a
+        ></span
+      >
     </div>
   </div>
-
-  <div class="text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8">
-    <ul
-      class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-16"
+  <div class="relative">
+    <div
+      class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
     >
-      <li>
-        <a
-          href="/"
-          class="animSlowOpacity font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
-          >Home</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://google.com/"
-          class="animSlowOpacity slowOpacityDelay1 font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
-          >Organizations</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://google.com/"
-          class="animSlowOpacity slowOpacityDelay2 font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
-          >Projects</a
-        >
-      </li>
-      <li>
-        <a
-          href="/team"
-          class="animSlowOpacity slowOpacityDelay3 font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
-          >Team</a
-        >
-      </li>
-    </ul>
+      <svg
+        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 20 20"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+      </svg>
+    </div>
+    <input
+      type="search"
+      id="default-search"
+      class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Search Orgs..."
+      required
+    />
+    <button
+      type="submit"
+      class="text-white absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2 bg-highlight-blue hover:bg-dark-blue duration-200"
+      >Search</button
+    >
   </div>
 </div>
+<nav>
+  {
+    navitems.map((item) => {
+      return <a href = {item.path}>{item.label}</a>;
+    })
+  }
+</nav>
+
+<style is:global>
+  :root {
+  --color-gray-100: rgb(16, 16, 16);
+  --color-gray-200: #edf2f7;
+  --color-gray-300: #e2e8f0;
+  --color-gray-400: #cbd5e0;
+  --color-gray-500: #a0aec0;
+  --color-gray-600: #718096;
+  --color-gray-700: #4a5568;
+  --color-gray-800: #2d3748;
+  --color-gray-900: #1a202c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+body {
+  margin: 0;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.block {
+  padding: 3rem max(5vw, calc((100% - 800px) / 2));
+}
+
+.big-link {
+  background-color: var(--color-gray-900);
+  border: 0;
+  border-radius: 0.25rem;
+  color: white;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 1.25rem;
+  text-decoration: none;
+  transition: 150ms background-color linear;
+}
+
+.big-link:hover {
+  background-color: var(--color-gray-800);
+}
+
+.big-link:is(:active, :focus) {
+  outline: 2px solid var(--color-gray-900);
+  outline-offset: 4px;
+}
+
+</style>
 
 <style>
-  /* Typewriter */
-  .line1 {
-    border-right: 10px solid #0077cc;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .animTypewriter {
-    animation:
-      typewriter 1s steps(14) 1s 1 normal both,
-      blinkTextCursor 600ms steps(14) infinite normal;
-  }
-  @keyframes typewriter {
-    from {
-      width: 0;
-    }
-    to {
-      width: 9.1em;
-    }
-  }
-  @keyframes blinkTextCursor {
-    from {
-      border-right-color: #0077cce7;
-    }
-    to {
-      border-right-color: transparent;
-    }
-  }
+  header {
+  align-items: baseline;
+  background: var(--color-gray-100);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
 
-  /* Link hover */
-  .linkUl li {
-    position: relative;
-    cursor: pointer;
-    transition: 0.5s;
-  }
+a[rel='home'] {
+  color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
 
-  .linkUl li:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #9cd6ff;
-    z-index: -1;
-    transform: scaleY(0);
-    transition: transform 0.5s;
-    transform-origin: bottom;
-    border-radius: 0 0 10px 10px;
-  }
+nav {
+  background-color: rgba(16, 16, 16);
+  color: #fff;
+  display: flex;
+  gap: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
 
-  .linkUl li:hover:before {
-    transform: scaleY(1);
-    transition: transform 0.5s;
-    transform-origin: top;
-  }
+nav a {
+  color: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
 
-  .linkUl li:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #5fb7ff;
-    z-index: -2;
-    transform: scaleY(0);
-    transition: transform 0.5s;
-    transform-origin: bottom;
-    filter: blur(40px);
-  }
+footer {
+  font-size: 0.75rem;
+  padding: 3rem 5% 2rem;
+}
 
-  .linkUl li:hover:after {
-    transform: scaleY(1);
-    transition: transform 0.5s;
-    transform-origin: top;
-  }
+footer p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
 
-  .animSlowOpacity {
-    animation-name: slowOpacity;
-    animation-duration: 0.8s;
-    animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-  }
+footer a {
+  color: var(--color-gray-600);
+  display: block;
+}
 
-  .slowOpacityDelay1 {
-    animation-duration: 1.6s;
+@media (min-width: 400px) {
+  header {
+    flex-direction: row;
   }
+}
 
-  .slowOpacityDelay2 {
-    animation-duration: 2.4s;
-  }
-
-  .slowOpacityDelay3 {
-    animation-duration: 3.2s;
-  }
-
-  @keyframes slowOpacity {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
 </style>
+
