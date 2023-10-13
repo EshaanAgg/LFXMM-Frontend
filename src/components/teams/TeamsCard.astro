@@ -1,21 +1,22 @@
 ---
-import Image from 'astro:assets';
+import { Image } from 'astro:assets';
 import Linkedin from "../../../public/images/linkedin.svg"
 import Mail from "../../../public/images/mail.svg"
 import X from "../../../public/images/twitter.svg"
 import Skills from "./Skills.astro"
+import Collaborators from '../../../public/images/collaborators.svg';
 ---
 
 <div class="w-96 h-[450px] border border-3 border-[#0077CC] rounded-lg">
-    <Image class="w-96 h-44"/>
+    <Image src={Collaborators} class="w-96 h-44" alt="collaborate" />
     <div class="px-7"></div>
     <div>
-        <h1 class="text-2xl text-[#00101B] mt-6 font-bold">{Membername}</h1>
+        <h1 class="text-2xl text-[#00101B] mt-6 font-bold">Members name</h1>
         <hr/>
     </div>
     <div>
         <h1 class="text-[#00101B] opacity-60 text-sm">Skills</h1>
-        <div><Skills/></div>
+        <div class="gap-4"><Skills/></div>
     </div>
     <h1 class="text-[#00101B] opacity-60 text-sm">Let's Connect</h1>
     <div class="flex flex-row items-center justify-evenly">
