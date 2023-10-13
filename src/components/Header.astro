@@ -1,12 +1,9 @@
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-
 <div class="flex flex-col lg:flex-row justify-between items-center px-10 py-5 mb-10 border-solid border-b-2 border-highlight-blue hover:shadow-highlight-blue hover:shadow-lg duration-200">
 
   <div class="px-10 py-5">
     <div>
       <span class="self-center text-5xl font-semibold whitespace-nowrap text-white">
-        <a href="https://lfx.linuxfoundation.org/tools/mentorship/" class="line-1 anim-typewriter font-orbitron flex items-center text-center hover:text-highlight-blue duration-200" title="LFX website" target="_blank">
+        <a href="https://lfx.linuxfoundation.org/tools/mentorship/" class="line1 animTypewriter font-header flex items-center text-center hover:text-highlight-blue duration-200" title="LFX website" target="_blank">
           LFX Mentorship
         </a>
       </span>
@@ -14,18 +11,18 @@
   </div>
 
   <div class="text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8">
-    <ul class="link-ul flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-16">
+    <ul class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-16">
       <li>
-        <a href="/" class="anim-slow-opacity font-rajdhani hover:text-dark-blue duration-200 hover:text-3xl">Home</a>
+        <a href="/" class="animSlowOpacity font-subHeader hover:text-dark-blue duration-200 hover:text-3xl">Home</a>
       </li>
       <li>
-        <a href="https://google.com/" class="anim-slow-opacity slow-opacity-delay-1 font-rajdhani hover:text-dark-blue duration-200 hover:text-3xl">Organizations</a>
+        <a href="https://google.com/" class="animSlowOpacity slowOpacityDelay1 font-subHeader hover:text-dark-blue duration-200 hover:text-3xl">Organizations</a>
       </li>
       <li>
-        <a href="https://google.com/" class="anim-slow-opacity slow-opacity-delay-2 font-rajdhani hover:text-dark-blue duration-200 hover:text-3xl">Projects</a>
+        <a href="https://google.com/" class="animSlowOpacity slowOpacityDelay2 font-subHeader hover:text-dark-blue duration-200 hover:text-3xl">Projects</a>
       </li>
       <li>
-        <a href="https://google.com/" class="anim-slow-opacity slow-opacity-delay-3 font-rajdhani hover:text-dark-blue duration-200 hover:text-3xl">Team</a>
+        <a href="https://google.com/" class="animSlowOpacity slowOpacityDelay3 font-subHeader hover:text-dark-blue duration-200 hover:text-3xl">Team</a>
       </li>
     </ul>
   </div>
@@ -34,13 +31,13 @@
 
 <style>
   /* Typewriter */
-  .line-1{
+  .line1{
     border-right: 10px solid #0077CC;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
   }
-  .anim-typewriter{
+  .animTypewriter{
     animation: typewriter 1s steps(14) 1s 1 normal both,
               blinkTextCursor 600ms steps(14) infinite normal;
   }
@@ -54,13 +51,13 @@
   }
 
   /* Link hover */
-  .link-ul li {
+  .linkUl li {
     position: relative;
     cursor: pointer;
     transition: 0.5s;
   }
 
-  .link-ul li:before {
+  .linkUl li:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -73,13 +70,13 @@
     border-radius: 0 0 10px 10px;
   }
 
-  .link-ul li:hover:before {
+  .linkUl li:hover:before {
     transform: scaleY(1);
     transition: transform 0.5s;
     transform-origin: top;
   }
 
-  .link-ul li:after {
+  .linkUl li:after {
     content: "";
     position: absolute;
     top: 0;
@@ -94,31 +91,31 @@
     filter: blur(40px);
   }
 
-  .link-ul li:hover:after {
+  .linkUl li:hover:after {
     transform: scaleY(1);
     transition: transform 0.5s;
     transform-origin: top;
   }
 
-  .anim-slow-opacity {
-    animation-name: slow-opacity;
+  .animSlowOpacity {
+    animation-name: slowOpacity;
     animation-duration: 0.8s;
     animation-timing-function:cubic-bezier(0.95, 0.05, 0.795, 0.035);
   }
 
-  .slow-opacity-delay-1 {
+  .slowOpacityDelay1 {
     animation-duration: 1.6s;
   }
 
-  .slow-opacity-delay-2 {
+  .slowOpacityDelay2 {
     animation-duration: 2.4s;
   }
 
-  .slow-opacity-delay-3 {
+  .slowOpacityDelay3 {
     animation-duration: 3.2s;
   }
 
-  @keyframes slow-opacity {
+  @keyframes slowOpacity {
     from{opacity: 0%;}
     to{opacity: 100%;}
   }

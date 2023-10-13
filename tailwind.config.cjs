@@ -9,8 +9,8 @@ module.exports = {
         "fade-grey":"#FFFFFFB2",
       },
       fontFamily: {
-        rajdhani: ['"Rajdhani"', 'sans-serif'],
-        orbitron: ['"Orbitron"', 'sans-serif']
+        header: ['"Orbitron"', 'sans-serif'],
+        subHeader: ['"Rajdhani"', 'sans-serif'],
       }
     },
   },
