@@ -1,46 +1,57 @@
 ---
 interface Props {
-  title: string;
+  name: string;
   logoUrl: string;
   id: string;
+  skills: string[];
 }
 
-const { id, title, logoUrl } = Astro.props;
+const { id, name, logoUrl,skills} = Astro.props;
 
-const skills=['Go','Docker','Volcano','HTML','CSS','Kubernetes','javaScript'];
-const description="CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects...."
+// We will only display the non-empty and (at max) the most frequent 6 skills
+// const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
+// this is for testing purpose only 
+const filtertedSkills=['Go','Docker','Volcano','CSS','Kubernetes'];
+const description =
+  "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
 
 <div
-  class="lg:w-[380px] lg:h-[450px] sm:w-[380px] sm:h-[450px] rounded-md overflow-hidden bg-dark-blue mx-auto border-[3px] border-highlight-blue  card hover:border-[5px]"
+  class="lg:w-[380px] lg:h-[450px] sm:w-[380px] sm:h-[450px] rounded-md bg-dark-blue mx-auto py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col"
 >
-  
   <div class="flex flex-col justify-center items-center p-4 gap-5 mx-auto">
+    <!-- Logo -->
     <div class="h-[85px]">
       <img
-      class="w-24 h-24 mb-3 rounded-full shadow-lg"
-      src={logoUrl}
-      alt={`Logo for the organization ${title}`}
-    />
+        class="w-24 h-24 mb-3 rounded-full"
+        src={logoUrl}
+        alt={`Logo for the organization ${name}`}
+      />
     </div>
+
+    <!-- Name of the organization -->
     <div class="h-[30px]">
-      <h5 class="mb-1 text-xl font-semibold leading-6 text-center  text-gray-900 dark:text-white">
-        {title}
+      <h5 class="m-1 text-xl font-semibold leading-6 text-center text-white">
+        {name}
       </h5>
     </div>
+
+    <!-- Description -->
     <div>
       <p class="text-fade-grey text-sm text-center pt-[10px]">
         {
-          description.length >100 ? 
-          (description.substring(0,100)) + "..." :
-          (description)
-      }
+          description.length > 150
+            ? description.substring(0, 150) + "..."
+            : description
+        }
       </p>
+
+      <!-- Skills -->
     </div>
-    {skills.length !== 0 && (
+    {filtertedSkills.length !== 0 && (
       <div class="flex flex-col mx-auto pl-5">
       <h2 class="text-white">Required Skills</h2>
-      <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{skills.map((skill)=><button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
+      <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{filtertedSkills.map((skill)=><button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
         ">{skill}</button>)}</div>
     </div>
     )}
@@ -48,17 +59,16 @@ const description="CNCF is the open source, vendor-neutral hub of cloud native c
     <div class="flex mt-4 space-x-3 md:mt-6">
       <a
         href=`/org/${id}`
-        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue "
-        >Apply Now</a
+        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
+        >View in Detail</a
       >
     </div>
   </div>
 </div>
 
 <style>
-  .card:hover{
+  .card:hover {
     transform: scale(1.01);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
   }
 </style>
