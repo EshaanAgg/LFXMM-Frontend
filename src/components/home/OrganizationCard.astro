@@ -6,11 +6,12 @@ interface Props {
   skills: string[];
 }
 
-const { id, name, logoUrl, skills } = Astro.props;
+const { id, name, logoUrl,skills} = Astro.props;
 
 // We will only display the non-empty and (at max) the most frequent 6 skills
-const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
-
+// const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
+// this is for testing purpose only 
+const filtertedSkills=['Go','Docker','Volcano','CSS','Kubernetes'];
 const description =
   "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
@@ -47,28 +48,15 @@ const description =
 
       <!-- Skills -->
     </div>
-    {
-      filtertedSkills.length != 0 ? (
-        <>
-          <h2 class="text-white">Project Tags</h2>
-          <div class="flex flex-col mx-auto pl-2">
-            <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">
-              {filtertedSkills.map((skill) => (
-                <button
-                  class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
-            "
-                >
-                  {skill}
-                </button>
-              ))}
-            </div>
-          </div>
-        </>
-      ) : null
-    }
-
-    <!-- View Organization Button -->
-    <div class="flex space-x-3">
+    {filtertedSkills.length !== 0 && (
+      <div class="flex flex-col mx-auto pl-5">
+      <h2 class="text-white">Required Skills</h2>
+      <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{filtertedSkills.map((skill)=><button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
+        ">{skill}</button>)}</div>
+    </div>
+    )}
+    
+    <div class="flex mt-4 space-x-3 md:mt-6">
       <a
         href=`/org/${id}`
         class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
