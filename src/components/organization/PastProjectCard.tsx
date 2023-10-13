@@ -89,7 +89,7 @@ export const PastProjectCard = (props: PropType) => {
     </div>
     
     <div>
-      <p className="text-fade-grey text-sm text-center pt-[10px]">
+      <p className="text-fade-grey h-[70px] text-sm text-center pt-[10px]">
         {
           description.length >100 ? 
           (description.substring(0,100)) + "..." :
@@ -100,8 +100,7 @@ export const PastProjectCard = (props: PropType) => {
     {skills.length !== 0 && (
       <div className="flex flex-col mx-auto pl-5">
       <h2 className="text-white">Required Skills</h2>
-      <div className="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{skills.map((skill)=><button className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
-        ">{skill}</button>)}</div>
+      <div className="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{skills.map((skill)=><button className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">{skill}</button>)}</div>
     </div>
     )}
     
