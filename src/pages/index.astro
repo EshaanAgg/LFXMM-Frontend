@@ -1,28 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrganizationCard from "../components/home/OrganizationCard.astro";
+import type { Code } from "astro:components";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/orgs`);
 const allOrganizations = await response.json();
 ---
 
-<Layout title="LFX Mentorship" >
-  <div class="bg-dark-blue ">
-    <div class=" relative">
-      <h1 class=" text-white text-center  text-5xl font-semibold pt-[180px] pb-[180px]  ">Organisations</h1>
+<Layout title="LFX Mentorship">
+  <div class="bg-dark-blue">
+    <div class="relative">
+      <h1 class="text-white text-center text-4xl font-semibold p-8">
+        Participating Organizations
+      </h1>
       <div class="codeBlock absolute"></div>
     </div>
-    <ul role="list" class="flex flex-wrap justify-center gap-[20px]  ml-[120px] mr-[120px]">
+    <ul
+      role="list"
+      class="flex flex-wrap justify-center gap-[15px] ml-80px] mr-[80px] md-4"
+    >
       {
         allOrganizations.map((org: Organization) => (
-          <OrganizationCard title={org.name} logoUrl={org.logoUrl} id={org.id} />
+          <OrganizationCard {...org} />
         ))
       }
     </ul>
   </div>
 </Layout>
-
 
 <style>
   .codeBlock {
@@ -36,11 +41,10 @@ const allOrganizations = await response.json();
       118.19deg,
       #02101a -3.62%,
       hsl(210, 94%, 21%) 55.44%,
-      #0077CC 110.51%
+      #0077cc 110.51%
     );
     opacity: 0.2;
     filter: blur(34px);
     transform: matrix(1, 0, -0.03, 1, 0, 0);
   }
 </style>
-
