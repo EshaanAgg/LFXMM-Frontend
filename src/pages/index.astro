@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrganizationCard from "../components/home/OrganizationCard.astro";
-import type { Code } from "astro:components";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/orgs`);
@@ -11,7 +10,7 @@ const allOrganizations = await response.json();
 <Layout title="LFX Mentorship">
   <div class="bg-dark-blue">
     <div class="relative">
-      <h1 class="text-white text-center text-4xl font-semibold p-8">
+      <h1 class="text-white text-center text-4xl font-semibold pb-8">
         Participating Organizations
       </h1>
       <div class="codeBlock absolute"></div>
