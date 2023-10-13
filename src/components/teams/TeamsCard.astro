@@ -1,8 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Linkedin from "../../../public/images/linkedin.svg";
-import Mail from "../../../public/images/mail.svg";
-import X from "../../../public/images/twitter.svg";
+import { Icon } from 'astro-icon'
 import Collaborators from "../../../public/images/collaborators.svg";
 ---
 
@@ -16,15 +14,17 @@ import Collaborators from "../../../public/images/collaborators.svg";
   <div>
     <h1 class="text-[#00101B] opacity-60 text-sm">Skills</h1>
     <div class="gap-4">
-      <div class="bg-[#0077CC] rounded-full py-1 px-3 text-white text-bold text-xs">
+      <div
+        class="bg-[#0077CC] rounded-full py-1 px-3 text-white text-bold text-xs"
+      >
         skillname
       </div>
     </div>
   </div>
   <h1 class="text-[#00101B] opacity-60 text-sm">Let's Connect</h1>
   <div class="flex flex-row items-center justify-evenly">
-    <a href=""><Image src={Linkedin} alt="linkedin" /></a>
-    <a href=""><Image src={Mail} alt="mail" /></a>
-    <a href=""><Image src={X} alt="X" /></a>
+    <a href=""><Icon name="mdi:linkedin"/></a>
+    <a href=""><Icon name="material-symbols:mail" /></a>
+    <a href=""><Icon name="icon-park-solid:big-x"/></a>
   </div>
 </div>
