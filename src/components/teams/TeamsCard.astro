@@ -1,0 +1,25 @@
+---
+import Image from 'astro:assets';
+import Linkedin from "../../../public/images/linkedin.svg"
+import Mail from "../../../public/images/mail.svg"
+import X from "../../../public/images/twitter.svg"
+---
+
+<div class="w-96 h-[450px] border border-3 border-[#0077CC] rounded-lg">
+    <Image class="w-96 h-44"/>
+    <div class="px-7"></div>
+    <div>
+        <h1 class="text-2xl text-[#00101B] mt-6 font-bold">{Membername}</h1>
+        <hr/>
+    </div>
+    <div>
+        <h1 class="text-[#00101B] opacity-60 text-sm">Skills</h1>
+        <div></div>
+    </div>
+    <h1 class="text-[#00101B] opacity-60 text-sm">Let's Connect</h1>
+    <div class="flex flex-row items-center justify-evenly">
+        <a href=""><Image src={Linkedin} alt="linkedin"/> </a>
+        <a href=""><Image src={Mail} alt="mail"/></a>
+        <a href=""><Image src={X} alt="X"/></a>
+    </div>
+</div>
