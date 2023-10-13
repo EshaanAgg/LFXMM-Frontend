@@ -9,8 +9,9 @@ interface Props {
 const { id, name, logoUrl, skills } = Astro.props;
 
 // We will only display the non-empty and (at max) the most frequent 6 skills
-const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
-const description =
+
+//const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
+//const description =
   "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
 
@@ -36,17 +37,17 @@ const description =
 
     <!-- Description -->
     <div>
-      <p class="text-fade-grey text-sm text-center pt-[10px]">
+      <!-- <p class="text-fade-grey text-sm text-center pt-[10px]">
         {
           description.length > 150
             ? description.substring(0, 150) + "..."
             : description
         }
-      </p>
+      </p> -->
     </div>
 
     <!-- Skills -->
-    {
+    <!-- {
       filtertedSkills.length !== 0 && (
         <div class="flex flex-col mx-auto pl-5">
           <h2 class="text-white">Required Skills</h2>
@@ -59,7 +60,7 @@ const description =
           </div>
         </div>
       )
-    }
+    } -->
 
     <!-- Link to Organization page -->
     <div class="flex mt-4 space-x-3 md:mt-6">

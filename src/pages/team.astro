@@ -3,11 +3,14 @@ import Collaborators from "../components/team/Collaborators.astro";
 import TeamsCard from "../components/team/TeamsCard.astro";
 ---
 
-<div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center bg-[#00101B] px-32">
   <Collaborators />
-  <div>
-    <h1 class="text-white text-4xl font-bold">Our Team</h1>
-    <div>
+  <div class="flex flex-col items-center justify-center pb-20">
+    <h1 class="text-white text-5xl font-bold pt-32">Our Team</h1>
+    <div class="flex flex-row items-center justify-center flex-wrap gap-x-10">
+      <TeamsCard />
+      <TeamsCard />
+      <TeamsCard />
       <TeamsCard />
     </div>
   </div>

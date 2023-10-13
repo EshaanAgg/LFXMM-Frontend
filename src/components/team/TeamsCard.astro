@@ -1,30 +1,60 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from 'astro-icon'
+import DemoImg from "../../../public/images/demeface.png"
 import Collaborators from "../../../public/images/collaborators.svg";
 ---
-
-<div class="w-96 h-[450px] border border-3 border-[#0077CC] rounded-lg">
-  <Image src={Collaborators} class="w-96 h-44" alt="collaborate" />
-  <div class="px-7"></div>
+<style lang="css">
+  [astro-icon="linkedin"] {
+      color: #00101B;
+  }
+  [astro-icon="mail"] {
+      color: #00101B;
+  }
+  [astro-icon="big-x"] {
+      color: #00101B;
+  }
+</style>
+<div class="w-96 border-4 border-[#0077CC] rounded-lg bg-white mt-32">
+  <Image src={DemoImg} class="w-96 h-44" alt="collaborate" />
+  <div class="px-7">
   <div>
-    <h1 class="text-2xl text-[#00101B] mt-6 font-bold">Members name</h1>
+    <h1 class="text-2xl text-[#00101B] my-5 font-bold">Members name</h1>
     <hr />
   </div>
   <div>
-    <h1 class="text-[#00101B] opacity-60 text-sm">Skills</h1>
-    <div class="gap-4">
+    <h1 class="text-[#00101B] opacity-70 text-base mt-4 mb-2 font-bold">About</h1>
+    <p class="font-sm opacity-70">LOream Ipsup heiu adoay jdoawd</p>
+  </div>
+  <div>
+    <h1 class="text-[#00101B] opacity-70 text-base mt-4 mb-2 font-bold">Skills</h1>
+    <div class="gap-2 flex flex-row flex-wrap ">
       <div
-        class="bg-[#0077CC] rounded-full py-1 px-3 text-white text-bold text-xs"
+        class="bg-[#0077CC] rounded-full py-1 px-5 text-white text-bold text-sm font-medium mr-2"
       >
-        skillname
+        Go
+      </div>
+      <div
+        class="bg-[#0077CC] rounded-full py-1 px-5 text-white text-bold text-sm font-medium mr-2"
+      >
+        Docker
+      </div>
+      <div
+        class="bg-[#0077CC] rounded-full py-1 px-5 text-white text-bold text-sm font-medium mr-2"
+      >
+        Kubernetes
+      </div>
+      <div
+        class="bg-[#0077CC] rounded-full py-1 px-5 text-white text-bold text-sm font-medium mr-2"
+      >
+        Yaml
       </div>
     </div>
   </div>
-  <h1 class="text-[#00101B] opacity-60 text-sm">Let's Connect</h1>
-  <div class="flex flex-row items-center justify-evenly">
-    <a href=""><Icon name="mdi:linkedin"/></a>
-    <a href=""><Icon name="material-symbols:mail" /></a>
-    <a href=""><Icon name="icon-park-solid:big-x"/></a>
-  </div>
+  <h1 class="text-[#00101B] opacity-60 font-bold text-sm my-4">Let's Connect</h1>
+  <div class="flex flex-row mb-4">
+    <Icon pack="mdi" name="linkedin" class="h-[30px] mr-4"/>
+    <Icon pack="mdi" name="gmail" class="h-[30px] mr-4"/>
+    <Icon pack="mdi" name="twitter" class="h-[30px]"/>
+  </div></div>
 </div>
