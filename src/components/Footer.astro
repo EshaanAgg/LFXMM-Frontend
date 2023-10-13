@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+
+---
+
 <footer
   class="bg-dark-blue mt-10 border-solid border-t-2 border-highlight-blue"
 >
@@ -25,16 +30,13 @@
       <span
         class="font-subheader text-xl text-gray-500 text-center dark:text-gray-400"
       >
-        <a href="https://www.copsiitbhu.co.in/" class="glitch" target="_blank">
-          <span class="mainText skew hover:underline"
-            >COPS @ IIT(BHU)
-            <span class="backText glitch hover:underline">COPS @ IIT(BHU)</span>
-          </span>
+        <a href="https://www.copsiitbhu.co.in/" target="_blank" class="hover:opacity-70 duration-200">
+          <Image class="logo-camera" src="/images/cops_logo.png" alt="COPS logo" width={100} height={100} />
         </a>
       </span>
 
       <span
-        class="font-subheader text-xl text-gray-500 text-center dark:text-gray-400"
+        class="text-2xl text-gray-500 text-center dark:text-gray-400"
       >
         <a href="https://sdg.copsiitbhu.co.in/" class="glitch" target="_blank">
           <span class="mainText skew hover:underline"
@@ -93,6 +95,20 @@
 </footer>
 
 <style>
+
+  /* Logo Camera */
+  .logo-camera {
+    padding: 5px;
+    border: 5px solid #00101B;
+  }
+
+  .logo-camera:hover {
+    border-top: 5px solid #42fffc;
+    border-bottom: 5px solid #42fffc;
+    transition-duration: 500ms;
+    transform-origin: left;
+  }
+
   /* Footer blinking */
   hr {
     animation-name: blink;
@@ -124,6 +140,7 @@
     position: relative;
     display: inline-block;
     opacity: 0.7;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .backText {
@@ -133,6 +150,7 @@
     top: 0;
     opacity: 0.3;
     display: inline-block;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .skew {
