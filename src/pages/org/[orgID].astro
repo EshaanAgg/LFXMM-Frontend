@@ -48,10 +48,13 @@ const projectData = (await projectResponse.json()).projects;
       </div>
     </div>
 
-    <div class=" relative">
-      <h1 class="text-white text-center  text-5xl font-semibold pt-[180px] pb-[50px]">Past Projects</h1>
+    <div class="relative">
+      <h1
+        class="text-white text-center text-5xl font-semibold pt-[180px] pb-[50px]"
+      >
+        Past Projects
+      </h1>
       <div class="codeBlock absolute"></div>
-
     </div>
     <ProjectNavbar allProjects={projectData} client:only="react" />
   </div>
@@ -117,7 +120,6 @@ const projectData = (await projectResponse.json()).projects;
     color: white;
   }
 
-
   .lowerSection {
     width: 100%;
     padding: 0vh 1vw;
@@ -138,7 +140,7 @@ const projectData = (await projectResponse.json()).projects;
       118.19deg,
       #02101a -3.62%,
       hsl(210, 94%, 21%) 55.44%,
-      #0077CC 110.51%
+      #0077cc 110.51%
     );
     opacity: 0.2;
     filter: blur(34px);

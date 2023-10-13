@@ -6,12 +6,10 @@ interface Props {
   skills: string[];
 }
 
-const { id, name, logoUrl,skills} = Astro.props;
+const { id, name, logoUrl, skills } = Astro.props;
 
 // We will only display the non-empty and (at max) the most frequent 6 skills
-// const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
-// this is for testing purpose only 
-const filtertedSkills=['Go','Docker','Volcano','CSS','Kubernetes'];
+const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
 const description =
   "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
@@ -45,17 +43,25 @@ const description =
             : description
         }
       </p>
+    </div>
 
-      <!-- Skills -->
-    </div>
-    {filtertedSkills.length !== 0 && (
-      <div class="flex flex-col mx-auto pl-5">
-      <h2 class="text-white">Required Skills</h2>
-      <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{filtertedSkills.map((skill)=><button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
-        ">{skill}</button>)}</div>
-    </div>
-    )}
-    
+    <!-- Skills -->
+    {
+      filtertedSkills.length !== 0 && (
+        <div class="flex flex-col mx-auto pl-5">
+          <h2 class="text-white">Required Skills</h2>
+          <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">
+            {filtertedSkills.map((skill) => (
+              <button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
+                {skill}
+              </button>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Link to Organization page -->
     <div class="flex mt-4 space-x-3 md:mt-6">
       <a
         href=`/org/${id}`
