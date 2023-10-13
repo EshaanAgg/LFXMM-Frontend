@@ -46,27 +46,12 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
               setActiveYear(year);
             }}
             className={`${year === activeYear?"text-highlight-blue underline underline-offset-4":"yearItem"} pb-10`}
-          >
+            >
             {year}
           </div>
         ))}
         </div>
-        {/* <button
-        type="button"
-        onClick={()=>(<div></div>)}
-        className="inline-flex items-center px-6 py-1 gap-2 text-sm font-medium text-center text-highlight-blue bg-dark-blue border border-highlight-blue absolute right-0 top-[1px]"
-        >Year Wise <i className="fa-thin fa-caret-down"></i>
-        </button> */}
-        <button type="button" className="inline-flex items-center px-6 py-1 gap-2 text-sm font-medium text-center text-highlight-blue bg-dark-blue border border-highlight-blue absolute right-0 top-[1px]"
- >
-        <label className="bg-dark-blue">Year Wise </label>
-          <select id="year" name="year">
-            {
-              projectYears.map((year)=><option key={year} value={year}  onClick={()=>{setActiveYear(year)}}>{year}</option>)
-            }
         
-          </select>
-        </button>
         
       </div>
       <div className="flex justify-center gap-[40px] pb-[20px]">
@@ -92,10 +77,4 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
   );
 };
 
-{/* <div className="flex  md:flex-row gap-2 md:gap-6 md:items-center md:justify-center  absolute right-0 ">
-  <button
-    type="button"
-    className="inline-flex items-center px-6 py-1 text-sm font-medium text-center text-highlight-blue bg-dark-blue border border-highlight-blue "
-    >Year Wise
-    </button>
-</div> */}
+
