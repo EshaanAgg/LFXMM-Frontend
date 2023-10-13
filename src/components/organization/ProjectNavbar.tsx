@@ -54,7 +54,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
         
         
       </div>
-      <div className="flex justify-center gap-[40px] pb-[20px]">
+      <div className="flex justify-center gap-[40px] pb-[40px]">
             {terms.map(term=>(<button key={programTerm} onClick={() => {
               setActiveTerm(programTerm);
             }} className={`${term==activeTerm?"inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl":"inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white border border-white bg-dark-blue rounded-3xl"}`}>{term}</button>))}
