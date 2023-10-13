@@ -37,11 +37,14 @@ const description="CNCF is the open source, vendor-neutral hub of cloud native c
       }
       </p>
     </div>
-    <div class="flex flex-col mx-auto pl-5">
+    {skills.length !== 0 && (
+      <div class="flex flex-col mx-auto pl-5">
       <h2 class="text-white">Required Skills</h2>
       <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">{skills.map((skill)=><button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue   rounded-3xl 
         ">{skill}</button>)}</div>
     </div>
+    )}
+    
     <div class="flex mt-4 space-x-3 md:mt-6">
       <a
         href=`/org/${id}`
