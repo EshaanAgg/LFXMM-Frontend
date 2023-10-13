@@ -25,7 +25,7 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-dark-blue">
     <Header />
     <slot />
     <Footer />
@@ -36,5 +36,21 @@ const { title } = Astro.props;
   * {
     padding: 0;
     margin: 0;
+  }
+
+  @font-face {
+    font-family: "Rajdhani";
+    src: url("/fonts/Rajdhani-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Orbitron";
+    src: url("/fonts/Orbitron-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
   }
 </style>

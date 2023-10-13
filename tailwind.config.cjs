@@ -8,6 +8,10 @@ module.exports = {
         "highlight-blue": "#0077CC",
         "fade-grey":"#FFFFFFB2",
       },
+      fontFamily: {
+        header: ['"Orbitron"', 'sans-serif'],
+        subHeader: ['"Rajdhani"', 'sans-serif'],
+      }
     },
   },
   plugins: [],
