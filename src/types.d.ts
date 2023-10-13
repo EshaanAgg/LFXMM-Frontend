@@ -2,6 +2,7 @@ type Organization = {
   id: string;
   name: string;
   logoUrl: string;
+  skills: string[];
 };
 
 type ProjectThumbnail = {
