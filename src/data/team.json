@@ -1,14 +1,16 @@
 [
   {
     "name": "Eshaan Aggarwal",
-    "github": "https://github.com/EshaanAgg",
+    "image": "EshaanAgg.jpg",
     "role": "maintainer",
+    "description": "I love making software break.",
+    "skills": ["Go", "Rust", "TypeScript"],
     "socials": {
-      "linkedIn": "",
-      "twitter": "",
-      "instagram": "",
-      "portfolio": ""
+      "github": "https://github.com/EshaanAgg",
+      "linkedin": "https://www.linkedin.com/in/eshaan-aggarwal",
+      "gmail": "mailto:eshaanagg@gmail.com",
+      "twitter": "https://twitter.com/eshaanagg"
     },
-    "description": ""
+    "portfolio": "https://eshaanagg.netlify.app"
   }
 ]

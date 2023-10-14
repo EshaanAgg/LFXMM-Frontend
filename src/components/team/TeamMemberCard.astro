@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon";
+import type { TeamMemberInterface } from "../../pages/team.astro";
+
+interface Props extends TeamMemberInterface {}
+
+const member = Astro.props;
+const socialKeys = [
+  "github",
+  "gmail",
+  "linkedin",
+  "twitter",
+  "instagram",
+] as const;
+---
+
+<div class="w-96 border-4 border-[#0077CC] rounded-lg bg-white mt-32">
+  <img
+    src=`../src/assets/images/team/${member.image}`
+    class="w-96 h-96"
+    height={96}
+    width={96}
+    alt=`A picture of ${member.name}`
+  />
+  <div class="px-7">
+    <!-- Member Name -->
+    <div>
+      <a href={member.portfolio || "#"}>
+        <h1 class="text-2xl text-[#00101B] my-5 font-bold">{member.name}</h1>
+      </a>
+      <hr />
+    </div>
+
+    <!-- Member Description -->
+    <div>
+      <h1 class="text-[#00101B] opacity-70 text-base mt-4 mb-2 font-bold">
+        About
+      </h1>
+      <p class="font-sm opacity-70">{member.description}</p>
+    </div>
+
+    <div>
+      <!-- Member Skills -->
+      <h1 class="text-[#00101B] opacity-70 text-base mt-4 mb-2 font-bold">
+        Skills
+      </h1>
+      <div class="gap-2 flex flex-row flex-wrap">
+        {
+          member.skills.map((skill) => (
+            <div class="bg-[#0077CC] rounded-full py-1 px-5 text-white text-bold text-sm font-medium mr-2">
+              {skill}
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Social Links Component -->
+      <h1 class="text-[#00101B] opacity-60 font-bold text-sm my-4">
+        Let's Connect
+      </h1>
+      <div class="flex flex-row mb-4">
+        {
+          socialKeys.map((key) =>
+            member.socials[key] ? (
+              <a href={member.socials[key]}>
+                <Icon pack="mdi" name={key} class="h-[30px] mr-4" />
+              </a>
+            ) : null,
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="css">
+  [astro-icon="linkedin"] {
+    color: #00101b;
+  }
+  [astro-icon="mail"] {
+    color: #00101b;
+  }
+  [astro-icon="big-x"] {
+    color: #00101b;
+  }
+</style>
