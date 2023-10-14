@@ -8,7 +8,8 @@ interface Props {
 
 const { id, name, logoUrl, skills } = Astro.props;
 
-// We will only display the non-empty and (at max) the most frequent 6 skills
+//We will only display the non-empty and (at max) the most frequent 6 skills
+
 const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
 const description =
   "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
