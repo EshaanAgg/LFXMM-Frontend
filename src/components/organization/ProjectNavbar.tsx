@@ -9,6 +9,30 @@ interface PropType {
   allProjects: ProjectThumbnail[];
 }
 
+const getProjectTerms = (
+  allProjects: ProjectThumbnail[],
+  activeYear: number,
+): ("Term 1" | "Term 2" | "Term 3")[] => {
+  return extractUniqueValues(
+    allProjects
+      .filter((proj: ProjectThumbnail) => proj.programYear === activeYear)
+      .map((proj: ProjectThumbnail) => proj.programTerm)
+      .sort(function (a, b) {
+        return programTermToIndex(a) - programTermToIndex(b); // Compare in ascending order
+      }),
+  );
+};
+
+const getProjects = (
+  allProjects: ProjectThumbnail[],
+  activeYear: number,
+  activeTerm: string,
+) => {
+  return allProjects.filter(
+    (proj) => proj.programYear == activeYear && proj.programTerm == activeTerm,
+  );
+};
+
 export const ProjectNavbar = ({ allProjects }: PropType) => {
   const projectYears = extractUniqueValues(
     allProjects
@@ -18,26 +42,32 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
       }),
   );
 
-  const projectTerms = extractUniqueValues(
-    allProjects
-      .map((proj: ProjectThumbnail) => proj.programTerm)
-      .sort(function (a, b) {
-        return programTermToIndex(a) - programTermToIndex(b); // Compare in ascending order
-      }),
+  const [activeYear, setActiveYear] = useState(projectYears[0]);
+  const [projectTerms, setProjectTerms] = useState(
+    getProjectTerms(allProjects, activeYear),
+  );
+  const [activeTerm, setActiveTerm] = useState(projectTerms[0]);
+  const [activeProjects, setActiveProjects] = useState(
+    getProjects(allProjects, activeYear, activeTerm),
   );
 
-  const [activeYear, setActiveYear] = useState(projectYears[0]);
-  const [activeTerm, setActiveTerm] = useState(projectTerms[0]);
-  const [activeProjects, setActiveProjects] = useState<ProjectThumbnail[]>([]);
-
   useEffect(() => {
-    setActiveProjects(
-      allProjects.filter(
-        (proj) =>
-          proj.programYear == activeYear && proj.programTerm == activeTerm,
-      ),
+    const filteredTerms = getProjectTerms(allProjects, activeYear);
+    const filteredProjects = getProjects(
+      allProjects,
+      activeYear,
+      filteredTerms[0],
     );
-  }, [activeYear, activeTerm]);
+
+    setProjectTerms(filteredTerms);
+    setActiveTerm(filteredTerms[0]);
+    setActiveProjects(filteredProjects);
+  }, [activeYear]);
+
+  // Update the active projects based on the project term and year
+  useEffect(() => {
+    setActiveProjects(getProjects(allProjects, activeYear, activeTerm));
+  }, [activeTerm]);
 
   return (
     <div>
@@ -45,7 +75,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
       <div className="relative">
         <div className="navYear flex justify-center gap-[70px]">
           {projectYears.map((year) => (
-            <div
+            <button
               key={year}
               onClick={() => {
                 setActiveYear(year);
@@ -57,7 +87,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
               } pb-10`}
             >
               {year}
-            </div>
+            </button>
           ))}
         </div>
       </div>
@@ -66,7 +96,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
       <div className="flex justify-center gap-[40px] pb-[40px]">
         {projectTerms.map((term) => (
           <button
-            key={term}
+            key={`${activeYear}-${term}`}
             onClick={() => {
               setActiveTerm(term);
             }}
@@ -84,7 +114,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
       {/* Render the project cards */}
       <div className=" flex flex-wrap justify-center gap-[20px] ">
         {activeProjects.map((project) => (
-          <PastProjectCard {...project} />
+          <PastProjectCard {...project} key={project.id} />
         ))}
       </div>
     </div>
