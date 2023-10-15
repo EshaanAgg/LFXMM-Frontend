@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import FilterSidebar from "../components/FilterSidebar.astro"; // Import the FilterSidebar component
 
 interface Props {
   title: string;
@@ -27,7 +28,13 @@ const { title } = Astro.props;
   </head>
   <body class="bg-dark-blue">
     <Header />
-    <slot />
+    <div class="content-container">
+      <FilterSidebar />
+      <!-- Include the FilterSidebar component here -->
+      <main>
+        <slot />
+      </main>
+    </div>
     <Footer />
   </body>
 </html>
@@ -52,5 +59,10 @@ const { title } = Astro.props;
     font-weight: 700;
     font-style: normal;
     font-display: swap;
+  }
+
+  .content-container {
+    display: flex;
+    align-items: flex-start;
   }
 </style>

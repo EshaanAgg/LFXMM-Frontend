@@ -1,0 +1,351 @@
+<!-- drawer init and show -->
+<div
+  class="text-center text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8"
+>
+  <button
+    class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-4 animSlowOpacity font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
+    type="button"
+    data-drawer-target="drawer-navigation"
+    data-drawer-show="drawer-navigation"
+    aria-controls="drawer-navigation"
+  >
+    Filters
+  </button>
+</div>
+
+<!-- drawer component -->
+<div
+  id="drawer-navigation"
+  class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
+  tabindex="-1"
+  aria-labelledby="drawer-navigation-label"
+>
+  <h5
+    id="drawer-navigation-label"
+    class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
+  >
+    All Filters
+  </h5>
+  <button
+    type="button"
+    data-drawer-hide="drawer-navigation"
+    aria-controls="drawer-navigation"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+  >
+    <svg
+      aria-hidden="true"
+      class="w-5 h-5"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        fill-rule="evenodd"
+        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+        clip-rule="evenodd"></path></svg
+    >
+    <span class="sr-only">Close menu</span>
+  </button>
+  <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-1" />
+  <div class="py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium">
+      <a
+        href="#"
+        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+      >
+        <svg
+          class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 18 18"
+        >
+          <path
+            d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
+          ></path>
+        </svg>
+        <span class="flex-1 ml-3 whitespace-nowrap">Skills</span>
+        <span
+          class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"
+          >276</span
+        >
+      </a>
+      <ul
+        class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+      >
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="vue-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="vue-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Vue JS</label
+            >
+          </div>
+        </li>
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="react-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="react-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >React</label
+            >
+          </div>
+        </li>
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="angular-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="angular-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Angular</label
+            >
+          </div>
+        </li>
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="laravel-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="laravel-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Laravel</label
+            >
+          </div>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+          >
+            <svg
+              class="w-3 h-3 mr-2.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7.75 4H19M7.75 4a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 4h2.25m13.5 6H19m-2.25 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 10h11.25m-4.5 6H19M7.75 16a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 16h2.25"
+              ></path>
+            </svg>
+             All Skills
+          </button>
+        </li>
+      </ul>
+    </ul>
+  </div>
+  <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-1" />
+  <div class="py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium">
+      <a
+        href="#"
+        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+      >
+        <svg
+          class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 18 18"
+        >
+          <path
+            d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
+          ></path>
+        </svg>
+        <span class="flex-1 ml-3 whitespace-nowrap">Terms</span>
+        <span
+          class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"
+          >3</span
+        >
+      </a>
+      <ul
+        class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+      >
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="spring-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="spring-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Spring</label
+            >
+          </div>
+        </li>
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="summer-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="summer-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Summer</label
+            >
+          </div>
+        </li>
+        <li
+          class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+        >
+          <div class="flex items-center pl-3">
+            <input
+              id="fall-checkbox"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for="fall-checkbox"
+              class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Fall</label
+            >
+          </div>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</div>
+<style>
+  .open {
+    transform: translateX(0);
+  }
+  .hidden {
+    transform: translateY(0);
+  }
+  .linkUl {
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .linkUl:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #9cd6ff;
+    z-index: -1;
+    transform: scaleY(0);
+    transition: transform 0.5s;
+    transform-origin: bottom;
+    /* border-radius: 0 0 0 10px; */
+  }
+
+  .linkUl:hover:before {
+    transform: scaleY(1);
+    transition: transform 0.5s;
+    transform-origin: top;
+  }
+
+  .linkUl:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #5fb7ff;
+    z-index: -2;
+    transform: scaleY(0);
+    transition: transform 0.5s;
+    transform-origin: bottom;
+    filter: blur(5px);
+  }
+
+  .linkUl:hover:after {
+    transform: scaleY(1);
+    transition: transform 0.5s;
+    transform-origin: top;
+  }
+  .animSlowOpacity {
+    animation-name: slowOpacity;
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  }
+  @keyframes slowOpacity {
+    from {
+      opacity: 0%;
+    }
+    to {
+      opacity: 100%;
+    }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const showNavigationButton = document.querySelector(
+      '[data-drawer-show="drawer-navigation"]',
+    );
+    const hideNavigationButton = document.querySelector(
+      '[data-drawer-hide="drawer-navigation"]',
+    );
+    const navigationDrawer = document.getElementById("drawer-navigation");
+
+    const dropdownButtons = document.querySelectorAll(".dropdown-button");
+    const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+
+    if (showNavigationButton && hideNavigationButton && navigationDrawer) {
+      showNavigationButton.addEventListener("click", () => {
+        // Toggle the visibility of the drawer by adding/removing the "open" class
+        navigationDrawer.classList.toggle("open");
+      });
+
+      hideNavigationButton.addEventListener("click", () => {
+        // Toggle the visibility of the drawer by adding/removing the "open" class
+        navigationDrawer.classList.toggle("open");
+      });
+    }
+
+    // Add event listener to each dropdown button
+    dropdownButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        // Toggle the visibility of the associated dropdown menu
+        dropdownMenus[index].classList.toggle("hidden");
+        console.log("toggled");
+      });
+    });
+  });
+</script>
