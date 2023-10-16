@@ -14,3 +14,8 @@ type ProjectThumbnail = {
   programYear: number;
   skills: string[];
 };
+
+type Skill={
+  skillName: string;
+  frequency: string;
+}
