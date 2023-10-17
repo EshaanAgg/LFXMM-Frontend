@@ -1,14 +1,44 @@
 ---
+import { z } from "zod";
+import Layout from "../layouts/Layout.astro";
 import Collaborators from "../components/team/Collaborators.astro";
-import TeamsCard from "../components/team/TeamsCard.astro";
+import TeamMemberCard from "../components/team/TeamMemberCard.astro";
+import MemberDetails from "../data/team.json";
+
+// Enforce the validation of the member data from the JSON
+const memberZod = z.object({
+  name: z.string().min(5).max(30),
+  role: z.enum(["maintainer", "core-team", "collaborator"]),
+  description: z.string().min(10).max(100),
+  skills: z.string().array().min(1).max(5),
+  image: z.string(),
+  socials: z.object({
+    github: z.string().url(),
+    gmail: z.string().url().optional(),
+    linkedin: z.string().url().optional(),
+    twitter: z.string().url().optional(),
+    instagram: z.string().url().optional(),
+  }),
+  portfolio: z.string().url().optional(),
+});
+export type TeamMemberInterface = z.infer<typeof memberZod>;
+
+const membersZod = z.array(memberZod);
+membersZod.parse(MemberDetails);
 ---
 
-<div class="flex flex-col items-center justify-center">
-  <Collaborators />
-  <div>
-    <h1 class="text-white text-4xl font-bold">Our Team</h1>
-    <div>
-      <TeamsCard />
+<Layout title="Team">
+  <div class="flex flex-col items-center justify-center bg-[#00101B] px-32">
+    <Collaborators />
+    <div class="flex flex-col items-center justify-center pb-20">
+      <h1 class="text-white text-5xl font-bold pt-32">Our Team</h1>
+      <div class="flex flex-row items-center justify-center flex-wrap gap-x-10">
+        {
+          (MemberDetails as TeamMemberInterface[]).map(
+            (member: TeamMemberInterface) => <TeamMemberCard {...member} />,
+          )
+        }
+      </div>
     </div>
   </div>
-</div>
+</Layout>

@@ -8,14 +8,17 @@ interface Props {
 
 const { id, name, logoUrl, skills } = Astro.props;
 
-// We will only display the non-empty and (at max) the most frequent 6 skills
+//We will only display the non-empty and (at max) the most frequent 6 skills
+
 const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
+if (skills.length > filtertedSkills.length) filtertedSkills.push("...");
+
 const description =
   "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
 
 <div
-  class="lg:w-[380px] lg:h-[450px] sm:w-[380px] sm:h-[450px] rounded-md bg-dark-blue mx-auto py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col"
+  class="lg:w-[380px] sm:w-[380px] rounded-3xl bg-dark-blue mx-auto py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center"
 >
   <div class="flex flex-col justify-center items-center p-4 gap-5 mx-auto">
     <!-- Logo -->
@@ -48,8 +51,8 @@ const description =
     <!-- Skills -->
     {
       filtertedSkills.length !== 0 && (
-        <div class="flex flex-col mx-auto pl-5">
-          <h2 class="text-white">Required Skills</h2>
+        <div class="flex flex-col mx-auto p-2">
+          <h2 class="text-white flex justify-center">Required Skills</h2>
           <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">
             {filtertedSkills.map((skill) => (
               <button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
@@ -62,7 +65,7 @@ const description =
     }
 
     <!-- Link to Organization page -->
-    <div class="flex mt-4 space-x-3 md:mt-6">
+    <div class="flex space-x-3">
       <a
         href=`/org/${id}`
         class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
