@@ -18,7 +18,7 @@ const description =
 ---
 
 <div
-  class="lg:w-[380px] sm:w-[380px] rounded-3xl bg-dark-blue mx-auto py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center"
+  class="lg:w-[360px] sm:w-[360px] rounded-3xl bg-dark-blue mx-3 my-2 py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center align-center"
 >
   <div class="flex flex-col justify-center items-center p-4 gap-5 mx-auto">
     <!-- Logo -->
@@ -55,7 +55,7 @@ const description =
           <h2 class="text-white flex justify-center">Required Skills</h2>
           <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">
             {filtertedSkills.map((skill) => (
-              <button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
+              <button class="inline-flex items-center px-3 pt-1 pb-2 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
                 {skill}
               </button>
             ))}
@@ -68,7 +68,7 @@ const description =
     <div class="flex space-x-3">
       <a
         href=`/org/${id}`
-        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
+        class="viewdetail inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
         >View in Detail</a
       >
     </div>
@@ -76,8 +76,41 @@ const description =
 </div>
 
 <style>
+  .card {
+    transition-duration: 0.25s;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(2.6px);
+    border: 2px solid #07c e7;
+  }
   .card:hover {
     transform: scale(1.01);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(69, 193, 255, 0.589);
+    border: 3px solid #fff;
+  }
+  .viewdetail {
+    transition-duration: 0.3s;
+  }
+  .viewdetail:hover {
+    transform: scale(1.05);
+    color: #030382;
+  }
+  .viewdetail {
+    --clr: #fff;
+    --outline: 2px solid var(--clr);
+    color: var(--clr);
+    outline: var(--outline);
+    border: var(--outline);
+    outline-offset: -2px;
+    transition: outline-offset 200ms;
+    border-radius: 20px;
+    padding: 8px;
+  }
+  .viewdetail:hover,
+  .viewdetail:focus {
+    outline: var(--outline);
+    outline-offset: 2px;
   }
 </style>
