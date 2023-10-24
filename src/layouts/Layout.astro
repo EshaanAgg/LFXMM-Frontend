@@ -1,7 +1,6 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import FilterSidebar from "../components/FilterSidebar.astro"; // Import the FilterSidebar component
 
 interface Props {
   title: string;
@@ -29,8 +28,6 @@ const { title } = Astro.props;
   <body class="bg-dark-blue">
     <Header />
     <div class="content-container">
-      <FilterSidebar />
-      <!-- Include the FilterSidebar component here -->
       <main>
         <slot />
       </main>

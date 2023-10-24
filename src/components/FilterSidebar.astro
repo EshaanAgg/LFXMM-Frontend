@@ -3,18 +3,20 @@ import FilterModal from "./AllSkillsModal.astro";
 ---
 
 <!-- drawer init and show -->
-<div
-  class="text-center text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8"
->
-  <button
-    class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-4 animSlowOpacity font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
-    type="button"
-    data-drawer-target="drawer-navigation"
-    data-drawer-show="drawer-navigation"
-    aria-controls="drawer-navigation"
+<div class="text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8">
+  <div
+    class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-16"
   >
-    Filters
-  </button>
+      <button
+        class="animSlowOpacity font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
+        type="button"
+        data-drawer-target="drawer-navigation"
+        data-drawer-show="drawer-navigation"
+        aria-controls="drawer-navigation"
+      >
+        Filters
+      </button>
+    </div>
 </div>
 
 <!-- drawer component -->
@@ -225,13 +227,13 @@ import FilterModal from "./AllSkillsModal.astro";
   .hidden {
     transform: translateY(0);
   }
-  .linkUl {
+  .linkUl li {
     position: relative;
     cursor: pointer;
     transition: 0.5s;
   }
 
-  .linkUl:before {
+  .linkUl li:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -241,16 +243,16 @@ import FilterModal from "./AllSkillsModal.astro";
     transform: scaleY(0);
     transition: transform 0.5s;
     transform-origin: bottom;
-    /* border-radius: 0 0 0 10px; */
+    border-radius: 0 0 10px 10px;
   }
 
-  .linkUl:hover:before {
+  .linkUl li:hover:before {
     transform: scaleY(1);
     transition: transform 0.5s;
     transform-origin: top;
   }
 
-  .linkUl:after {
+  .linkUl li:after {
     content: "";
     position: absolute;
     top: 0;
@@ -262,19 +264,33 @@ import FilterModal from "./AllSkillsModal.astro";
     transform: scaleY(0);
     transition: transform 0.5s;
     transform-origin: bottom;
-    filter: blur(5px);
+    filter: blur(40px);
   }
 
-  .linkUl:hover:after {
+  .linkUl li:hover:after {
     transform: scaleY(1);
     transition: transform 0.5s;
     transform-origin: top;
   }
+
   .animSlowOpacity {
     animation-name: slowOpacity;
     animation-duration: 0.8s;
     animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   }
+
+  .slowOpacityDelay1 {
+    animation-duration: 1.6s;
+  }
+
+  .slowOpacityDelay2 {
+    animation-duration: 2.4s;
+  }
+
+  .slowOpacityDelay3 {
+    animation-duration: 3.2s;
+  }
+
   @keyframes slowOpacity {
     from {
       opacity: 0%;
