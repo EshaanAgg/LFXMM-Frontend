@@ -18,7 +18,7 @@ const description =
 ---
 
 <div
-  class="lg:w-[360px] sm:w-[360px] rounded-3xl bg-dark-blue mx-3 my-2 py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center align-center"
+  class="box lg:w-[360px] sm:w-[360px] rounded-3xl bg-dark-blue mx-3 my-2 py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center align-center overflow-hidden"
 >
   <div class="flex flex-col justify-center items-center p-4 gap-5 mx-auto">
     <!-- Logo -->
@@ -80,10 +80,11 @@ const description =
     transition-duration: 0.25s;
     background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(50, 113, 113);
     backdrop-filter: blur(2.6px);
     -webkit-backdrop-filter: blur(2.6px);
     border: 2px solid #07c e7;
+    z-index: 2;
   }
   .card:hover {
     transform: scale(1.01);
@@ -95,7 +96,7 @@ const description =
   }
   .viewdetail:hover {
     transform: scale(1.05);
-    color: #030382;
+    color: rgb(3 105 161);
   }
   .viewdetail {
     --clr: #fff;
