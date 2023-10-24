@@ -1,4 +1,5 @@
 import React from "react";
+import "./pastproject.css";
 
 export const PastProjectCard = (props: ProjectThumbnail) => {
   const { id, name, skills, description, projectUrl } = props;
@@ -42,7 +43,7 @@ export const PastProjectCard = (props: ProjectThumbnail) => {
           <a href={`/project/${id}`} target="_blank">
             <button
               type="button"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue "
+              className="btnstyle inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue "
             >
               Project Details
             </button>
@@ -52,7 +53,7 @@ export const PastProjectCard = (props: ProjectThumbnail) => {
           <a href={projectUrl} target="_blank">
             <button
               type="button"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue border border-white rounded-3xl hover:bg-white hover:text-dark-blue hover:border-highlight-blue "
+              className="btnstyle inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue  "
             >
               View project on LFX
             </button>

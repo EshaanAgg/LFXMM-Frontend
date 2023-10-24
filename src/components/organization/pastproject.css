@@ -1,0 +1,39 @@
+.card {
+  transition-duration: 0.25s;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(50, 113, 113);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
+  border: 2px solid #07c e7;
+  z-index: 2;
+}
+.card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(69, 193, 255, 0.589);
+  border: 3px solid #fff;
+}
+
+.btnstyle {
+  transition-duration: 0.3s;
+}
+.btnstyle:hover {
+  transform: scale(1.05);
+  color: rgb(3 105 161);
+}
+.btnstyle {
+  --clr: #fff;
+  --outline: 2px solid var(--clr);
+  color: var(--clr);
+  outline: var(--outline);
+  border: var(--outline);
+  outline-offset: -2px;
+  transition: outline-offset 200ms;
+  border-radius: 20px;
+  padding: 8px;
+}
+.btnstyle:hover,
+.btnstyle:focus {
+  outline: var(--outline);
+  outline-offset: 2px;
+}
