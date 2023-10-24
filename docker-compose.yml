@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  api:
+    image: eshaanagg/lfx-api
+    environment:
+      POSTGRE_CONN_URL: postgres://admin:admin@db:5432/lfx?sslmode=disable
+    ports:
+      - "8080:8080"
+    links:
+      - db
+  db:
+    image: eshaanagg/lfx-db
+    ports:
+      - "8079:5432"

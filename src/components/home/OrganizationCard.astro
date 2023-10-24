@@ -11,31 +11,28 @@ const { id, name, logoUrl, skills } = Astro.props;
 //We will only display the non-empty and (at max) the most frequent 6 skills
 
 const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
-if (skills.length > filtertedSkills.length) filtertedSkills.push("...");
 
 const description =
   "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
 
 <div
-  class="box lg:w-[360px] sm:w-[360px] rounded-3xl bg-dark-blue mx-3 my-2 py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center align-center overflow-hidden"
+  class="box lg:w-[360px] sm:w-[360px] rounded-3xl bg-dark-blue mx-3 my-2 py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center align-center overflow-hidden text-white"
 >
   <div class="flex flex-col justify-center items-center p-4 gap-5 mx-auto">
     <!-- Logo -->
-    <div class="h-[85px]">
+    <div class="flex justify-center items-center">
       <img
-        class="w-24 h-24 mb-3 rounded-full"
+        class="w-24 h-24 mb-3 rounded-full border-solid border-2 border-white"
         src={logoUrl}
         alt={`Logo for the organization ${name}`}
       />
     </div>
 
     <!-- Name of the organization -->
-    <div class="h-[30px]">
-      <h5 class="m-1 text-xl font-semibold leading-6 text-center text-white">
-        {name}
-      </h5>
-    </div>
+    <h5 class="m-1 text-xl font-semibold leading-6 text-center text-white">
+      {name}
+    </h5>
 
     <!-- Description -->
     <div>
@@ -53,7 +50,7 @@ const description =
       filtertedSkills.length !== 0 && (
         <div class="flex flex-col mx-auto p-2">
           <h2 class="text-white flex justify-center">Required Skills</h2>
-          <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">
+          <div class="flex flex-wrap justify-center gap-[10px] pt-2">
             {filtertedSkills.map((skill) => (
               <button class="inline-flex items-center px-3 pt-1 pb-2 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
                 {skill}
@@ -68,37 +65,39 @@ const description =
     <div class="flex space-x-3">
       <a
         href=`/org/${id}`
-        class="viewdetail inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
+        class="viewDetail inline-flex items-center px-4 py-2 pb-6 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
         >View in Detail</a
       >
     </div>
   </div>
 </div>
 
-<style>
+<style is:global>
   .card {
-    transition-duration: 0.25s;
+    transition-duration: 0.125s;
     background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(50, 113, 113);
-    backdrop-filter: blur(2.6px);
-    -webkit-backdrop-filter: blur(2.6px);
     border: 2px solid #07c e7;
     z-index: 2;
   }
+
   .card:hover {
     transform: scale(1.01);
     box-shadow: 0 0 10px rgba(69, 193, 255, 0.589);
     border: 3px solid #fff;
   }
-  .viewdetail {
+
+  .viewDetail {
     transition-duration: 0.3s;
   }
-  .viewdetail:hover {
+
+  .viewDetail:hover {
     transform: scale(1.05);
     color: rgb(3 105 161);
   }
-  .viewdetail {
+
+  .viewDetail {
     --clr: #fff;
     --outline: 2px solid var(--clr);
     color: var(--clr);
@@ -109,8 +108,9 @@ const description =
     border-radius: 20px;
     padding: 8px;
   }
-  .viewdetail:hover,
-  .viewdetail:focus {
+
+  .viewDetail:hover,
+  .viewDetail:focus {
     outline: var(--outline);
     outline-offset: 2px;
   }
