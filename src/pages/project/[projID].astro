@@ -4,6 +4,19 @@ export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
 import { ProjectNavbar } from "../../components/organization/ProjectNavbar";
 
+
+
+interface ProjectDescription {
+  projectId: string;
+  lfid: string;
+  status: "In Progress" | "Completed";
+  industry: string;
+  description: string;
+  repolink: string;
+  skills: string[];
+  amountRaised: number;
+}
+
 // Get all the organization IDs and render the page for them
 export async function getStaticPaths() {
   const API_BASE_URL = import.meta.env.API_BASE_URL;
@@ -28,46 +41,25 @@ export async function getStaticPaths() {
 const { orgID } = Astro.params;
 const { projID } = Astro.params;
 
-
 const API_BASE_URL = import.meta.env.API_BASE_URL;
-const orgResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}`);
-const orgData = await orgResponse.json();
 
 const projectResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}/projects/${projID}`);
-const projectData = await projectResponse.json();
+const projectData = (await projectResponse.json());
 ---
 
-<Layout title={orgData.org}>
+<Layout title={projectData.name}>
   <div class="mainPage">
     <div class="upperSection">
-      <div class="orgLogo">
-        <img
-          src={orgData.logo}
-          alt={`Logo for the organization ${orgData.org}`}
-          class="orgLogo"
-        />
-      </div>
 
       <div class="orgInfo">
         <div class="orgAbout">
           <p>
-            Need to integrate organization descriptions into the backend and
-            then display it here.
+            {projectData.description}
           </p>
         </div>
         <div class="graph">Display the Graph</div>
       </div>
     </div>
-
-    <div class="relative">
-      <h1
-        class="text-white text-center text-5xl font-semibold pt-[180px] pb-[50px]"
-      >
-        Past Projects
-      </h1>
-      <div class="codeBlock absolute"></div>
-    </div>
-    <ProjectNavbar allProjects={projectData} client:only="react" />
   </div>
 </Layout>
 

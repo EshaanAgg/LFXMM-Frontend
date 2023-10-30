@@ -14,3 +14,14 @@ type ProjectThumbnail = {
   programYear: number;
   skills: string[];
 };
+
+type ProjectDescription = {
+  projectId: string;
+  lfid: string;
+  status: "In Progress" | "Completed";
+  industry: string;
+  description: string;
+  repolink: string;
+  skills: string[];
+  amountRaised: number;
+}
