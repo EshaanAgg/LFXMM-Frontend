@@ -1,6 +1,7 @@
 type Organization = {
   id: string;
   name: string;
+  description: string;
   logoUrl: string;
   skills: string[];
 };

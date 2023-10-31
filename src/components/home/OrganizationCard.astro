@@ -3,17 +3,16 @@ interface Props {
   name: string;
   logoUrl: string;
   id: string;
+  description: string;
   skills: string[];
 }
 
-const { id, name, logoUrl, skills } = Astro.props;
+const { id, name, logoUrl, skills, description } = Astro.props;
 
-//We will only display the non-empty and (at max) the most frequent 6 skills
+const MAX_DESCRIPTION_LENGTH = 180;
 
+// We will only display the non-empty and (at max) the most frequent 6 skills
 const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
-
-const description =
-  "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
 
 <div
@@ -38,8 +37,8 @@ const description =
     <div>
       <p class="text-fade-grey text-sm text-center pt-[10px]">
         {
-          description.length > 150
-            ? description.substring(0, 150) + "..."
+          description.length > MAX_DESCRIPTION_LENGTH
+            ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..."
             : description
         }
       </p>
