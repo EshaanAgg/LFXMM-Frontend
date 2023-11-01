@@ -10,7 +10,7 @@ const allSkills = await response.json();
 <!-- drawer init and show -->
 <div class="text-2xl text-white mb-5 sm:mb-0 px-4 py-2 sm:py-4">
   <div
-    class="flex flex-row justify-between items-center gap-2 sm:gap-8 lg:gap-4 xl:gap-8"
+    class="flex flex-row justify-center items-center gap-2 sm:gap-8 lg:gap-4 xl:gap-8"
   >
     <button
       type="button"
@@ -111,9 +111,8 @@ const allSkills = await response.json();
     transform: translateX(0);
   }
   #drawer-navigation {
-    position: fixed; /* Change position to fixed */
-    z-index: 100; /* Higher z-index value */
-    /* ... other styles ... */
+    position: fixed;
+    z-index: 100;
   }
 </style>
 <script>
