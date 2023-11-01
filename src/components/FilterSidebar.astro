@@ -1,41 +1,45 @@
 ---
-import FilterModal from "./AllSkillsModal.astro";
 import SkillButton from "./SkillButton.astro";
+import AllSkillsDrawer from "./AllSkillsDrawer.astro";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/allSkills`);
 const allSkills = await response.json();
 ---
 
----
-
 <!-- drawer init and show -->
-<div class="text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8">
+<div class="text-2xl text-white mb-5 sm:mb-0 px-4 py-2 sm:py-4">
   <div
-    class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-16"
+    class="flex flex-row justify-between items-center gap-2 sm:gap-8 lg:gap-4 xl:gap-8"
   >
     <button
-      class="animSlowOpacity font-subHeader hover:text-dark-blue duration-200 hover:text-3xl"
       type="button"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 sm:py-2 sm:px-6 sm:text-lg"
       data-drawer-target="drawer-navigation"
       data-drawer-show="drawer-navigation"
-      aria-controls="drawer-navigation"
+      aria-controls="drawer-navigation">Filters</button
     >
-      Filters
-    </button>
   </div>
 </div>
-
+<!-- backdrop -->
+<div
+  id="backdrop"
+  class="fixed inset-0 bg-gray-800 opacity-75 transition-opacity"
+  aria-hidden="true"
+  style="display: none;"
+>
+</div>
 <!-- drawer component -->
 <div
   id="drawer-navigation"
-  class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-800"
+  class="fixed top-0 bottom-0 left-0 z-40 w-[380px] rounded-r-3xl mx-auto py-8 border-t-[3px] border-r-[3px] border-b-[3px] border-highlight-blue card transition-transform -translate-x-full"
   tabindex="-1"
   aria-labelledby="drawer-navigation-label"
+  style="display: none; background-color: rgb(0 16 27)"
 >
   <h5
     id="drawer-navigation-label"
-    class="text-base font-semibold text-gray-500 uppercase text-gray-400"
+    class="text-base font-semibold text-gray-500 uppercase text-gray-400 ml-5"
   >
     All Filters
   </h5>
@@ -58,9 +62,9 @@ const allSkills = await response.json();
     >
     <span class="sr-only">Close menu</span>
   </button>
-  <hr class="my-6 sm:mx-auto border-gray-700 lg:my-1" />
+  <hr class="my-6 sm:mx-auto border-highlight-blue lg:my-1" />
   <div class="py-4 overflow-y-auto">
-    <ul class="space-y-2 font-medium">
+    <ul class="space-y-2 font-medium ml-5">
       <a
         href="#"
         class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
@@ -76,181 +80,40 @@ const allSkills = await response.json();
             d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
           ></path>
         </svg>
-        <span class="flex-1 ml-3 whitespace-nowrap">Skills</span>
+        <span class="flex-1 ml-3 whitespace-nowrap ml-5">Skills</span>
         <span
           class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-white"
           >276</span
         >
       </a>
-      <ul
-        class="w-48 text-sm border border-gray-600 font-medium rounded-lg bg-gray-700 text-white"
-      >
-        {
-          allSkills
-            .slice(0, 5)
-            .map((skill: Skill) => <SkillButton {...skill} />)
-        }
+      <div class="mr-5">
+        <ul
+          class="w-full text-sm border border-gray-600 font-medium rounded-lg bg-gray-700 text-white"
+        >
+          {
+            allSkills
+              .slice(0, 5)
+              .map((skill: Skill) => <SkillButton {...skill} />)
+          }
 
-        <li>
-          <FilterModal />
-        </li>
-      </ul>
+          <li>
+            <AllSkillsDrawer />
+          </li>
+        </ul>
+      </div>
     </ul>
   </div>
   <hr class="my-6 sm:mx-auto border-gray-700 lg:my-1" />
-  <!-- <div class="py-4 overflow-y-auto">
-    <ul class="space-y-2 font-medium">
-      <a
-        href="#"
-        class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
-      >
-        <svg
-          class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 text-gray-400 group-hover:text-gray-900 group-hover:text-white"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 18 18"
-        >
-          <path
-            d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
-          ></path>
-        </svg>
-        <span class="flex-1 ml-3 whitespace-nowrap">Terms</span>
-        <span
-          class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-gray-300"
-          >3</span
-        >
-      </a>
-      <ul
-        class="w-48 text-sm font-medium rounded-lg bg-gray-700 border-gray-600 text-white"
-      >
-        <li class="w-full border-b rounded-t-lg border-gray-600">
-          <div class="flex items-center pl-3">
-            <input
-              id="spring-checkbox"
-              type="checkbox"
-              value=""
-              class="w-4 h-4 rounded focus:ring-blue-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
-            />
-            <label
-              for="spring-checkbox"
-              class="w-full py-3 ml-2 text-sm font-medium text-gray-300"
-              >Spring</label
-            >
-          </div>
-        </li>
-        <li class="w-full border-b rounded-t-lg border-gray-600">
-          <div class="flex items-center pl-3">
-            <input
-              id="summer-checkbox"
-              type="checkbox"
-              value=""
-              class="w-4 h-4 rounded focus:ring-blue-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
-            />
-            <label
-              for="summer-checkbox"
-              class="w-full py-3 ml-2 text-sm font-medium text-gray-300"
-              >Summer</label
-            >
-          </div>
-        </li>
-        <li class="w-full border-b rounded-t-lg border-gray-600">
-          <div class="flex items-center pl-3">
-            <input
-              id="fall-checkbox"
-              type="checkbox"
-              value=""
-              class="w-4 h-4 rounded focus:ring-blue-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
-            />
-            <label
-              for="fall-checkbox"
-              class="w-full py-3 ml-2 text-sm font-medium text-gray-300"
-              >Fall</label
-            >
-          </div>
-        </li>
-      </ul>
-    </ul>
-  </div> -->
 </div>
+
 <style>
   .open {
     transform: translateX(0);
   }
-  .hidden {
-    transform: translateY(0);
-  }
-  .linkUl li {
-    position: relative;
-    cursor: pointer;
-    transition: 0.5s;
-  }
-
-  .linkUl li:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #9cd6ff;
-    z-index: -1;
-    transform: scaleY(0);
-    transition: transform 0.5s;
-    transform-origin: bottom;
-    border-radius: 0 0 10px 10px;
-  }
-
-  .linkUl li:hover:before {
-    transform: scaleY(1);
-    transition: transform 0.5s;
-    transform-origin: top;
-  }
-
-  .linkUl li:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #5fb7ff;
-    z-index: -2;
-    transform: scaleY(0);
-    transition: transform 0.5s;
-    transform-origin: bottom;
-    filter: blur(40px);
-  }
-
-  .linkUl li:hover:after {
-    transform: scaleY(1);
-    transition: transform 0.5s;
-    transform-origin: top;
-  }
-
-  .animSlowOpacity {
-    animation-name: slowOpacity;
-    animation-duration: 0.8s;
-    animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-  }
-
-  .slowOpacityDelay1 {
-    animation-duration: 1.6s;
-  }
-
-  .slowOpacityDelay2 {
-    animation-duration: 2.4s;
-  }
-
-  .slowOpacityDelay3 {
-    animation-duration: 3.2s;
-  }
-
-  @keyframes slowOpacity {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
+  #drawer-navigation {
+    position: fixed; /* Change position to fixed */
+    z-index: 100; /* Higher z-index value */
+    /* ... other styles ... */
   }
 </style>
 <script>
@@ -262,14 +125,25 @@ const allSkills = await response.json();
       '[data-drawer-hide="drawer-navigation"]',
     );
     const navigationDrawer = document.getElementById("drawer-navigation");
+    const backdrop = document.getElementById("backdrop");
 
-    if (showNavigationButton && hideNavigationButton && navigationDrawer) {
+    if (
+      showNavigationButton &&
+      hideNavigationButton &&
+      navigationDrawer &&
+      backdrop
+    ) {
       showNavigationButton.addEventListener("click", () => {
+        // Show the backdrop and drawer
+        backdrop.style.display = "block";
+        navigationDrawer.style.display = "block";
         // Toggle the visibility of the drawer by adding/removing the "open" class
-        navigationDrawer.classList.toggle("open");
+        navigationDrawer.classList.add("open");
       });
 
       hideNavigationButton.addEventListener("click", () => {
+        // Hide the backdrop and drawer
+        backdrop.style.display = "none";
         // Toggle the visibility of the drawer by adding/removing the "open" class
         navigationDrawer.classList.toggle("open");
       });

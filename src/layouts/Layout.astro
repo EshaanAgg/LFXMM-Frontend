@@ -25,7 +25,12 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body class="bg-dark-blue">
+  <body
+    class="bg-dark-blue"
+    x-data="{ scrolledFromTop: false }"
+    x-init="() => { scrolledFromTop = window.pageYOffset >= 50 ? true : false }"
+    @scroll.window="() => { scrolledFromTop = window.pageYOffset >= 50 ? true : false }"
+  >
     <Header />
     <div class="content-container">
       <main>

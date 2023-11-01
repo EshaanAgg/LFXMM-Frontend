@@ -19,4 +19,5 @@ type ProjectThumbnail = {
 type Skill={
   skillName: string;
   frequency: string;
+  isSelected: boolean;
 }
