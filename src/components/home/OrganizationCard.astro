@@ -11,8 +11,9 @@ const { id, name, logoUrl, skills, description } = Astro.props;
 
 const MAX_DESCRIPTION_LENGTH = 180;
 
-// We will only display the non-empty and (at max) the most frequent 6 skills
-const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
+const filteredSkills = skills
+  ? skills.filter((skill) => skill !== "").slice(0, 6)
+  : [];
 ---
 
 <div
@@ -46,12 +47,12 @@ const filtertedSkills = skills.filter((skill) => skill != "").slice(0, 6);
 
     <!-- Skills -->
     {
-      filtertedSkills.length !== 0 && (
-        <div class="flex flex-col mx-auto p-2">
-          <h2 class="text-white flex justify-center">Required Skills</h2>
-          <div class="flex flex-wrap justify-center gap-[10px] pt-2">
-            {filtertedSkills.map((skill) => (
-              <button class="inline-flex items-center px-3 pt-1 pb-2 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
+      filteredSkills.length > 0 && (
+        <div class="flex flex-col mx-auto pl-5">
+          <h2 class="text-white">Required Skills</h2>
+          <div class="flex flex-wrap items-center justify-self-center gap-[10px] pt-2">
+            {filteredSkills.map((skill) => (
+              <button class="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl">
                 {skill}
               </button>
             ))}

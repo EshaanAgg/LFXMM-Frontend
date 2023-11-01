@@ -1,0 +1,108 @@
+---
+import CloseSvg from "../assets/svgs/CloseSvg.astro";
+import SkillsSvg from "../assets/svgs/SkillsSvg.astro";
+import MoreSkillsSvg from "../assets/svgs/MoreSkillsSvg.astro";
+import SkillButton from "./SkillButton.astro";
+
+const API_BASE_URL = import.meta.env.API_BASE_URL;
+const response = await fetch(`${API_BASE_URL}/allSkills`);
+const allSkills = await response.json();
+---
+
+<div>
+  <button
+    type="button"
+    class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 border-gray-600 hover:bg-gray-600 hover:text-white focus:ring-gray-500 focus:text-white"
+    data-drawer-target="drawer2-navigation"
+    data-drawer-show="drawer2-navigation"
+    aria-controls="drawer2-navigation"
+  >
+    <MoreSkillsSvg />
+     More Skills
+  </button>
+</div>
+<!-- drawer component -->
+<div
+  id="drawer2-navigation"
+  class="fixed top-0 bottom-0 left-0 z-40 w-[380px] rounded-r-3xl bg-dark-blue mx-auto py-8 border-t-[3px] border-r-[3px] border-b-[3px] border-highlight-blue transition-transform -translate-x-full"
+  tabindex="-1"
+  aria-labelledby="drawer2-navigation-label"
+  style="display: none; background-color: rgb(0 16 27)"
+>
+  <h5
+    id="drawer2-navigation-label"
+    class="text-base font-semibold text-gray-500 uppercase text-gray-400 ml-5"
+  >
+    All Filters
+  </h5>
+  <button
+    type="button"
+    data-drawer-hide="drawer2-navigation"
+    aria-controls="drawer2-navigation"
+    class="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-600 hover:text-white"
+  >
+    <CloseSvg />
+    <span class="sr-only">Close menu</span>
+  </button>
+  <hr class="my-6 border-gray-200 sm:mx-auto border-gray-700 lg:my-1" />
+  <div class="py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium ml-5">
+      <a
+        href="#"
+        class="flex items-center p-2 text-gray-900 rounded-lg text-white hover:bg-gray-100 hover:bg-gray-700 group"
+      >
+        <SkillsSvg />
+        <span class="flex-1 ml-3 whitespace-nowrap">Skills</span>
+        <span
+          class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-white"
+          >276</span
+        >
+      </a>
+      <div class="mr-5">
+        <ul
+          class="w-full text-sm font-medium text-gray-900 border border-gray-200 rounded-lg bg-gray-700 border-gray-600 text-white"
+          style="max-height: calc(100vh - 200px); overflow-y: auto;"
+        >
+          {allSkills.slice(5).map((skill: Skill) => <SkillButton {...skill} />)}
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <hr class="my-6 border-gray-200 sm:mx-auto border-gray-700 lg:my-1" />
+</div>
+<style>
+  .open {
+    transform: translateX(0);
+  }
+  #drawer2-navigation {
+    position: fixed; /* Change position to fixed */
+    z-index: 110; /* Higher z-index value */
+    /* ... other styles ... */
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const showNavigationButton = document.querySelector(
+      '[data-drawer-show="drawer2-navigation"]',
+    );
+    const hideNavigationButton = document.querySelector(
+      '[data-drawer-hide="drawer2-navigation"]',
+    );
+    const navigationDrawer = document.getElementById("drawer2-navigation");
+
+    if (showNavigationButton && hideNavigationButton && navigationDrawer) {
+      showNavigationButton.addEventListener("click", () => {
+        // Show the drawer
+        navigationDrawer.style.display = "block";
+        // Toggle the visibility of the drawer by adding/removing the "open" class
+        navigationDrawer.classList.add("open");
+      });
+
+      hideNavigationButton.addEventListener("click", () => {
+        // Hide the drawer
+        // Toggle the visibility of the drawer by adding/removing the "open" class
+        navigationDrawer.classList.remove("open");
+      });
+    }
+  });
+</script>

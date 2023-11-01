@@ -1,0 +1,151 @@
+---
+import SkillButton from "./SkillButton.astro";
+import AllSkillsDrawer from "./AllSkillsDrawer.astro";
+import CloseSvg from "../assets/svgs/CloseSvg.astro";
+import SkillsSvg from "../assets/svgs/SkillsSvg.astro";
+
+const API_BASE_URL = import.meta.env.API_BASE_URL;
+const response = await fetch(`${API_BASE_URL}/allSkills`);
+const allSkills = await response.json();
+---
+
+<!-- drawer init and show -->
+<div class="text-2xl text-white mb-5 sm:mb-0 px-4 py-2 sm:py-4">
+  <div
+    class="flex flex-row justify-center items-center gap-2 sm:gap-8 lg:gap-4 xl:gap-8"
+  >
+    <button
+      type="button"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 sm:py-2 sm:px-6 sm:text-lg"
+      data-drawer-target="drawer-navigation"
+      data-drawer-show="drawer-navigation"
+      aria-controls="drawer-navigation">Filters</button
+    >
+  </div>
+</div>
+<!-- backdrop -->
+<div
+  id="backdrop"
+  class="fixed inset-0 bg-gray-800 opacity-75 transition-opacity"
+  aria-hidden="true"
+  style="display: none;"
+>
+</div>
+<!-- drawer component -->
+<div
+  id="drawer-navigation"
+  class="fixed top-0 bottom-0 left-0 z-40 w-[380px] rounded-r-3xl mx-auto py-8 border-t-[3px] border-r-[3px] border-b-[3px] border-highlight-blue transition-transform -translate-x-full"
+  tabindex="-1"
+  aria-labelledby="drawer-navigation-label"
+  style="display: none; background-color: rgb(0 16 27)"
+>
+  <h5
+    id="drawer-navigation-label"
+    class="text-base font-semibold text-gray-500 uppercase text-gray-400 ml-5"
+  >
+    All Filters
+  </h5>
+  <button
+    type="button"
+    data-drawer-hide="drawer-navigation"
+    aria-controls="drawer-navigation"
+    class="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-600 hover:text-white"
+  >
+    <CloseSvg />
+    <span class="sr-only">Close menu</span>
+  </button>
+  <hr class="my-6 sm:mx-auto border-highlight-blue lg:my-1" />
+  <div class="py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium ml-5">
+      <a
+        href="#"
+        class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
+      >
+        <SkillsSvg />
+        <span class="flex-1 ml-3 whitespace-nowrap ml-5">Skills</span>
+        <span
+          class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-white"
+          >276</span
+        >
+      </a>
+      <div class="mr-5">
+        <ul
+          class="w-full text-sm border border-gray-600 font-medium rounded-lg bg-gray-700 text-white"
+        >
+          <div>
+            {
+              allSkills.map((skill: Skill) => {
+                if (skill.isSelected) {
+                  console.log(skill.frequency, skill.skillName);
+                }
+                return null; // If the skill is not selected, return null to skip rendering
+              })
+            }
+          </div>
+          {
+            allSkills
+              .slice(0, 5)
+              .map((skill: Skill) => <SkillButton {...skill} />)
+          }
+
+          <li>
+            <AllSkillsDrawer />
+          </li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <hr class="my-6 sm:mx-auto border-gray-700 lg:my-1" />
+</div>
+
+<style>
+  .open {
+    transform: translateX(0);
+  }
+  #drawer-navigation {
+    position: fixed;
+    z-index: 100;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const showNavigationButton = document.querySelector(
+      '[data-drawer-show="drawer-navigation"]',
+    );
+    const hideNavigationButton = document.querySelector(
+      '[data-drawer-hide="drawer-navigation"]',
+    );
+    const navigationDrawer = document.getElementById("drawer-navigation");
+    const backdrop = document.getElementById("backdrop");
+
+    if (
+      showNavigationButton &&
+      hideNavigationButton &&
+      navigationDrawer &&
+      backdrop
+    ) {
+      showNavigationButton.addEventListener("click", () => {
+        // Show the backdrop and drawer
+        backdrop.style.display = "block";
+        navigationDrawer.style.display = "block";
+        // Toggle the visibility of the drawer by adding/removing the "open" class
+        navigationDrawer.classList.add("open");
+      });
+
+      hideNavigationButton.addEventListener("click", () => {
+        // Hide the backdrop and drawer
+        backdrop.style.display = "none";
+        // Toggle the visibility of the drawer by adding/removing the "open" class
+        navigationDrawer.classList.toggle("open");
+      });
+
+      // Close the sidebar by clicking outside
+      backdrop.addEventListener("click", (event) => {
+        if (event.target === backdrop) {
+          backdrop.style.display = "none";
+          navigationDrawer.classList.remove("open");
+        }
+      });
+    }
+  });
+</script>

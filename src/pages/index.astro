@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrganizationCard from "../components/home/OrganizationCard.astro";
+import FilterSidebar from "../components/FilterSidebar.astro";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/orgs`);
@@ -13,6 +14,7 @@ const allOrganizations = await response.json();
     <div class="relative">
       <div class="codeBlock absolute"></div>
     </div>
+    <FilterSidebar />
     <ul
       role="list"
       class="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
@@ -51,5 +53,6 @@ const allOrganizations = await response.json();
     opacity: 0.2;
     filter: blur(34px);
     transform: matrix(1, 0, -0.03, 1, 0, 0);
+    z-index: -5;
   }
 </style>
