@@ -1,6 +1,8 @@
 ---
 import SkillButton from "./SkillButton.astro";
 import AllSkillsDrawer from "./AllSkillsDrawer.astro";
+import CloseSvg from "../assets/svgs/CloseSvg.astro";
+import SkillsSvg from "../assets/svgs/SkillsSvg.astro";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/allSkills`);
@@ -49,17 +51,7 @@ const allSkills = await response.json();
     aria-controls="drawer-navigation"
     class="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-600 hover:text-white"
   >
-    <svg
-      aria-hidden="true"
-      class="w-5 h-5"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-      ><path
-        fill-rule="evenodd"
-        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-        clip-rule="evenodd"></path></svg
-    >
+    <CloseSvg />
     <span class="sr-only">Close menu</span>
   </button>
   <hr class="my-6 sm:mx-auto border-highlight-blue lg:my-1" />
@@ -69,17 +61,7 @@ const allSkills = await response.json();
         href="#"
         class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
       >
-        <svg
-          class="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 18 18"
-        >
-          <path
-            d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
-          ></path>
-        </svg>
+        <SkillsSvg />
         <span class="flex-1 ml-3 whitespace-nowrap ml-5">Skills</span>
         <span
           class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-white"
