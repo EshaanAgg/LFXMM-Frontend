@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "../../layouts/Layout.astro";
 import { ProjectNavbar } from "../../components/organization/ProjectNavbar";
 
@@ -38,10 +40,9 @@ const projectData = (await projectResponse.json()).projects;
       </div>
 
       <div class="orgInfo">
-        <div class="orgAbout">
-          <p>
-            Need to integrate organization descriptions into the backend and
-            then display it here.
+        <div>
+          <p class="text-white text-md max-w-xl">
+            {orgData.desc}
           </p>
         </div>
         <div class="graph">Display the Graph</div>
@@ -86,18 +87,6 @@ const projectData = (await projectResponse.json()).projects;
   .orgLogo {
     height: 15vh;
     margin: 0vh 0vw 10vh 0vw;
-  }
-
-  .orgAbout {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0em;
-    text-align: justified;
   }
 
   .graph {

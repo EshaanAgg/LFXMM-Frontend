@@ -9,15 +9,13 @@ const allOrganizations = await response.json();
 
 <Layout title="LFX Mentorship">
   <div class="bg-dark-blue">
+    <h1 class="Orgs">Participating Organizations</h1>
     <div class="relative">
-      <h1 class="text-white text-center text-4xl font-semibold pb-8">
-        Participating Organizations
-      </h1>
       <div class="codeBlock absolute"></div>
     </div>
     <ul
       role="list"
-      class="flex flex-wrap justify-center gap-[15px] ml-80px] mr-[80px] md-4"
+      class="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
     >
       {
         allOrganizations.map((org: Organization) => (
@@ -29,6 +27,14 @@ const allOrganizations = await response.json();
 </Layout>
 
 <style>
+  .Orgs {
+    color: white;
+    text-align: center;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+    padding-bottom: 2rem;
+  }
   .codeBlock {
     position: absolute;
     width: 300px;
