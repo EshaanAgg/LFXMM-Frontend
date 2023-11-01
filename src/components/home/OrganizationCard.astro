@@ -7,16 +7,13 @@ interface Props {
   skills: string[];
 }
 
-const { id, name, logoUrl, skills } = Astro.props;
+const { id, name, logoUrl, skills, description } = Astro.props;
 
 const MAX_DESCRIPTION_LENGTH = 180;
 
 const filteredSkills = skills
   ? skills.filter((skill) => skill !== "").slice(0, 6)
   : [];
-
-const description =
-  "CNCF is the open source, vendor-neutral hub of cloud native computing, hosting projects....";
 ---
 
 <div
