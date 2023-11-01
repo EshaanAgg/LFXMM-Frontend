@@ -16,8 +16,7 @@ type ProjectThumbnail = {
   skills: string[];
 };
 
-type Skill={
+type Skill = {
   skillName: string;
   frequency: string;
-  isSelected: boolean;
-}
+};

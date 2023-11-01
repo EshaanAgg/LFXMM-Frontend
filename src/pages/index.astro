@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrganizationCard from "../components/home/OrganizationCard.astro";
-import FilterSidebar from "../components/FilterSidebar.astro";
+import FilterSidebar from "../components/filters/FilterDrawer.astro";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const response = await fetch(`${API_BASE_URL}/orgs`);
@@ -10,7 +10,7 @@ const allOrganizations = await response.json();
 
 <Layout title="LFX Mentorship">
   <div class="bg-dark-blue">
-    <h1 class="Orgs">Participating Organizations</h1>
+    <h1 class="orgs">Participating Organizations</h1>
     <div class="relative">
       <div class="codeBlock absolute"></div>
     </div>
@@ -29,7 +29,7 @@ const allOrganizations = await response.json();
 </Layout>
 
 <style>
-  .Orgs {
+  .orgs {
     color: white;
     text-align: center;
     font-size: 2.25rem;

@@ -1,15 +1,11 @@
----
-import SkillButton from "./SkillButton.astro";
+import { SkillButton } from "./SkillButton.tsx";
 import AllSkillsDrawer from "./AllSkillsDrawer.astro";
-import CloseSvg from "../assets/svgs/CloseSvg.astro";
-import SkillsSvg from "../assets/svgs/SkillsSvg.astro";
+import CloseButton from "../../assets/images/logo/CloseButton.svg";
+import SkillsLogo from "../../assets/images/logo/Skills.svg";
 
-const API_BASE_URL = import.meta.env.API_BASE_URL;
-const response = await fetch(`${API_BASE_URL}/allSkills`);
-const allSkills = await response.json();
 ---
 
-<!-- drawer init and show -->
+<!-- Drawer init and show -->
 <div class="text-2xl text-white mb-5 sm:mb-0 px-4 py-2 sm:py-4">
   <div
     class="flex flex-row justify-center items-center gap-2 sm:gap-8 lg:gap-4 xl:gap-8"
@@ -17,13 +13,14 @@ const allSkills = await response.json();
     <button
       type="button"
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 sm:py-2 sm:px-6 sm:text-lg"
-      data-drawer-target="drawer-navigation"
-      data-drawer-show="drawer-navigation"
-      aria-controls="drawer-navigation">Filters</button
+      data-drawer-target="filterDrawer"
+      data-drawer-show="filterDrawer"
+      aria-controls="filterDrawer">Filters</button
     >
   </div>
 </div>
-<!-- backdrop -->
+
+<!-- Backdrop -->
 <div
   id="backdrop"
   class="fixed inset-0 bg-gray-800 opacity-75 transition-opacity"
@@ -31,63 +28,62 @@ const allSkills = await response.json();
   style="display: none;"
 >
 </div>
-<!-- drawer component -->
+
+<!-- Drawer component -->
 <div
-  id="drawer-navigation"
+  id="filterDrawer"
   class="fixed top-0 bottom-0 left-0 z-40 w-[380px] rounded-r-3xl mx-auto py-8 border-t-[3px] border-r-[3px] border-b-[3px] border-highlight-blue transition-transform -translate-x-full"
   tabindex="-1"
-  aria-labelledby="drawer-navigation-label"
+  aria-labelledby="filterDrawer-label"
   style="display: none; background-color: rgb(0 16 27)"
 >
   <h5
-    id="drawer-navigation-label"
-    class="text-base font-semibold text-gray-500 uppercase text-gray-400 ml-5"
+    id="filterDrawer-label"
+    class="text-base font-semibold uppercase text-gray-400 ml-5"
   >
     All Filters
   </h5>
+
   <button
     type="button"
-    data-drawer-hide="drawer-navigation"
-    aria-controls="drawer-navigation"
-    class="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-600 hover:text-white"
+    data-drawer-hide="filterDrawer"
+    aria-controls="filterDrawer"
+    class="text-white rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-white bg-gray-400"
   >
-    <CloseSvg />
-    <span class="sr-only">Close menu</span>
+    <Image src={CloseButton} alt="Icon to close the current menu" />
+    <span class="sr-only">Close Menu</span>
   </button>
+
   <hr class="my-6 sm:mx-auto border-highlight-blue lg:my-1" />
+
   <div class="py-4 overflow-y-auto">
     <ul class="space-y-2 font-medium ml-5">
       <a
         href="#"
         class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
       >
-        <SkillsSvg />
-        <span class="flex-1 ml-3 whitespace-nowrap ml-5">Skills</span>
+        <Image src={SkillsLogo} alt="Icon to show skills" />
+        <span class="flex-1 whitespace-nowrap ml-5">Skills</span>
         <span
           class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-white"
-          >276</span
         >
+          {allSkills.length}
+        </span>
       </a>
+
       <div class="mr-5">
         <ul
           class="w-full text-sm border border-gray-600 font-medium rounded-lg bg-gray-700 text-white"
         >
           <div>
-            {
-              allSkills.map((skill: Skill) => {
-                if (skill.isSelected) {
-                  console.log(skill.frequency, skill.skillName);
-                }
-                return null; // If the skill is not selected, return null to skip rendering
-              })
-            }
+            <!-- Show all the skills here that have been selected -->
           </div>
+
           {
             allSkills
               .slice(0, 5)
               .map((skill: Skill) => <SkillButton {...skill} />)
           }
-
           <li>
             <AllSkillsDrawer />
           </li>
@@ -102,20 +98,22 @@ const allSkills = await response.json();
   .open {
     transform: translateX(0);
   }
-  #drawer-navigation {
+
+  #filterDrawer {
     position: fixed;
     z-index: 100;
   }
 </style>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const showNavigationButton = document.querySelector(
-      '[data-drawer-show="drawer-navigation"]',
+      '[data-drawer-show="filterDrawer"]',
     );
     const hideNavigationButton = document.querySelector(
-      '[data-drawer-hide="drawer-navigation"]',
+      '[data-drawer-hide="filterDrawer"]',
     );
-    const navigationDrawer = document.getElementById("drawer-navigation");
+    const navigationDrawer = document.getElementById("filterDrawer");
     const backdrop = document.getElementById("backdrop");
 
     if (
