@@ -11,16 +11,15 @@ const allOrganizations = await response.json();
 
 <Layout title="LFX Mentorship">
   <div class="bg-dark-blue">
+    <h1 class="Orgs">Participating Organizations</h1>
     <div class="relative">
-      <h1 class="text-white text-center text-4xl font-semibold pb-8">
-        Participating Organizations
-      </h1>
+      <div class="codeBlock absolute"></div>
     </div>
     <FilterSidebar />
     <Modal />
     <ul
       role="list"
-      class="flex flex-wrap justify-center gap-[15px] ml-80px] mr-[80px] md-4"
+      class="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
     >
       {
         allOrganizations.map((org: Organization) => (
@@ -31,4 +30,30 @@ const allOrganizations = await response.json();
   </div>
 </Layout>
 
-<style></style>
+<style>
+  .Orgs {
+    color: white;
+    text-align: center;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+    padding-bottom: 2rem;
+  }
+  .codeBlock {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: calc(50% - 230px / 2 - 78px);
+    top: calc(50% - 257.05px / 2 - 47.47px);
+    border-radius: 100%;
+    background: linear-gradient(
+      118.19deg,
+      #02101a -3.62%,
+      hsl(210, 94%, 21%) 55.44%,
+      #0077cc 110.51%
+    );
+    opacity: 0.2;
+    filter: blur(34px);
+    transform: matrix(1, 0, -0.03, 1, 0, 0);
+  }
+</style>
