@@ -29,7 +29,7 @@ const allSkills = await response.json();
         d="M7.75 4H19M7.75 4a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 4h2.25m13.5 6H19m-2.25 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 10h11.25m-4.5 6H19M7.75 16a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0M1 16h2.25"
       ></path>
     </svg>
-     All Skills
+     More Skills
   </button>
 </div>
 <!-- drawer component -->
@@ -94,7 +94,7 @@ const allSkills = await response.json();
           class="w-full text-sm font-medium text-gray-900 border border-gray-200 rounded-lg bg-gray-700 border-gray-600 text-white"
           style="max-height: calc(100vh - 200px); overflow-y: auto;"
         >
-          {allSkills.map((skill: Skill) => <SkillButton {...skill} />)}
+          {allSkills.slice(5).map((skill: Skill) => <SkillButton {...skill} />)}
         </ul>
       </div>
     </ul>
