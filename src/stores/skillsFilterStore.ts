@@ -13,4 +13,6 @@ const removeSkill = (skill: string) => {
 export const toggleSkillStatus = (skill: string) => {
   if ($selectedSkills.get().some((s) => s == skill)) removeSkill(skill);
   else addSkill(skill);
+
+  console.log($selectedSkills.get());
 };

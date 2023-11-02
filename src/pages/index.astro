@@ -1,11 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrganizationCard from "../components/home/OrganizationCard.astro";
-import FilterSidebar from "../components/filters/FilterDrawer.astro";
+import { FilterDrawer } from "../components/filters/FilterDrawer.tsx";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
+
 const response = await fetch(`${API_BASE_URL}/orgs`);
 const allOrganizations = await response.json();
+
+const allSkillsResponse = await fetch(`${API_BASE_URL}/allSkills`);
+const allSkills = await allSkillsResponse.json();
 ---
 
 <Layout title="LFX Mentorship">
@@ -14,7 +18,9 @@ const allOrganizations = await response.json();
     <div class="relative">
       <div class="codeBlock absolute"></div>
     </div>
-    <FilterSidebar />
+
+    <FilterDrawer client:only="react" allSkills={allSkills} />
+
     <ul
       role="list"
       class="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
@@ -37,6 +43,7 @@ const allOrganizations = await response.json();
     font-weight: 600;
     padding-bottom: 2rem;
   }
+
   .codeBlock {
     position: absolute;
     width: 300px;

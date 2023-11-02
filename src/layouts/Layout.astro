@@ -63,12 +63,17 @@ const { title } = Astro.props;
     align-items: flex-start;
   }
 
-  .open {
+  .openDrawer {
     transform: translateX(0);
   }
 
   #allSkillsDrawer {
     position: fixed;
     z-index: 110;
+  }
+
+  #filterDrawer {
+    position: fixed;
+    z-index: 100;
   }
 </style>

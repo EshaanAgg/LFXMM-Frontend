@@ -3,6 +3,7 @@ import {
   toggleSkillStatus,
 } from "../../stores/skillsFilterStore";
 import { useStore } from "@nanostores/react";
+import { useState } from "react";
 
 type PropType = {
   skillName: string;
@@ -11,8 +12,9 @@ type PropType = {
 
 export const SkillButton = ({ skillName, frequency }: PropType) => {
   const selectedSkills = useStore($selectedSkills);
-
-  const isSelected = selectedSkills.some((s) => s == skillName);
+  const [isSelected, setIsSelected] = useState(
+    selectedSkills.some((s) => s == skillName),
+  );
 
   return (
     <div>
@@ -24,6 +26,7 @@ export const SkillButton = ({ skillName, frequency }: PropType) => {
           checked={isSelected}
           onChange={() => {
             toggleSkillStatus(skillName);
+            setIsSelected(!isSelected);
           }}
         />
         <label
