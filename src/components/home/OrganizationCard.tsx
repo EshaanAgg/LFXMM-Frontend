@@ -1,3 +1,5 @@
+import { getFormattedSkillName } from "../../utilities/skillUtilities";
+
 type PropType = {
   name: string;
   logoUrl: string;
@@ -54,7 +56,7 @@ export const OrganizationCard = ({
                   className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl"
                   key={skill}
                 >
-                  {skill}
+                  {getFormattedSkillName(skill)}
                 </button>
               ))}
             </div>

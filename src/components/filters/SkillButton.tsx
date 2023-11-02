@@ -4,6 +4,7 @@ import {
 } from "../../stores/skillsFilterStore";
 import { useStore } from "@nanostores/react";
 import { useState } from "react";
+import { getFormattedSkillName } from "../../utilities/skillUtilities";
 
 type PropType = {
   skillName: string;
@@ -33,7 +34,7 @@ export const SkillButton = ({ skillName, frequency }: PropType) => {
           htmlFor={`skill-checkbox-${skillName}`}
           className="w-full py-3 ml-2 text-sm font-medium text-gray-300"
         >
-          <span className="flex-1">{skillName}</span>
+          <span className="flex-1">{getFormattedSkillName(skillName)}</span>
           <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-400 text-white">
             {frequency}
           </span>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./PastProjectCard.css";
+import { getFormattedSkillName } from "../../utilities/skillUtilities";
 
 export const PastProjectCard = (props: ProjectThumbnail) => {
   const { id, name, skills, description, projectUrl } = props;
@@ -13,7 +14,7 @@ export const PastProjectCard = (props: ProjectThumbnail) => {
           </h5>
         </div>
 
-        {/* Project Description */}
+        {/* Project description */}
         <div>
           <p className="text-fade-grey text-sm text-center p-[8px]">
             {description.length > 100
@@ -32,7 +33,7 @@ export const PastProjectCard = (props: ProjectThumbnail) => {
                   className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl"
                   key={skill}
                 >
-                  {skill}
+                  {getFormattedSkillName(skill)}
                 </button>
               ))}
             </div>

@@ -3,6 +3,7 @@ import { $selectedSkills } from "../../stores/skillsFilterStore";
 import { useStore } from "@nanostores/react";
 import closeButton from "../../assets/images/logo/closeButton.svg";
 import skillsIcon from "../../assets/images/logo/skills.svg";
+import { getAllSkillsInOrder } from "../../utilities/filterUtilities";
 
 type PropType = {
   allSkills: Skill[];
@@ -11,6 +12,7 @@ type PropType = {
 
 export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
   const selectedSkills = useStore($selectedSkills);
+  const orderedSkills = getAllSkillsInOrder(allSkills, selectedSkills);
 
   return (
     <>
@@ -80,7 +82,7 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
                   overflowY: "auto",
                 }}
               >
-                {allSkills.map((skill: Skill) => (
+                {orderedSkills.map((skill: Skill) => (
                   <SkillButton {...skill} key={skill.skillName} />
                 ))}
               </ul>

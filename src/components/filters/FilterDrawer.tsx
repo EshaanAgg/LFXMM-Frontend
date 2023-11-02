@@ -5,12 +5,14 @@ import { useStore } from "@nanostores/react";
 import { $selectedSkills } from "../../stores/skillsFilterStore";
 import closeButton from "../../assets/images/logo/closeButton.svg";
 import skillsIcon from "../../assets/images/logo/skills.svg";
+import { getOrderedSkills } from "../../utilities/filterUtilities";
 
 export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showAllSkillsDrawer, setShowAllSkillsDrawer] = useState(false);
 
   const selectedSkills = useStore($selectedSkills);
+  const orderedSkills = getOrderedSkills(allSkills, selectedSkills);
 
   return (
     <>
@@ -104,11 +106,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
 
                 <div className="mr-5">
                   <ul className="w-full text-sm border border-gray-600 font-medium rounded-lg bg-gray-700 text-white">
-                    <div>
-                      {/* <Show all the skills here that have been selected  */}
-                    </div>
-
-                    {allSkills.slice(0, 5).map((skill: Skill) => (
+                    {orderedSkills.map((skill: Skill) => (
                       <SkillButton {...skill} key={skill.skillName} />
                     ))}
 
