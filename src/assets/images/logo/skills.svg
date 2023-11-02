@@ -2,7 +2,7 @@
   class="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
   aria-hidden="true"
   xmlns="http://www.w3.org/2000/svg"
-  fill="currentColor"
+  fill="white"
   viewBox="0 0 18 18"
 >
   <path

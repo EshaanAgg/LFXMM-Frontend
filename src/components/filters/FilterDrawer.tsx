@@ -21,7 +21,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
         <div className="flex flex-row justify-center items-center gap-2 sm:gap-8 lg:gap-4 xl:gap-8">
           <button
             type="button"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 sm:py-2 sm:px-6 sm:text-lg"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded duration-200 sm:py-2 sm:px-6 sm:text-lg z-20"
             onClick={() => {
               setIsDrawerOpen(true);
             }}
@@ -45,7 +45,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
           {/*  Backdrop */}
           <div
             id="backdrop"
-            className="fixed inset-0 bg-gray-800 opacity-75 transition-opacity"
+            className="fixed inset-0 bg-gray-800 opacity-75 transition-opacity z-40"
             style={{
               display: "block",
             }}
@@ -58,7 +58,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
             tabIndex={-1}
             style={{
               display: "block",
-              backgroundColor: "background-color: rgb(0 16 27)",
+              backgroundColor: "rgb(0 16 27)",
             }}
           >
             <h5
@@ -70,7 +70,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
 
             <button
               type="button"
-              className="text-white rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-white bg-gray-400"
+              className="text-white rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-400 bg-gray-600"
               onClick={() => {
                 setIsDrawerOpen(false);
               }}
