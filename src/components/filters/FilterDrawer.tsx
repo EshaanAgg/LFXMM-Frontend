@@ -109,12 +109,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
                     </div>
 
                     {allSkills.slice(0, 5).map((skill: Skill) => (
-                      <SkillButton
-                        {...skill}
-                        key={`${skill.skillName}-${selectedSkills.some(
-                          (s) => s == skill.skillName,
-                        )}`}
-                      />
+                      <SkillButton {...skill} key={skill.skillName} />
                     ))}
 
                     <button

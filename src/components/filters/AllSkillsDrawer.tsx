@@ -81,12 +81,7 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
                 }}
               >
                 {allSkills.map((skill: Skill) => (
-                  <SkillButton
-                    {...skill}
-                    key={`${skill.skillName}-${selectedSkills.some(
-                      (s) => s == skill.skillName,
-                    )}`}
-                  />
+                  <SkillButton {...skill} key={skill.skillName} />
                 ))}
               </ul>
             </div>

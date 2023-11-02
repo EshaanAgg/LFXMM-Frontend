@@ -1,5 +1,5 @@
 import React from "react";
-import "./pastProjectCard.css";
+import "./PastProjectCard.css";
 
 export const PastProjectCard = (props: ProjectThumbnail) => {
   const { id, name, skills, description, projectUrl } = props;

@@ -3,7 +3,8 @@ import { atom } from "nanostores";
 export const $selectedSkills = atom<string[]>([]);
 
 const addSkill = (skill: string) => {
-  $selectedSkills.get().push(skill);
+  const currentSkills = $selectedSkills.get();
+  $selectedSkills.set([...currentSkills, skill]);
 };
 
 const removeSkill = (skill: string) => {
@@ -13,6 +14,4 @@ const removeSkill = (skill: string) => {
 export const toggleSkillStatus = (skill: string) => {
   if ($selectedSkills.get().some((s) => s == skill)) removeSkill(skill);
   else addSkill(skill);
-
-  console.log($selectedSkills.get());
 };

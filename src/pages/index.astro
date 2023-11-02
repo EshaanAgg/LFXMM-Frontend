@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import OrganizationCard from "../components/home/OrganizationCard.astro";
 import { FilterDrawer } from "../components/filters/FilterDrawer.tsx";
+import { FilteredOrganizations } from "../components/home/FilteredOrganizations";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 
@@ -20,17 +20,7 @@ const allSkills = await allSkillsResponse.json();
     </div>
 
     <FilterDrawer client:only="react" allSkills={allSkills} />
-
-    <ul
-      role="list"
-      class="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
-    >
-      {
-        allOrganizations.map((org: Organization) => (
-          <OrganizationCard {...org} />
-        ))
-      }
-    </ul>
+    <FilteredOrganizations client:only="react" allOrgs={allOrganizations} />
   </div>
 </Layout>
 
