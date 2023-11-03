@@ -19,7 +19,7 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
       {/*  Backdrop */}
       <div
         id="backdrop"
-        className="fixed inset-0 bg-gray-800 opacity-75 transition-opacity"
+        className="fixed inset-0 bg-gray-800 opacity-75 transition-opacity z-40"
         style={{
           display: "block",
         }}
@@ -32,7 +32,7 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
         tabIndex={-1}
         style={{
           display: "block",
-          backgroundColor: "background-color: rgb(0 16 27)",
+          backgroundColor: "rgb(0 16 27)",
         }}
       >
         <h5
@@ -44,7 +44,7 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
         {/* Close Menu Button */}
         <button
           type="button"
-          className="text-gray-400 bg-transparent rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-600 hover:text-white"
+          className="text-white rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-400 bg-gray-600"
           onClick={() => {
             setShow(false);
           }}
