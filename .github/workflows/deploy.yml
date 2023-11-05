@@ -13,11 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup backend
-        uses: adrielcodeco/docker-compose-run-action@v1
-        with:
-          compose-file: "./docker-compose.yml"
-          service: backend-service
+      - name: Setup backend services using Docker
+        run: docker-compose up -d
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
