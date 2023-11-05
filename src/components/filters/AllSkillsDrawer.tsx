@@ -1,9 +1,13 @@
 import { SkillButton } from "./SkillButton.tsx";
 import { $selectedSkills } from "../../stores/skillsFilterStore";
+import {
+  $skillNameFilter,
+  setSkillNameFilter,
+} from "../../stores/skillSearchStore";
 import { useStore } from "@nanostores/react";
-import closeButton from "../../assets/images/logo/closeButton.svg";
 import skillsIcon from "../../assets/images/logo/skills.svg";
 import { getAllSkillsInOrder } from "../../utilities/filterUtilities";
+import { SideDrawer } from "./common/SideDrawer";
 
 type PropType = {
   allSkills: Skill[];
@@ -12,54 +16,12 @@ type PropType = {
 
 export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
   const selectedSkills = useStore($selectedSkills);
+  const skillNameFilter = useStore($skillNameFilter);
   const orderedSkills = getAllSkillsInOrder(allSkills, selectedSkills);
 
   return (
     <>
-      {/*  Backdrop */}
-      <div
-        id="backdrop"
-        className="fixed inset-0 bg-gray-800 opacity-75 transition-opacity z-40"
-        style={{
-          display: "block",
-        }}
-      ></div>
-
-      {/* Drawer Header */}
-      <div
-        id="allSkillsDrawer"
-        className="fixed top-0 bottom-0 left-0 z-40 w-[380px] rounded-r-3xl bg-dark-blue mx-auto py-8 border-t-[3px] border-r-[3px] border-b-[3px] border-highlight-blue transition-transform -translate-x-full openDrawer"
-        tabIndex={-1}
-        style={{
-          display: "block",
-          backgroundColor: "rgb(0 16 27)",
-        }}
-      >
-        <h5
-          id="allSkillsDrawer-label"
-          className="text-base font-semibold uppercase text-gray-400 ml-5"
-        >
-          All Filters
-        </h5>
-        {/* Close Menu Button */}
-        <button
-          type="button"
-          className="text-white rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-400 bg-gray-600"
-          onClick={() => {
-            setShow(false);
-          }}
-        >
-          <img
-            src={closeButton.src}
-            alt="Icon to close the current menu"
-            width={20}
-            height={20}
-          />
-          <span className="sr-only">Close Menu</span>
-        </button>
-
-        <hr className="my-6 sm:mx-auto border-gray-700 lg:my-1" />
-
+      <SideDrawer setShow={setShow}>
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium ml-5">
             <a
@@ -73,6 +35,24 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
               </span>
             </a>
 
+            {/* Search for skills by name input */}
+            <label
+              htmlFor="skill-name-input"
+              className="block mb-2 text-sm font-medium text-white"
+            >
+              Search
+            </label>
+            <input
+              type="text"
+              id="skill-name-input"
+              value={skillNameFilter}
+              placeholder="Enter text to search for skills"
+              className="border text-sm rounded-lg block p-1 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              onChange={(e) => {
+                setSkillNameFilter(e.target.value);
+              }}
+            />
+
             {/* Individual Skills */}
             <div className="mr-5">
               <ul
@@ -82,16 +62,22 @@ export const AllSkillsDrawer = ({ allSkills, setShow }: PropType) => {
                   overflowY: "auto",
                 }}
               >
-                {orderedSkills.map((skill: Skill) => (
-                  <SkillButton {...skill} key={skill.skillName} />
-                ))}
+                {orderedSkills
+                  .filter((skill) =>
+                    skill.skillName
+                      .toLowerCase()
+                      .includes(skillNameFilter.toLowerCase()),
+                  )
+                  .map((skill: Skill) => (
+                    <SkillButton {...skill} key={skill.skillName} />
+                  ))}
               </ul>
             </div>
           </ul>
         </div>
 
         <hr className="my-6 sm:mx-auto border-gray-700 lg:my-1" />
-      </div>
+      </SideDrawer>
     </>
   );
 };

@@ -72,28 +72,26 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
   return (
     <div>
       {/* Year Navigation Bar */}
-      <div className="relative">
-        <div className="navYear flex justify-center gap-[70px]">
-          {projectYears.map((year) => (
-            <button
-              key={year}
-              onClick={() => {
-                setActiveYear(year);
-              }}
-              className={`${
-                year === activeYear
-                  ? "text-highlight-blue underline underline-offset-4"
-                  : "yearItem"
-              } pb-10`}
-            >
-              {year}
-            </button>
-          ))}
-        </div>
+      <div className="flex flex-wrap justify-items-center text-sm font-bold text-center text-gray-500 border-b border-gray-200">
+        {projectYears.map((year) => (
+          <button
+            key={year}
+            onClick={() => {
+              setActiveYear(year);
+            }}
+            className={`${
+              year === activeYear
+                ? "text-blue-600 bg-gray-100 rounded-t-lg active"
+                : "rounded-t-lg hover:text-gray-600 hover:bg-gray-50 "
+            } inline-block p-4 mx-auto w-24`}
+          >
+            {year}
+          </button>
+        ))}
       </div>
 
       {/* Term Navigation Bar */}
-      <div className="flex justify-center gap-[40px] pb-[40px]">
+      <div className="flex justify-center gap-[40px] pb-[40px] pt-8">
         {projectTerms.map((term) => (
           <button
             key={`${activeYear}-${term}`}
@@ -102,9 +100,9 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
             }}
             className={`${
               term == activeTerm
-                ? "inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-highlight-blue rounded-3xl"
-                : "inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white border border-white bg-dark-blue rounded-3xl"
-            }`}
+                ? "bg-highlight-blue rounded-3xl"
+                : "border border-white bg-dark-blue"
+            } inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white rounded-3xl`}
           >
             {programTermToDisplayString(term)}
           </button>

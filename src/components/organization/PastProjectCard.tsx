@@ -5,7 +5,7 @@ import { getFormattedSkillName } from "../../utilities/skillUtilities";
 export const PastProjectCard = (props: ProjectThumbnail) => {
   const { id, name, skills, description, projectUrl } = props;
   return (
-    <div className="lg:w-[380px] sm:w-[380px] rounded-3xl bg-dark-blue mx-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-row justify-center">
+    <div className="max-w-[380px] rounded-3xl bg-dark-blue mx-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-row justify-center">
       <div className="flex flex-col justify-center items-center p-6 gap-5 mx-auto">
         {/* Project Name */}
         <div>

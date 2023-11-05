@@ -6,6 +6,7 @@ import { $selectedSkills } from "../../stores/skillsFilterStore";
 import closeButton from "../../assets/images/logo/closeButton.svg";
 import skillsIcon from "../../assets/images/logo/skills.svg";
 import { getOrderedSkills } from "../../utilities/filterUtilities";
+import { SideDrawer } from "./common/SideDrawer";
 
 export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -42,50 +43,7 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
       {/* Render the main drawer */}
       {isDrawerOpen && (
         <>
-          {/*  Backdrop */}
-          <div
-            id="backdrop"
-            className="fixed inset-0 bg-gray-800 opacity-75 transition-opacity z-40"
-            style={{
-              display: "block",
-            }}
-          ></div>
-
-          {/* Drawer Header */}
-          <div
-            id="filterDrawer"
-            className="fixed top-0 bottom-0 left-0 z-40 w-[380px] rounded-r-3xl mx-auto py-8 border-t-[3px] border-r-[3px] border-b-[3px] border-highlight-blue transition-transform -translate-x-full openDrawer"
-            tabIndex={-1}
-            style={{
-              display: "block",
-              backgroundColor: "rgb(0 16 27)",
-            }}
-          >
-            <h5
-              id="filterDrawer-label"
-              className="text-base font-semibold uppercase text-gray-400 ml-5"
-            >
-              All Filters
-            </h5>
-
-            <button
-              type="button"
-              className="text-white rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center hover:bg-gray-400 bg-gray-600"
-              onClick={() => {
-                setIsDrawerOpen(false);
-              }}
-            >
-              <img
-                src={closeButton.src}
-                alt="Icon to close the current menu"
-                width={20}
-                height={20}
-              />
-              <span className="sr-only">Close Menu</span>
-            </button>
-
-            <hr className="my-6 sm:mx-auto border-highlight-blue lg:my-1" />
-
+          <SideDrawer setShow={setIsDrawerOpen}>
             {/* Skills filter */}
             <div className="py-4 overflow-y-auto">
               <ul className="space-y-2 font-medium ml-5">
@@ -105,25 +63,28 @@ export const FilterDrawer = ({ allSkills }: { allSkills: Skill[] }) => {
                 </a>
 
                 <div className="mr-5">
-                  <ul className="w-full text-sm border border-gray-600 font-medium rounded-lg bg-gray-700 text-white">
+                  <ul className="w-full text-sm border border-gray-600 font-medium rounded-lg text-white bg-gray-700">
                     {orderedSkills.map((skill: Skill) => (
                       <SkillButton {...skill} key={skill.skillName} />
                     ))}
-
-                    <button
-                      onClick={() => {
-                        setIsDrawerOpen(false);
-                        setShowAllSkillsDrawer(true);
-                      }}
-                    >
-                      Show all skills
-                    </button>
                   </ul>
                 </div>
               </ul>
+
+              <div className="flex px-5">
+                <button
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    setShowAllSkillsDrawer(true);
+                  }}
+                  className="text-white bg-highlight-blue hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-1 mt-3"
+                >
+                  Show all skills
+                </button>
+              </div>
             </div>
             <hr className="my-6 sm:mx-auto border-gray-700 lg:my-1" />
-          </div>
+          </SideDrawer>
         </>
       )}
     </>

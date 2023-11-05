@@ -19,11 +19,11 @@ export const SkillButton = ({ skillName, frequency }: PropType) => {
 
   return (
     <div>
-      <li className="w-full border-b rounded-t-lg border-gray-600">
+      <li className="w-full rounded-t-lg border-gray-600">
         <input
           id={`skill-checkbox-${skillName}`}
           type="checkbox"
-          className="w-4 h-4 text-blue-600 rounded focus:ring-blue-600 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
+          className="w-4 py-1 ml-1 my-1 text-blue-600 rounded focus:ring-blue-600 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500"
           checked={isSelected}
           onChange={() => {
             toggleSkillStatus(skillName);
@@ -32,10 +32,10 @@ export const SkillButton = ({ skillName, frequency }: PropType) => {
         />
         <label
           htmlFor={`skill-checkbox-${skillName}`}
-          className="w-full py-3 ml-2 text-sm font-medium text-gray-300"
+          className="w-full py-3 ml-2 text-sm text-gray-300"
         >
           <span className="flex-1">{getFormattedSkillName(skillName)}</span>
-          <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-400 text-white">
+          <span className="inline-flex items-center justify-center px-1 ml-3 text-sm font-medium rounded-full bg-gray-400 text-white">
             {frequency}
           </span>
         </label>
