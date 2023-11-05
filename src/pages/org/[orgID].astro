@@ -29,37 +29,56 @@ const projectData = (await projectResponse.json()).projects;
 ---
 
 <Layout title={orgData.org}>
-  <div class="text-white px-28 py-8">
-    <div class="orgLogo">
-      <img
-        src={orgData.logo}
-        alt={`Logo for the organization ${orgData.org}`}
-        class="orgLogo"
-      />
-    </div>
-
-    <div class="orgInfo">
-      <div>
-        <p class="text-white text-md max-w-xl">
-          {orgData.desc}
-        </p>
+  <div class="mainPage">
+    <div class="upperSection">
+      <div class="orgLogo">
+        <img
+          src={orgData.logo}
+          alt={`Logo for the organization ${orgData.org}`}
+          class="orgLogo"
+        />
       </div>
-      <div class="graph">Display the Graph</div>
-    </div>
-  </div>
 
-  <div>
-    <h1
-      class="text-white text-center text-5xl font-semibold pt-[180px] pb-[50px]"
-    >
-      Past Projects
-    </h1>
-    <div class="codeBlock absolute"></div>
+      <div class="orgInfo">
+        <div>
+          <p class="text-white text-md max-w-xl">
+            {orgData.desc}
+          </p>
+        </div>
+        <div class="graph">Display the Graph</div>
+      </div>
+    </div>
+
+    <div class="relative">
+      <h1
+        class="text-white text-center text-5xl font-semibold pt-[180px] pb-[50px]"
+      >
+        Past Projects
+      </h1>
+      <div class="codeBlock absolute"></div>
+    </div>
+    <ProjectNavbar allProjects={projectData} client:only="react" />
   </div>
-  <ProjectNavbar allProjects={projectData} client:only="react" />
 </Layout>
 
 <style is:global>
+  body {
+    background: #00101b;
+  }
+
+  .mainPage {
+    color: white;
+    height: fit-content;
+    padding: 0vh 8vw;
+  }
+
+  .upperSection {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+  }
+
   .orgInfo {
     width: 100%;
     display: flex;
