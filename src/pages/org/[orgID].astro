@@ -9,32 +9,23 @@ export async function getStaticPaths() {
   const API_BASE_URL = import.meta.env.API_BASE_URL;
   const response = await fetch(`${API_BASE_URL}/orgs`);
   const allOrganizations = await response.json();
-  const response1 = await fetch(`${API_BASE_URL}/projectdesc`);
-  const allProject = await response1.json();
 
   return allOrganizations.map((org: Organization) => ({
     params: {
       orgID: org.id,
     },
-  }),
-  allProject.map((project: ProjectDescription) => ({
-    params: {
-      projID: project.projectId,
-    },
-  })));
+  }));
 }
 
 // Render the content of the page by making the relevant requests
 const { orgID } = Astro.params;
-const { projID } = Astro.params;
-
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const orgResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}`);
 const orgData = await orgResponse.json();
 
-const projectResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}/projects/${projID}`);
-const projectData = await projectResponse.json();
+const projectResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}/projects/`);
+const projectData = (await projectResponse.json()).projects;
 ---
 
 <Layout title={orgData.org}>
@@ -49,10 +40,9 @@ const projectData = await projectResponse.json();
       </div>
 
       <div class="orgInfo">
-        <div class="orgAbout">
-          <p>
-            Need to integrate organization descriptions into the backend and
-            then display it here.
+        <div>
+          <p class="text-white text-md max-w-xl">
+            {orgData.desc}
           </p>
         </div>
         <div class="graph">Display the Graph</div>
@@ -97,18 +87,6 @@ const projectData = await projectResponse.json();
   .orgLogo {
     height: 15vh;
     margin: 0vh 0vw 10vh 0vw;
-  }
-
-  .orgAbout {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0em;
-    text-align: justified;
   }
 
   .graph {
