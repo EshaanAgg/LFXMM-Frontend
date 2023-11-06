@@ -14,12 +14,16 @@ const socialKeys = [
 ] as const;
 ---
 
-<div class="w-[18rem] bg-opacity-75 border-2 border-[#0077CC] rounded-xl hover:bg-opacity-50 hover:border-white  bg-white mt-20 flex justify-center items-center flex-col  duration-[0.2s] hover:shadow-sm hover:shadow-white ">
- <div class="w-[18rem] flex justify-center items-center pt-2  " > <img
-    src=`/team/${member.image}`
-    class="w-[14rem] rounded-full border-[1px] shadow-sm  shadow-white border-white  "
-    alt=`A picture of ${member.name}`
-  /></div>
+<div
+  class="w-[18rem] bg-opacity-75 border-2 border-[#0077CC] rounded-xl hover:bg-opacity-50 hover:border-white bg-white mt-20 flex justify-center items-center flex-col duration-[0.2s] hover:shadow-sm hover:shadow-white"
+>
+  <div class="w-[18rem] flex justify-center items-center pt-2">
+    <img
+      src=`/team/${member.image}`
+      class="w-[14rem] rounded-full border-[1px] shadow-sm shadow-white border-white"
+      alt=`A picture of ${member.name}`
+    />
+  </div>
   <div class="px-5">
     <!-- Member Name -->
     <div>
@@ -31,9 +35,7 @@ const socialKeys = [
 
     <!-- Member Description -->
     <div>
-      <h1 class="text-[#00101B] opacity-70 text-base mt-1  font-bold">
-        About
-      </h1>
+      <h1 class="text-[#00101B] opacity-70 text-base mt-1 font-bold">About</h1>
       <p class="font-sm opacity-70">{member.description}</p>
     </div>
 
@@ -61,8 +63,11 @@ const socialKeys = [
           socialKeys.map((key) =>
             member.socials[key] ? (
               <a href={member.socials[key]}>
-                <Icon pack="mdi" name={key} className="h-[30px] mr-4 hover:transform hover:scale-125 duration-[0.3s] "  />
-
+                <Icon
+                  pack="mdi"
+                  name={key}
+                  className="h-[30px] mr-4 hover:transform hover:scale-125 duration-[0.3s] "
+                />
               </a>
             ) : null,
           )
@@ -75,7 +80,6 @@ const socialKeys = [
 <style lang="css">
   [astro-icon="linkedin"] {
     color: #00101b;
-    
   }
   [astro-icon="mail"] {
     color: #00101b;
@@ -83,12 +87,4 @@ const socialKeys = [
   [astro-icon="big-x"] {
     color: #00101b;
   }
-  
 </style>
-
-
-
-
-
-
-
