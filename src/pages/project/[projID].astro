@@ -1,0 +1,218 @@
+---
+
+export const prerender = true;
+
+import Layout from "../../layouts/Layout.astro";
+
+export let props
+interface Organization {
+  id: string;
+  name: string;
+  logoUrl: string;
+  skills: string[];
+}
+
+interface ProjectDescription {
+  projectId: string;
+  name: string;
+}
+
+// Get all the organization IDs and render the page for them
+// let projectData;
+
+export async function getStaticPaths() {
+  const API_BASE_URL = import.meta.env.API_BASE_URL;
+  const response = await fetch(`${API_BASE_URL}/projectdesc`);
+  const projects:ProjectDescription[] = await response.json();
+  return projects.map((project) => ({
+    params: {
+      projID: project.projectId,
+    },
+  }));
+}
+
+
+// Render the content of the page by making the relevant requests
+  const { projID } = Astro.params;
+  const API_BASE_URL = import.meta.env.API_BASE_URL;
+
+  const projectResponse = await fetch(`${API_BASE_URL}/projects/${projID}`);
+  const projectData = (await projectResponse.json()).project;
+---
+
+<Layout title={projectData.name}>
+  <div class="mainPage">
+    <div class="upperSection">
+
+      <div class="orgInfo">
+        <div class="orgAbout">
+          <div class="name">
+            {projectData.name}
+          </div>
+          <div class="mx-5 my-4">
+            {projectData.description}
+          </div>
+          <div class="flex gap-4 justify-center my-4">
+          <div class="flex space-x-3">
+            <a
+              href={projectData.repoLink}
+              class="viewDetail inline-flex items-center px-4 py-2 pb-6 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
+              >VIEW CODE</a
+            >
+          </div>
+          <div class="flex space-x-3">
+            <a
+              href={projectData.websiteUrl}
+              class="viewDetail inline-flex items-center px-4 py-2 pb-6 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue hover:border-highlight-blue"
+              >WEBSITE LINK</a
+            >
+          </div>
+          </div>
+          {projectData.skills.length !== 0 && (
+            <div class="flex flex-col mx-auto">
+              <h2 class="text-white flex justify-center py-2">Required Skills</h2>
+              <div class="flex flex-wrap justify-center gap-[10px] pt-2">
+                {projectData.skills.map((skill) => (
+                  <button
+                    class="inline-flex items-center px-3 py-1 text-xl font-medium text-center text-white bg-highlight-blue "
+                  >
+                    {skill}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+            <div class="flex flex-wrap justify-center gap-[10px] pt-2 my-4">
+                <class class="inline-flex items-center px-3 py-1 text-xl font-medium text-center text-white bg-highlight-blue "
+                <h2>Amount Raised:
+            {projectData.amountRaised}</h2>
+          </div>
+        </div>
+        <!-- <div>{JSON.stringify(projectData)}</div> -->
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  body {
+    background: #00101b;
+  }
+
+  .mainPage {
+    color: white;
+    height: fit-content;
+    padding: 0vh 8vw;
+  }
+
+  .name {
+    font-family: Lato;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43px;
+    letter-spacing: 0em;
+    margin-bottom: 2vh;
+  }
+
+  .upperSection {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+  }
+
+  .orgInfo {
+    width: 100%;
+    display: flex;
+  }
+
+  .orgLogo {
+    height: 15vh;
+    margin: 0vh 0vw 10vh 0vw;
+  }
+
+  .orgAbout {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: justified;
+  }
+
+  .graph {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pastYears {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: Lato;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    margin-bottom: 6vh;
+    color: white;
+  }
+
+  .lowerSection {
+    width: 100%;
+    padding: 0vh 1vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+    justify-content: center;
+    background-color: rgb(16, 16, 16);
+  }
+  .codeBlock {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: calc(50% - 150px / 2 - 78px);
+    top: calc(50% - 150.05px / 2 - 47.47px);
+    border-radius: 100%;
+    background: linear-gradient(
+      118.19deg,
+      #02101a -3.62%,
+      hsl(210, 94%, 21%) 55.44%,
+      #0077cc 110.51%
+    );
+    opacity: 0.2;
+    filter: blur(34px);
+    transform: matrix(1, 0, -0.03, 1, 0, 0);
+  }
+
+  .viewDetail {
+    transition-duration: 0.3s;
+  }
+
+  .viewDetail:hover {
+    transform: scale(1.05);
+    color: rgb(3 105 161);
+  }
+
+  .viewDetail {
+    --clr: rgb(3 105 161);
+    --outline: 2px solid var(--clr);
+    color: var(--clr);
+    outline: var(--outline);
+    border: var(--outline);
+    outline-offset: -2px;
+    transition: outline-offset 200ms;
+    padding: 8px;
+  }
+
+  .viewDetail:hover,
+  .viewDetail:focus {
+    outline: var(--outline);
+    outline-offset: 2px;
+  }
+</style>
