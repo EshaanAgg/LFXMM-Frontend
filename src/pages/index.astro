@@ -1,40 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import OrganizationCard from "../components/home/OrganizationCard.astro";
+import { FilterDrawer } from "../components/filters/FilterDrawer.tsx";
+import { FilteredOrganizations } from "../components/home/FilteredOrganizations";
 
 const API_BASE_URL = import.meta.env.API_BASE_URL;
+
 const response = await fetch(`${API_BASE_URL}/orgs`);
 const allOrganizations = await response.json();
+
+const allSkillsResponse = await fetch(`${API_BASE_URL}/allSkills`);
+const allSkills = await allSkillsResponse.json();
 ---
 
 <Layout title="LFX Mentorship">
   <div class="bg-dark-blue">
-    <h1 class="Orgs">Participating Organizations</h1>
+    <h1 class="orgs">Participating Organizations</h1>
     <div class="relative">
       <div class="codeBlock absolute"></div>
     </div>
-    <ul
-      role="list"
-      class="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
-    >
-      {
-        allOrganizations.map((org: Organization) => (
-          <OrganizationCard {...org} />
-        ))
-      }
-    </ul>
+
+    <FilterDrawer client:only="react" allSkills={allSkills} />
+    <FilteredOrganizations client:only="react" allOrgs={allOrganizations} />
   </div>
 </Layout>
 
 <style>
-  .Orgs {
+  .orgs {
     color: white;
     text-align: center;
     font-size: 2.25rem;
     line-height: 2.5rem;
     font-weight: 600;
     padding-bottom: 2rem;
+    z-index: -5;
   }
+
   .codeBlock {
     position: absolute;
     width: 300px;
@@ -51,5 +51,6 @@ const allOrganizations = await response.json();
     opacity: 0.2;
     filter: blur(34px);
     transform: matrix(1, 0, -0.03, 1, 0, 0);
+    z-index: 10;
   }
 </style>

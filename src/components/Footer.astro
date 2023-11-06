@@ -1,6 +1,39 @@
 ---
 import { Image } from "astro:assets";
 import COPSLogo from "../assets/images/cops_logo.png";
+
+const socialMediaIcons = [
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/channel/UC01TZlNfu29QgG4FmUqVsdg/",
+    icon: "fa-brands fa-youtube fa-xl",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/cops-iitbhu/",
+    icon: "fa-brands fa-linkedin fa-xl",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/cops.iitbhu/",
+    icon: "fa-brands fa-instagram fa-xl",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/cops_iitbhu/",
+    icon: "fa-brands fa-twitter fa-xl",
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/COPS-IITBHU/",
+    icon: "fa-brands fa-github fa-xl",
+  },
+  {
+    name: "Hashnode",
+    url: "https://hashnode.com/@COPSIITBHU/",
+    icon: "fa-brands fa-hashnode fa-xl",
+  },
+];
 ---
 
 <footer
@@ -9,17 +42,22 @@ import COPSLogo from "../assets/images/cops_logo.png";
   <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
     <div class="md:flex md:justify-between">
       <div class="mb-6 md:mb-0">
-        <a
-          href="https://lfx.linuxfoundation.org/tools/mentorship/"
-          class="flex items-center"
-          target="_blank"
-        >
+        <a href="/" class="flex items-center" target="_blank">
           <span
-            class="font-header self-center text-2xl font-semibold whitespace-nowrap text-white"
+            class="font-header self-center text-3xl font-semibold whitespace-nowrap text-white"
             >LFX Mentorship</span
           >
         </a>
       </div>
+    </div>
+
+    <div class="pt-2">
+      <p class="text-white text-lg font-subHeader">
+        This is an OpenSource project developed by the students at IIT BHU. If
+        this project helped you, we would greatly appreciate a <i
+          class="fa fa-star"></i>
+         on GitHub.
+      </p>
     </div>
 
     <hr class="my-6 sm:mx-auto border-highlight-blue lg:my-8 border-t-2" />
@@ -54,60 +92,19 @@ import COPSLogo from "../assets/images/cops_logo.png";
         </a>
       </span>
 
+      <!-- Social Media Icons -->
       <div class="flex mt-4 space-x-5 justify-center sm:mt-0">
-        <!-- Youtube Logo -->
-        <a
-          href="https://www.youtube.com/channel/UC01TZlNfu29QgG4FmUqVsdg/"
-          target="_blank"
-          class="text-gray-500 hover:text-red-700 duration-200 hover:scale-150"
-        >
-          <i class="fa-brands fa-youtube fa-xl"></i>
-        </a>
-
-        <!-- LinkedIn Logo -->
-        <a
-          href="https://www.linkedin.com/company/cops-iitbhu/"
-          target="_blank"
-          class="text-gray-500 hover:text-blue-900 duration-200 hover:scale-150"
-        >
-          <i class="fa-brands fa-linkedin fa-xl"></i>
-        </a>
-
-        <!-- Instagram Logo -->
-        <a
-          href="https://www.instagram.com/cops.iitbhu/"
-          target="_blank"
-          class="text-gray-500 hover:text-pink-700 duration-200 hover:scale-150"
-        >
-          <i class="fa-brands fa-instagram fa-xl"></i>
-        </a>
-
-        <!-- Twitter Logo -->
-        <a
-          href="https://twitter.com/cops_iitbhu/"
-          target="_blank"
-          class="text-gray-500 hover:text-sky-500 duration-200 hover:scale-150"
-        >
-          <i class="fa-brands fa-twitter fa-xl"></i>
-        </a>
-
-        <!-- GitHub Logo -->
-        <a
-          href="https://github.com/COPS-IITBHU/"
-          target="_blank"
-          class="text-gray-500 hover:text-white duration-200 hover:scale-150"
-        >
-          <i class="fa-brands fa-github fa-xl"></i>
-        </a>
-
-        <!-- Hashnode Logo -->
-        <a
-          href="https://hashnode.com/@COPSIITBHU/"
-          target="_blank"
-          class="text-gray-500 hover:text-blue-700 duration-200 hover:scale-150"
-        >
-          <i class="fa-brands fa-hashnode fa-xl"></i>
-        </a>
+        {
+          socialMediaIcons.map((item) => (
+            <a
+              href={item.url}
+              target="_blank"
+              class="text-gray-500 hover:text-blue-700 duration-200 hover:scale-150"
+            >
+              <i class={item.icon} />
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>

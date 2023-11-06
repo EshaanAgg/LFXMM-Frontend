@@ -1,4 +1,5 @@
 ---
+
 export const prerender = true;
 
 import Layout from "../../layouts/Layout.astro";
@@ -214,63 +215,4 @@ export async function getStaticPaths() {
     outline: var(--outline);
     outline-offset: 2px;
   }
-
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* 
-export async function getStaticPaths() {
-  const API_BASE_URL = import.meta.env.API_BASE_URL;
-  const response = await fetch(`${API_BASE_URL}/orgs`);
-  const allOrganizations = await response.json();
-  const response1 = await fetch(`${API_BASE_URL}/projectdesc`);
-  const allProject = await response1.json();
-
-  return allOrganizations.map((org: Organization) => ({
-    params: {
-      orgID: org.id,
-    },
-  })).concat(
-  allProject.map((project: ProjectDescription) => ({
-    params: {
-      projID: project.projectId as string,
-      
-    }
-    
-  })));
-}
-
-// Render the content of the page by making the relevant requests
-let projectData;
-
-export async function setup() {
-  const { orgID, projID } = Astro.request.params;
-  const API_BASE_URL = import.meta.env.API_BASE_URL;const orgResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}`);
-  const orgData = await orgResponse.json();
-  const projectResponse = await fetch(`${API_BASE_URL}/orgs/${orgID}/projects/${projID}`);
-  projectData = await projectResponse.json();
-}
-
-*/}

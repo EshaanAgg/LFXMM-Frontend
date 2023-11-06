@@ -1,6 +1,7 @@
 type Organization = {
   id: string;
   name: string;
+  description: string;
   logoUrl: string;
   skills: string[];
 };
@@ -24,4 +25,9 @@ type ProjectDescription = {
   repolink: string;
   skills: string[];
   amountRaised: number;
-}
+};
+
+type Skill = {
+  skillName: string;
+  frequency: string;
+};

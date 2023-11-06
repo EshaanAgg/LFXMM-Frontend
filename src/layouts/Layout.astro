@@ -27,7 +27,9 @@ const { title } = Astro.props;
   </head>
   <body class="bg-dark-blue">
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
@@ -52,5 +54,61 @@ const { title } = Astro.props;
     font-weight: 700;
     font-style: normal;
     font-display: swap;
+  }
+
+  .openDrawer {
+    transform: translateX(0);
+  }
+
+  #allSkillsDrawer {
+    position: fixed;
+    z-index: 110;
+  }
+
+  #filterDrawer {
+    position: fixed;
+    z-index: 100;
+  }
+
+  .card {
+    transition-duration: 0.125s;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(50, 113, 113);
+    border: 2px solid #07c e7;
+    z-index: 2;
+  }
+
+  .card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(69, 193, 255, 0.589);
+    border: 3px solid #fff;
+  }
+
+  .viewDetail {
+    transition-duration: 0.3s;
+  }
+
+  .viewDetail:hover {
+    transform: scale(1.05);
+    color: rgb(3 105 161);
+  }
+
+  .viewDetail {
+    --clr: #fff;
+    --outline: 2px solid var(--clr);
+    color: var(--clr);
+    outline: var(--outline);
+    border: var(--outline);
+    outline-offset: -2px;
+    transition: outline-offset 200ms;
+    border-radius: 20px;
+    padding: 8px;
+  }
+
+  .viewDetail:hover,
+  .viewDetail:focus {
+    outline: var(--outline);
+    outline-offset: 2px;
   }
 </style>
