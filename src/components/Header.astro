@@ -1,9 +1,32 @@
 ---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+
+const navItems = [
+{
+		path: '/',
+		label: 'Home',
+	},
+  	{
+		path: '/org',
+		label: 'Organizations',
+	},
+  {
+		path: '/organization/PastProjectCard',
+		label: 'Projects',
+	},
+	{
+		path: '/team',
+		label: 'Team',
+	},
+{/*
 const navItems = [
   { name: "Home", link: "/" },
   { name: "GitHub", link: "https://github.com/EshaanAgg/LFXMM-Frontend" },
   { name: "Team", link: "/team" },
-];
+]; */}
 ---
 
 <div
@@ -24,7 +47,14 @@ const navItems = [
       </span>
     </div>
   </div>
-
+        <nav class="linkUl text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8">
+      {
+        navItems.map((item) => {
+          return <a class=" animSlowOpacity slowOpacityDelay3 font-subHeader hover:text-blue duration-200 hover:text-3xl" href = {item.path}>{item.label}</a>;
+        })
+      }
+      </nav>
+{/*
   <div
     class="text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8 flex pb-4"
   >
@@ -44,7 +74,7 @@ const navItems = [
         ))
       }
     </ul>
-  </div>
+  </div> */}
 </div>
 
 <style>
@@ -77,13 +107,13 @@ const navItems = [
   }
 
   /* Link hover */
-  .linkUl li {
+  .linkUl a {
     position: relative;
     cursor: pointer;
     transition: 0.5s;
   }
 
-  .linkUl li:before {
+  .linkUl a:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -96,13 +126,13 @@ const navItems = [
     border-radius: 0 0 10px 10px;
   }
 
-  .linkUl li:hover:before {
+  .linkUl a:hover:before {
     transform: scaleY(1);
     transition: transform 0.5s;
     transform-origin: top;
   }
 
-  .linkUl li:after {
+  .linkUl a:after {
     content: "";
     position: absolute;
     top: 0;
@@ -115,7 +145,7 @@ const navItems = [
     filter: blur(40px);
   }
 
-  .linkUl li:hover:after {
+  .linkUl a:hover:after {
     transform: scaleY(1);
     transition: transform 0.5s;
     transform-origin: top;
@@ -147,4 +177,10 @@ const navItems = [
       opacity: 100%;
     }
   }
+  nav {
+    display: flex;
+    gap: 2rem;
+    height: max-content;
+  }
+
 </style>
