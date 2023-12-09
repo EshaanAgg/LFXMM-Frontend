@@ -19,6 +19,7 @@
     "@types/react-dom": "^18.2.13",
     "astro": "^3.0.7",
     "astro-icon": "^0.8.1",
+    "marked": "^11.0.1",
     "nanostores": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

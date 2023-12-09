@@ -127,18 +127,6 @@
     }
   },
   {
-    "name": "Shikhar Srivastav",
-    "image": "",
-    "role": "contributor",
-    "description": "Tech Enthusiast",
-    "skills": ["React", "Astro", "Django", "Go", "Typescript"],
-    "socials": {
-      "github": "https://github.com/StoneCoder123",
-      "linkedin": "https://www.linkedin.com/in/shikhar-srivastav-507589254",
-      "gmail": "mailto:shikhar.srivastav.cd.cse22@itbhu.ac.in"
-    }
-  },
-  {
     "name": "Shreya Sinha",
     "image": "Shreya.png",
     "role": "contributor",

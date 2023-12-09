@@ -110,7 +110,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
       </div>
 
       {/* Render the project cards */}
-      <div className=" flex flex-wrap justify-center gap-[20px] ">
+      <div className=" flex flex-wrap justify-center gap-[20px] px-16">
         {activeProjects.map((project) => (
           <PastProjectCard {...project} key={project.id} />
         ))}

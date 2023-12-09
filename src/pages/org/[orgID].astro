@@ -35,11 +35,11 @@ const projectData = (await projectResponse.json()).projects;
     <div
       class="text-white w-1/2 flex flex-col items-center justify-center gap-4"
     >
-      <div class="rounded-full border border-white p-1">
+      <div class="border border-white p-2 rounded-3xl">
         <img
           src={orgData.logo}
           alt={`Logo for the organization ${orgData.org}`}
-          class="object-cover h-24 w-24 rounded-full"
+          class="object-cover h-24"
         />
       </div>
       <h1 class="text-3xl font-semibold">{orgData.org}</h1>

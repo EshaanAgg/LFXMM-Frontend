@@ -1,7 +1,6 @@
 ---
 import { z } from "zod";
 import Layout from "../layouts/Layout.astro";
-import Collaborators from "../components/team/Collaborators.astro";
 import TeamMemberCard from "../components/team/TeamMemberCard.astro";
 import MemberDetails from "../data/team.json";
 
@@ -28,11 +27,10 @@ membersZod.parse(MemberDetails);
 ---
 
 <Layout title="Team">
-  <div class="flex flex-col items-center justify-center bg-[#00101B] px-32">
-    <Collaborators />
+  <div class="flex flex-col items-center justify-center px-32">
     <div class="flex flex-col items-center justify-center pb-20">
       <!-- Maintainers -->
-      <h1 class="text-white text-5xl font-bold pt-32">Maintainer</h1>
+      <h1 class="text-white text-5xl font-bold">Maintainers</h1>
       <div class="flex flex-row items-center justify-center flex-wrap gap-x-10">
         {
           (MemberDetails as TeamMemberInterface[])

@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 
+import { marked } from "marked";
 import Layout from "../../layouts/Layout.astro";
 import { getFormattedSkillName } from "../../utilities/skillUtilities";
 
@@ -24,6 +25,8 @@ const { projID } = Astro.params;
 const API_BASE_URL = import.meta.env.API_BASE_URL;
 const projResponse = await fetch(`${API_BASE_URL}/projects/${projID}`);
 const projData = (await projResponse.json()).project;
+
+const descriptionHTMLContent = marked.parse(projData.description);
 ---
 
 <Layout title={projData.name}>
@@ -38,9 +41,10 @@ const projData = (await projResponse.json()).project;
       <h4 class="text-white text-center text-2xl font-semibold pt-4 pb-2">
         Description
       </h4>
-      <p class="text-white text-lg max-w-5xl mx-auto">
-        {projData.description}
-      </p>
+      <div
+        class="text-white text-md max-w-5xl mx-auto opacity-90"
+        set:html={descriptionHTMLContent}
+      />
     </div>
 
     <div class="codeBlock absolute"></div>
