@@ -21,13 +21,13 @@ export const OrganizationCard = ({
 
   return (
     <div className="box lg:w-[360px] sm:w-[360px] rounded-3xl bg-dark-blue mx-3 my-2 py-auto border-[3px] border-highlight-blue card hover:border-[5px] flex flex-col justify-center align-center overflow-hidden text-white">
-      <div className="flex flex-col justify-center items-center p-4">
+      <div className="flex flex-col justify-center items-center p-4 gap-2">
         {/* Logo */}
-        <div className="flex justify-center items-center">
+        <div className="border border-white rounded-3xl bg-white flex items-center justify-center min-w-16 p-2">
           <img
-            className="w-24 h-24 mb-3 rounded-full border-solid border-2 border-white"
             src={logoUrl}
             alt={`Logo for the organization ${name}`}
+            className="object-cover h-16"
           />
         </div>
 

@@ -72,7 +72,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
   return (
     <div>
       {/* Year Navigation Bar */}
-      <div className="flex flex-wrap justify-items-center text-sm font-bold text-center text-gray-500 border-b border-gray-200">
+      <div className="flex flex-wrap justify-items-center text-sm font-bold text-center text-white border-b border-gray-200">
         {projectYears.map((year) => (
           <button
             key={year}
@@ -82,8 +82,8 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
             className={`${
               year === activeYear
                 ? "text-blue-600 bg-gray-100 rounded-t-lg active"
-                : "rounded-t-lg hover:text-gray-600 hover:bg-gray-50 "
-            } inline-block p-4 mx-auto w-24 text-lg font-bold border border-white`}
+                : "rounded-t-lg hover:text-black hover:bg-gray-50"
+            } inline-block p-4 mx-auto w-24 text-lg font-bold border border-white border-b-0`}
           >
             {year}
           </button>
@@ -102,7 +102,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
               term == activeTerm
                 ? "bg-highlight-blue rounded-3xl"
                 : "border border-white bg-dark-blue"
-            } inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white rounded-3xl`}
+            } inline-flex items-center px-3 py-1 text-lg font-medium text-center text-white rounded-3xl`}
           >
             {programTermToDisplayString(term)}
           </button>

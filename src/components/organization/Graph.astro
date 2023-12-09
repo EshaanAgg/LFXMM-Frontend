@@ -30,26 +30,14 @@ projects.forEach((proj: ProjectThumbnail) => {
     green: "rgb(75, 192, 192)",
     blue: "rgb(54, 162, 235)",
     grey: "rgb(201, 203, 207)",
-    white: "rgb(255, 255, 255)",
     lightWhite: "rgb(255, 255, 255, 0.5)",
-  };
-
-  const labelStyle = {
-    color: "#fff",
-    font: {
-      family: "Comic Sans MS",
-      size: 12,
-      weight: "bold",
-      lineHeight: 1.2,
-    },
-    padding: { top: 20, left: 0, right: 0, bottom: 0 },
   };
 
   const chartData = {
     labels: data.map((d) => d.year),
     datasets: [
       {
-        label: "Term 1",
+        label: "Summer",
         data: data.map((d) => d.termCounts[0]),
         borderColor: CHART_COLORS.red,
         fill: false,
@@ -57,20 +45,23 @@ projects.forEach((proj: ProjectThumbnail) => {
         tension: 0.4,
       },
       {
-        label: "Term 2",
+        label: "Fall",
+        cubicInterpolationMode: "monotone",
         data: data.map((d) => d.termCounts[1]),
         borderColor: CHART_COLORS.blue,
         fill: false,
         tension: 0.4,
       },
       {
-        label: "Term 3",
+        label: "Winter",
+        cubicInterpolationMode: "monotone",
         data: data.map((d) => d.termCounts[2]),
         borderColor: CHART_COLORS.green,
         fill: false,
       },
       {
         label: "Total",
+        cubicInterpolationMode: "monotone",
         data: data.map((d) => d.totalCount),
         borderColor: CHART_COLORS.grey,
         fill: false,
