@@ -3,6 +3,7 @@ export const prerender = true;
 
 import Layout from "../../layouts/Layout.astro";
 import { ProjectNavbar } from "../../components/organization/ProjectNavbar";
+import Graph from "../../components/organization/Graph.astro";
 
 // Get all the organization IDs and render the page for them
 export async function getStaticPaths() {
@@ -29,76 +30,42 @@ const projectData = (await projectResponse.json()).projects;
 ---
 
 <Layout title={orgData.org}>
-  <div class="text-white px-28 py-8">
-    <div class="orgLogo">
-      <img
-        src={orgData.logo}
-        alt={`Logo for the organization ${orgData.org}`}
-        class="orgLogo"
-      />
+  <div class="flex items-center justify-center gap-2 m-2">
+    <!-- Vertical column 1 containing the image and organization description-->
+    <div
+      class="text-white w-1/2 flex flex-col items-center justify-center gap-4"
+    >
+      <div class="rounded-full border border-white p-1">
+        <img
+          src={orgData.logo}
+          alt={`Logo for the organization ${orgData.org}`}
+          class="object-cover h-24 w-24 rounded-full"
+        />
+      </div>
+      <h1 class="text-3xl font-semibold">{orgData.org}</h1>
+      <p class="text-white text-md max-w-xl opacity-80">
+        {orgData.desc}
+      </p>
     </div>
 
-    <div class="orgInfo">
-      <div>
-        <p class="text-white text-md max-w-xl">
-          {orgData.desc}
-        </p>
-      </div>
-      <div class="graph">Display the Graph</div>
+    <!-- Column 2 contains the graph -->
+    <div class="w-1/2">
+      <Graph projects={projectData} />
     </div>
   </div>
 
+  <!-- Past Projects Heading -->
   <div>
-    <h1
-      class="text-white text-center text-5xl font-semibold pt-[180px] pb-[50px]"
-    >
+    <h1 class="text-white text-center text-4xl font-semibold pt-16 pb-[50px]">
       Past Projects
     </h1>
     <div class="codeBlock absolute"></div>
   </div>
+
   <ProjectNavbar allProjects={projectData} client:only="react" />
 </Layout>
 
 <style is:global>
-  .orgInfo {
-    width: 100%;
-    display: flex;
-  }
-
-  .orgLogo {
-    height: 15vh;
-    margin: 0vh 0vw 10vh 0vw;
-  }
-
-  .graph {
-    display: flex;
-    width: 40%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .pastYears {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: Lato;
-    font-size: 60px;
-    font-weight: 700;
-    line-height: 72px;
-    letter-spacing: 0em;
-    margin-bottom: 6vh;
-    color: white;
-  }
-
-  .lowerSection {
-    width: 100%;
-    padding: 0vh 1vw;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2vh;
-    justify-content: center;
-    background-color: rgb(16, 16, 16);
-  }
   .codeBlock {
     position: absolute;
     width: 300px;

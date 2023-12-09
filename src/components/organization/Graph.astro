@@ -1,0 +1,125 @@
+---
+const { projects } = Astro.props;
+
+const data = Array.from({ length: 5 }, (_, i) => ({
+  year: 2019 + i,
+  totalCount: 0,
+  termCounts: [0, 0, 0],
+}));
+
+projects.forEach((proj: ProjectThumbnail) => {
+  const index = proj.programYear - 2019;
+  const termIndex = +proj.programTerm[proj.programTerm.length - 1] - 1;
+  data[index].totalCount += 1;
+  data[index].termCounts[termIndex] += 1;
+});
+---
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // @ts-nocheck
+  //   Disable typechecking for this file because it is client side JS
+
+  const data = JSON.parse(
+    document.getElementById("chartData")?.textContent || "",
+  );
+  const ctx = document.getElementById("organizationChart");
+
+  const CHART_COLORS = {
+    red: "rgb(255, 99, 132)",
+    green: "rgb(75, 192, 192)",
+    blue: "rgb(54, 162, 235)",
+    grey: "rgb(201, 203, 207)",
+    white: "rgb(255, 255, 255)",
+    lightWhite: "rgb(255, 255, 255, 0.5)",
+  };
+
+  const labelStyle = {
+    color: "#fff",
+    font: {
+      family: "Comic Sans MS",
+      size: 12,
+      weight: "bold",
+      lineHeight: 1.2,
+    },
+    padding: { top: 20, left: 0, right: 0, bottom: 0 },
+  };
+
+  const chartData = {
+    labels: data.map((d) => d.year),
+    datasets: [
+      {
+        label: "Term 1",
+        data: data.map((d) => d.termCounts[0]),
+        borderColor: CHART_COLORS.red,
+        fill: false,
+        cubicInterpolationMode: "monotone",
+        tension: 0.4,
+      },
+      {
+        label: "Term 2",
+        data: data.map((d) => d.termCounts[1]),
+        borderColor: CHART_COLORS.blue,
+        fill: false,
+        tension: 0.4,
+      },
+      {
+        label: "Term 3",
+        data: data.map((d) => d.termCounts[2]),
+        borderColor: CHART_COLORS.green,
+        fill: false,
+      },
+      {
+        label: "Total",
+        data: data.map((d) => d.totalCount),
+        borderColor: CHART_COLORS.grey,
+        fill: false,
+        tension: 0.4,
+      },
+    ],
+  };
+
+  const chartConfig = {
+    type: "line",
+    data: chartData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: "Project Distribution",
+          color: "#FFF",
+          padding: 5,
+        },
+        legend: {
+          labels: { color: "#FFF", padding: 30 },
+          title: { color: "#FFF", display: true },
+        },
+      },
+      interaction: { intersect: false },
+      scales: {
+        x: {
+          border: { display: true },
+          display: true,
+          title: { display: true, text: "Year", color: "#FFF" },
+        },
+        y: {
+          display: true,
+          border: { display: true },
+          grid: { color: CHART_COLORS.lightWhite },
+          ticks: { stepSize: 1 },
+          title: { display: true, text: "Count", color: "#FFF" },
+          suggestedMin: 0,
+        },
+      },
+    },
+  };
+
+  new Chart(ctx, chartConfig);
+</script>
+
+<div>
+  <canvas id="organizationChart" class="h-96 pr-16"></canvas>
+  <div id="chartData" class="hidden">{JSON.stringify(data)}</div>
+</div>

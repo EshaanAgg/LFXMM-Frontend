@@ -83,7 +83,7 @@ export const ProjectNavbar = ({ allProjects }: PropType) => {
               year === activeYear
                 ? "text-blue-600 bg-gray-100 rounded-t-lg active"
                 : "rounded-t-lg hover:text-gray-600 hover:bg-gray-50 "
-            } inline-block p-4 mx-auto w-24`}
+            } inline-block p-4 mx-auto w-24 text-lg font-bold border border-white`}
           >
             {year}
           </button>
