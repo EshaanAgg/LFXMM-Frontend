@@ -24,7 +24,6 @@ const memberZod = z.object({
 export type TeamMemberInterface = z.infer<typeof memberZod>;
 
 const membersZod = z.array(memberZod);
-console.log(MemberDetails);
 membersZod.parse(MemberDetails);
 ---
 
