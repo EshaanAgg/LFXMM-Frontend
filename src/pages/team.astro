@@ -48,7 +48,6 @@ membersZod.parse(MemberDetails);
         {
           (MemberDetails as TeamMemberInterface[])
             .filter((member) => member.role === "contributor")
-            .toSorted(() => Math.random() - 0.5)
             .map((member: TeamMemberInterface) => (
               <TeamMemberCard {...member} />
             ))
