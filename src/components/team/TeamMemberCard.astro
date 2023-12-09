@@ -15,12 +15,12 @@ const socialKeys = [
 ---
 
 <div
-  class="w-[18rem] bg-opacity-75 border-2 border-[#0077CC] rounded-xl bg-white mt-20 flex justify-center items-center flex-col duration-[0.2s]"
+  class="w-[18rem] border-2 border-[#0077CC] rounded-xl bg-white mt-20 flex justify-center items-center flex-col duration-[0.2s]"
 >
   <div class="w-[18rem] flex justify-center items-center pt-2">
     <img
       src=`/team/${member.image}`
-      class="w-[14rem] rounded-full border-[1px] shadow-sm shadow-white border-white"
+      class="w-[14rem] rounded-full border-[1px] shadow-sm"
       alt=`A picture of ${member.name}`
     />
   </div>
@@ -66,7 +66,7 @@ const socialKeys = [
                 <Icon
                   pack="mdi"
                   name={key}
-                  className="h-[30px] mr-4 hover:transform hover:scale-125 duration-[0.3s] "
+                  className="h-[30px] mr-4 hover:transform hover:scale-125 duration-[0.3s]"
                 />
               </a>
             ) : null,

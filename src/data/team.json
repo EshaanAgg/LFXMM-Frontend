@@ -12,10 +12,11 @@
       "twitter": "https://twitter.com/eshaanagg"
     },
     "portfolio": "https://eshaanagg.netlify.app"
-  },{
+  },
+  {
     "name": "Korada Vishal",
     "image": "Vishal.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "Open Source Developer, Researching in CV, DL, Cloud Native Enthusiast.",
     "skills": ["Vue", "TS", "Go", "Python"],
     "socials": {
@@ -23,13 +24,13 @@
       "linkedin": "https://www.linkedin.com/in/vishal-k-2865b6254/",
       "gmail": "mailto:korada.vishal.phe22@itbhu.ac.in",
       "twitter": "https://twitter.com/vishalk2267"
-    },
-    "portfolio": "#"
-  },{
+    }
+  },
+  {
     "name": "Nandini Arora",
-    "image": "Nnadini.jpeg",
-    "role": "Contributor",
-    "description": "",
+    "image": "Nandini.jpeg",
+    "role": "contributor",
+    "description": "Hi! I am Nandini Arora!",
     "skills": ["UI/UX Designs", "React-native", "MERN", "Go"],
     "socials": {
       "github": "https://github.com/nandini584",
@@ -38,75 +39,72 @@
       "twitter": "https://twitter.com/nandiniarora584"
     },
     "portfolio": "https://nandini.vercel.app/index.html"
-  },{
+  },
+  {
     "name": "Sweta Kumari",
     "image": "Sweta.png",
-    "role": "Contributor",
-    "description": "A Developer in const learning and exploration mode.",
+    "role": "contributor",
+    "description": "A developer in const learning and exploration mode.",
     "skills": ["Go", "React", "Astro", "PostgreSQL", "Tailwind"],
     "socials": {
       "github": "https://github.com/swetagit186",
       "linkedin": "https://www.linkedin.com/in/sweta-kumari-980136258/",
       "gmail": "mailto:swetakumari11701@gmail.com",
       "twitter": "https://twitter.com/Ku8022196Sweta"
-    },
-    "portfolio": "#"
-  },{
+    }
+  },
+  {
     "name": "shravani",
     "image": "Shravani.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "A web developer who transforms creative concepts into dynamic and user-friendly platforms.",
-    "skills": ["Github","Javascript","React","Astro"],
+    "skills": ["Github", "Javascript", "React", "Astro"],
     "socials": {
       "github": "https://github.com/EsEmm04",
       "linkedin": "https://www.linkedin.com/in/shravani-mamidwara/",
       "gmail": "mailto:shrawanimamidwar@gmail.com",
       "twitter": "https://twitter.com/EsEmmm04"
-    },
-    "portfolio": "#"
-  },{
+    }
+  },
+  {
     "name": "Apoorv Dubey",
     "image": "Apoorv.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "An explorer in this ever-evolving tech world.",
-    "skills": ["React","Astro","Github","Tailwind"],
+    "skills": ["React", "Astro", "Github", "Tailwind"],
     "socials": {
       "github": "https://github.com/ApoorvDubey23",
       "linkedin": "https://www.linkedin.com/in/apoorv-dubey-a5b4ab26a/",
-      "gmail": "mailto:apoorvd2301@gmail.com",
-      "twitter": "#"
-    },
-    "portfolio": "#"
-  },{
+      "gmail": "mailto:apoorvd2301@gmail.com"
+    }
+  },
+  {
     "name": "Shashank Shekhar Singh",
     "image": "Shashank.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "Have developed interests in Web development and Machine Learning.",
-    "skills": ["React","Astro","Github","Tailwind"],
+    "skills": ["React", "Astro", "Github", "Tailwind"],
     "socials": {
-      "github": "#",
-      "linkedin": "#",
-      "gmail": "mailto:shashankshekhar.singh.mec22@itbhu.ac.in",
-      "twitter": "#"
-    },
-    "portfolio": "#"
-  },{
+      "github": "https://github.com/",
+      "gmail": "mailto:shashankshekhar.singh.mec22@itbhu.ac.in"
+    }
+  },
+  {
     "name": "Soumyo",
     "image": "Soumyo.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "Developer and OS enthusiast.",
     "skills": ["React", "PostgreSQL", "Go", "Typescript"],
     "socials": {
       "github": "https://github.com/SoumyoPurkayastha",
       "linkedin": "https://www.linkedin.com/in/soumyo-purkayastha",
-      "gmail": "mailto:soumyopurkayastha@gmail.com",
-      "twitter": "#"
-    },
-    "portfolio": "#"
-  },{
-    "name": "Shashank Mittal ",
+      "gmail": "mailto:soumyopurkayastha@gmail.com"
+    }
+  },
+  {
+    "name": "Shashank Mittal",
     "image": "ShashankM.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "My code works, I have no idea why?",
     "skills": ["Go", "React", "Astro", "Typescript"],
     "socials": {
@@ -114,59 +112,56 @@
       "linkedin": "https://www.linkedin.com/in/shashankmittal27",
       "gmail": "mailto:shashank.mittal.mec22@itbhu.ac.in",
       "twitter": "https://twitter.com/ishashankmittal"
-    },
-    "portfolio": "#"
-  },{
+    }
+  },
+  {
     "name": "Pratik Tripathy",
     "image": "Pratik.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "I kill bugs with Vim",
     "skills": ["React", "Astro", "Django", "Go", "Typescript"],
     "socials": {
       "github": "https://github.com/SilverDragonOfR",
       "linkedin": "https://www.linkedin.com/in/pratik-tripathy-091563255/",
-      "gmail": "mailto:pratik.tripathy.cse22@itbhu.ac.in",
-      "twitter": "#"
-    },
-    "portfolio": "#"
-  },{
+      "gmail": "mailto:pratik.tripathy.cse22@itbhu.ac.in"
+    }
+  },
+  {
     "name": "Shikhar Srivastav",
     "image": "",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "Tech Enthusiast",
     "skills": ["React", "Astro", "Django", "Go", "Typescript"],
     "socials": {
       "github": "https://github.com/StoneCoder123",
       "linkedin": "https://www.linkedin.com/in/shikhar-srivastav-507589254",
-      "gmail": "mailto:shikhar.srivastav.cd.cse22@itbhu.ac.in",
-      "twitter": "#"
-    },
-    "portfolio": "#"
-  },{
+      "gmail": "mailto:shikhar.srivastav.cd.cse22@itbhu.ac.in"
+    }
+  },
+  {
     "name": "Shreya Sinha",
     "image": "Shreya.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "A Developer",
-    "skills": ["React", "Tailwind","Python" ,"PostgreSQL", "Javascript"],
+    "skills": ["React", "Tailwind", "Python", "PostgreSQL", "Javascript"],
     "socials": {
       "github": "https://github.com/Shriya-sinha",
       "linkedin": "https://www.linkedin.com/in/shreya-sinha-22217b256",
       "gmail": "mailto:shreya.sinha.mec22@itbhu.ac.in",
       "twitter": "https://twitter.com/shreya_sin72637"
-    },
-    "portfolio": "#"
-  },{
+    }
+  },
+  {
     "name": "Mintu Gogoi",
     "image": "Mintu.png",
-    "role": "Contributor",
+    "role": "contributor",
     "description": "Learning new things",
-    "skills": ["Typescript","React","PostgreSQL"],
+    "skills": ["Typescript", "React", "PostgreSQL"],
     "socials": {
       "github": "https://github.com/Min2who",
       "linkedin": "https://www.linkedin.com/in/mintu-gogoi-4a03a3260/",
       "gmail": "mailto:mintu.gogoi.cd.mec22@itbhu.ac.in",
       "twitter": "https://twitter.com/min2who"
-    },
-    "portfolio": "#"
+    }
   }
 ]
