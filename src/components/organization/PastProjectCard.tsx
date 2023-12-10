@@ -41,11 +41,11 @@ export const PastProjectCard = (props: ProjectThumbnail) => {
         )}
 
         {/* Project Details button */}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-6 md:items-center md:justify-center">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center justify-center">
           <a href={`/project/${id}`} target="_blank">
             <button
               type="button"
-              className="btnStyle inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue "
+              className="btnStyle inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue"
             >
               Project Details
             </button>
@@ -55,7 +55,7 @@ export const PastProjectCard = (props: ProjectThumbnail) => {
           <a href={projectUrl} target="_blank">
             <button
               type="button"
-              className="btnStyle inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue  "
+              className="btnStyle inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-dark-blue hover:bg-white hover:text-dark-blue"
             >
               View project on LFX
             </button>

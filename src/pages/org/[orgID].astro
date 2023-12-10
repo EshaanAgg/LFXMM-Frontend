@@ -30,10 +30,12 @@ const projectData = (await projectResponse.json()).projects;
 ---
 
 <Layout title={orgData.org}>
-  <div class="flex items-center justify-center gap-2 m-2">
+  <div
+    class="flex flex-col lg:flex-row items-center justify-center gap-2 mx-auto p-2"
+  >
     <!-- Vertical column 1 containing the image and organization description-->
     <div
-      class="text-white w-1/2 flex flex-col items-center justify-center gap-4"
+      class="text-white flex flex-col items-center justify-center gap-4 lg:w-1/2"
     >
       <div class="border border-white p-2 rounded-3xl bg-white">
         <img
@@ -43,13 +45,13 @@ const projectData = (await projectResponse.json()).projects;
         />
       </div>
       <h1 class="text-3xl font-semibold">{orgData.org}</h1>
-      <p class="text-white text-md max-w-xl opacity-80">
+      <p class="text-white text-md opacity-80 m-4 p-4">
         {orgData.desc}
       </p>
     </div>
 
     <!-- Column 2 contains the graph -->
-    <div class="w-1/2">
+    <div class="lg:w-1/2 w-full mx-auto py-4 px-8 items-center">
       <Graph projects={projectData} />
     </div>
   </div>

@@ -9,14 +9,14 @@ const navItems = [
 <div
   class="backdrop-blur-md sticky top-0 flex flex-col lg:flex-row justify-between items-center px-10 mb-10 border-solid border-b-2 border-highlight-blue hover:shadow-highlight-blue hover:shadow-lg duration-200 z-30"
 >
-  <div class="px-10 py-5">
+  <div class="px-10 py-2">
     <div>
       <span
         class="self-center text-3xl font-semibold whitespace-nowrap text-white sm:text-5xl"
       >
         <a
           href="/"
-          class="line1 animTypewriter font-header flex items-center text-center hover:text-highlight-blue duration-200"
+          class="line1 animTypewriter font-header flex items-center text-center hover:text-highlight-blue duration-200 md:py-3"
           title="LFX Mentorship"
         >
           LFX Mentorship
@@ -25,11 +25,9 @@ const navItems = [
     </div>
   </div>
 
-  <div
-    class="text-2xl text-white mb-5 sm:mb-0 px-10 py-2 h-36 sm:h-20 sm:py-8 flex pb-4"
-  >
+  <div class="text-xl text-white mb-2 px-10 flex md:text-2xl">
     <ul
-      class="linkUl flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-20 lg:gap-8 xl:gap-16"
+      class="linkUl flex flex-row justify-between items-center gap-2 md:gap-5 lg:gap-16"
     >
       {
         navItems.map((item) => (

@@ -18,7 +18,7 @@ export const FilteredOrganizations = ({ allOrgs }: PropType) => {
   return (
     <ul
       role="list"
-      className="flex flex-wrap justify-center gap-[5px] ml-80px] mr-[80px] md-4 w-full"
+      className="flex flex-wrap justify-center gap-[10px] px-4 md-4 w-full"
     >
       {filteredOrgs.map((org: Organization) => (
         <OrganizationCard {...org} key={org.id} />
