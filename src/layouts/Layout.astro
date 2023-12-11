@@ -13,11 +13,34 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="LFX Mentorship is a project that provides you deep insights into the organizations and projects that come as a part of the famous LFX Mentorship. You can use this website to see the frequency of the organizations in the various terms of the mentorship as well as the details and tech stack related to these projects."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="A project to help you analyze LFX organizations and projects across the years"
+    />
+    <meta property="og:site_name" content="LFX Mentorship" />
+    <meta property="og:image" content="/logo.png" />
+    <meta
+      property="og:image:alt"
+      content="Logo showing LFX Mentorship written in a circular boundary"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:title" content="EshaanAgg" />
+    <meta property="twitter:url" content="https://x.com/eshaanagg" />
+
+    <meta name="author" content="Eshaan Aggarwal" />
+    <meta name="generator" content={Astro.generator} />
+
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/logo.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
