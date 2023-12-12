@@ -4,8 +4,8 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import TeamMemberCard from "../components/team/TeamMemberCard.astro";
 import MemberDetails from "../data/team.json";
-import COPSLogo from "../assets/images/cops_logo.png"
-import AboutUs from "../assets/images/aboutus.svg"
+import COPSLogo from "../assets/images/cops_logo.png";
+import AboutUs from "../assets/images/aboutus.svg";
 // Enforce the validation of the member data from the JSON
 const memberZod = z.object({
   name: z.string().min(5).max(30),
@@ -80,6 +80,17 @@ membersZod.parse(MemberDetails);
         {
           (MemberDetails as TeamMemberInterface[])
             .filter((member) => member.role === "maintainer")
+            .map((member: TeamMemberInterface) => (
+              <TeamMemberCard {...member} />
+            ))
+        }
+      </div>
+      <!-- Contributors -->
+      <h1 class="text-white text-5xl font-bold pt-32">Contributors</h1>
+      <div class="flex flex-row items-center justify-center flex-wrap gap-x-10">
+        {
+          (MemberDetails as TeamMemberInterface[])
+            .filter((member) => member.role === "contributor")
             .map((member: TeamMemberInterface) => (
               <TeamMemberCard {...member} />
             ))
