@@ -14,40 +14,40 @@ const socialKeys = [
 ] as const;
 ---
 
-<div class="w-96 border-4 border-[#0077CC] rounded-lg bg-white mt-32">
-  <img
-    src=`/team/${member.image}`
-    class="w-96 h-96"
-    height={96}
-    width={96}
-    alt=`A picture of ${member.name}`
-  />
-  <div class="px-7">
+<div
+  class="w-[18rem] border-2 border-[#0077CC] rounded-xl bg-white mt-20 flex justify-center items-center flex-col duration-[0.2s]"
+>
+  <div class="w-[18rem] flex justify-center items-center pt-2">
+    <img
+      src=`/team/${member.image}`
+      class="w-[14rem] rounded-full border-[1px] shadow-sm shadow-white border-white"
+      alt=`A picture of ${member.name}`
+    />
+  </div>
+  <div class="px-5">
     <!-- Member Name -->
     <div>
       <a href={member.portfolio || "#"}>
-        <h1 class="text-2xl text-[#00101B] my-5 font-bold">{member.name}</h1>
+        <h1 class="text-2xl text-[#00101B] my-1 font-bold">{member.name}</h1>
       </a>
       <hr />
     </div>
 
     <!-- Member Description -->
     <div>
-      <h1 class="text-[#00101B] opacity-70 text-base mt-4 mb-2 font-bold">
-        About
-      </h1>
+      <h1 class="text-[#00101B] opacity-70 text-base mt-1 font-bold">About</h1>
       <p class="font-sm opacity-70">{member.description}</p>
     </div>
 
     <div>
       <!-- Member Skills -->
-      <h1 class="text-[#00101B] opacity-70 text-base mt-4 mb-2 font-bold">
+      <h1 class="text-[#00101B] opacity-70 text-sm mt-1 mb-1 font-bold">
         Skills
       </h1>
-      <div class="gap-2 flex flex-row flex-wrap">
+      <div class="gap-1 flex flex-row flex-wrap">
         {
           member.skills.map((skill) => (
-            <div class="bg-[#0077CC] rounded-full py-1 px-5 text-white text-bold text-sm font-medium mr-2">
+            <div class="bg-[#0077CC] rounded-full py-1 px-[1rem] text-white text-bold text-sm font-medium mr-2">
               {skill}
             </div>
           ))
@@ -55,15 +55,19 @@ const socialKeys = [
       </div>
 
       <!-- Social Links Component -->
-      <h1 class="text-[#00101B] opacity-60 font-bold text-sm my-4">
+      <h1 class="text-[#00101B] opacity-60 font-bold text-sm my-1">
         Let's Connect
       </h1>
-      <div class="flex flex-row mb-4">
+      <div class="flex flex-row mb-3">
         {
           socialKeys.map((key) =>
             member.socials[key] ? (
               <a href={member.socials[key]}>
-                <Icon pack="mdi" name={key} class="h-[30px] mr-4" />
+                <Icon
+                  pack="mdi"
+                  name={key}
+                  className="h-[30px] mr-4 hover:transform hover:scale-125 duration-[0.3s] "
+                />
               </a>
             ) : null,
           )
