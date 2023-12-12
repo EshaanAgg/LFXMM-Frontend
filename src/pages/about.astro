@@ -96,17 +96,7 @@ membersZod.parse(MemberDetails);
             ))
         }
       </div>
-      <!-- Contributors -->
-      <h1 class="text-white text-5xl font-bold pt-32">Contributors</h1>
-      <div class="flex flex-row items-center justify-center flex-wrap gap-x-10">
-        {
-          (MemberDetails as TeamMemberInterface[])
-            .filter((member) => member.role === "contributor")
-            .map((member: TeamMemberInterface) => (
-              <TeamMemberCard {...member} />
-            ))
-        }
-      </div>
+     
     </div>
   </div>
 </Layout>
